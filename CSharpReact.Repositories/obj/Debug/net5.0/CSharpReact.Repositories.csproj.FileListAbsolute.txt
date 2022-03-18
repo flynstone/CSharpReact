@@ -1,0 +1,15 @@
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\obj\Debug\net5.0\CSharpReact.Repositories.csproj.AssemblyReference.cache
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\obj\Debug\net5.0\CSharpReact.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\obj\Debug\net5.0\CSharpReact.Repositories.AssemblyInfoInputs.cache
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\obj\Debug\net5.0\CSharpReact.Repositories.AssemblyInfo.cs
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\obj\Debug\net5.0\CSharpReact.Repositories.csproj.CoreCompileInputs.cache
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\bin\Debug\net5.0\CSharpReact.Repositories.deps.json
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\bin\Debug\net5.0\CSharpReact.Repositories.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\bin\Debug\net5.0\CSharpReact.Repositories.pdb
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\bin\Debug\net5.0\CSharpReact.Entities.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\bin\Debug\net5.0\CSharpReact.Entities.pdb
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\obj\Debug\net5.0\CSharpReact.Repositories.csproj.CopyComplete
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\obj\Debug\net5.0\CSharpReact.Repositories.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\obj\Debug\net5.0\refint\CSharpReact.Repositories.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\obj\Debug\net5.0\CSharpReact.Repositories.pdb
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\obj\Debug\net5.0\ref\CSharpReact.Repositories.dll

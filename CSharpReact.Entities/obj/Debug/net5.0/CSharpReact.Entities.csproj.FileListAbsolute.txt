@@ -1,0 +1,15 @@
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Entities\bin\Debug\net5.0\CSharpReact.Entities.deps.json
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Entities\bin\Debug\net5.0\CSharpReact.Entities.runtimeconfig.json
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Entities\bin\Debug\net5.0\CSharpReact.Entities.runtimeconfig.dev.json
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Entities\bin\Debug\net5.0\CSharpReact.Entities.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Entities\bin\Debug\net5.0\CSharpReact.Entities.pdb
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Entities\obj\Debug\net5.0\CSharpReact.Entities.csproj.AssemblyReference.cache
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Entities\obj\Debug\net5.0\CSharpReact.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Entities\obj\Debug\net5.0\CSharpReact.Entities.AssemblyInfoInputs.cache
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Entities\obj\Debug\net5.0\CSharpReact.Entities.AssemblyInfo.cs
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Entities\obj\Debug\net5.0\CSharpReact.Entities.csproj.CoreCompileInputs.cache
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Entities\obj\Debug\net5.0\CSharpReact.Entities.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Entities\obj\Debug\net5.0\refint\CSharpReact.Entities.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Entities\obj\Debug\net5.0\CSharpReact.Entities.pdb
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Entities\obj\Debug\net5.0\CSharpReact.Entities.genruntimeconfig.cache
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Entities\obj\Debug\net5.0\ref\CSharpReact.Entities.dll
