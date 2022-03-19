@@ -1,8 +1,14 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import { Article } from '../../../app/models/article';
 
-export default function ArticleForm() {
+interface Props {
+  article: Article | undefined;
+  closeForm: () => void;
+}
+
+export default function ArticleForm({ article, closeForm }: Props) {
   return (
     <>
       <section>

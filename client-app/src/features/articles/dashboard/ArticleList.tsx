@@ -11,7 +11,6 @@ interface Props {
 export default function ArticleList({articles, selectArticle}: Props) {
   return (
     <>
-
       <Row>
         <Col md={2}>
           <Button variant="outline-info">New Article</Button>       
@@ -27,8 +26,6 @@ export default function ArticleList({articles, selectArticle}: Props) {
                 <th>Content</th>
                 <th>Date</th>
                 <th>Details</th>
-                <th>Update</th>
-                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -39,12 +36,6 @@ export default function ArticleList({articles, selectArticle}: Props) {
                   <td>{article.dateCreated}</td>
                   <td>
                     <Button onClick={() => selectArticle(article.id)} variant="outline-info">Details</Button>
-                  </td>
-                  <td>
-                    <Button variant="outline-warning">Update</Button>
-                  </td>
-                  <td>
-                    <Button variant="outline-danger">Delete</Button>
                   </td>
                 </tr>
               ))}
