@@ -11,6 +11,7 @@ Project still under developement
 
 ## Bootstrap Styling updates with details component hook
 
+!["screenshot description"](./screenshots/details.png)
+
 !["screenshot description"](./screenshots/articles.png)
 
-!["screenshot description"](./screenshots/details.png)
