@@ -7,3 +7,10 @@ Project still under developement
 !["screenshot description"](./screenshots/2022-03-18.png)
 
 !["screenshot description"](./screenshots/2022-03-18%20(1).png)
+
+
+## Bootstrap Styling updates with details component hook
+
+!["screenshot description"](./screenshots/articles.png)
+
+!["screenshot description"](./screenshots/details.png)
