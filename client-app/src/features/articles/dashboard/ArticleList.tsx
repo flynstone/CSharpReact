@@ -1,24 +1,27 @@
 import React from 'react';
-import { Table, Col, Row, Button } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import { Table, Col, Row } from 'react-bootstrap';
 import { Article } from '../../../app/models/article';
 
 interface Props {
   articles: Article[];
+  selectArticle: (id: string) => void;
 }
 
-export default function ArticleList({articles}: Props) {
+export default function ArticleList({articles, selectArticle}: Props) {
   return (
     <>
+
       <Row>
-        <Col mdOffset={10} md={2}>
-          <h2>Create Article</h2>
+        <Col md={2}>
+          <Button variant="outline-info">New Article</Button>       
         </Col>
       </Row>
       <br />
       <Row>
         <Col md={12}>
           <Table responsive striped>
-            <thead>
+            <thead> 
               <tr>
                 <th>Title</th>
                 <th>Content</th>
@@ -35,13 +38,13 @@ export default function ArticleList({articles}: Props) {
                   <td>{article.body}</td>
                   <td>{article.dateCreated}</td>
                   <td>
-                    <Button>Details</Button>
+                    <Button onClick={() => selectArticle(article.id)} variant="outline-info">Details</Button>
                   </td>
                   <td>
-                    <Button>Update</Button>
+                    <Button variant="outline-warning">Update</Button>
                   </td>
                   <td>
-                    <Button>Delete</Button>
+                    <Button variant="outline-danger">Delete</Button>
                   </td>
                 </tr>
               ))}
