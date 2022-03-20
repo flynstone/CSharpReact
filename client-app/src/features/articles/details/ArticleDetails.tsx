@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Card } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { Article } from "../../../app/models/article";
 
 interface Props {

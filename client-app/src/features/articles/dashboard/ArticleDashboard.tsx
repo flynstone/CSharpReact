@@ -1,7 +1,7 @@
 import React from "react";
 import { Article } from "../../../app/models/article";
 import ArticleList from "./ArticleList";
-import { Row } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
 import ArticleDetails from "../details/ArticleDetails";
 import ArticleForm from "../form/ArticleForm";
 
@@ -13,10 +13,11 @@ interface Props {
   editMode: boolean;
   openForm: (id: string) => void;
   closeForm: () => void;
+  createOrEdit: (article: Article) => void;
 }
 
 export default function ArticleDashboard({ articles, selectedArticle, selectArticle, cancelSelectArticle,
-    editMode, openForm, closeForm}: Props) {
+    editMode, openForm, closeForm, createOrEdit}: Props) {
   return (
     <>     
       <Row>
@@ -24,7 +25,7 @@ export default function ArticleDashboard({ articles, selectedArticle, selectArti
       </Row>
       <Row>
         {/* Double ampersand => used to generate component on the right side of the symbole as long as the left side is not null */}
-        {selectedArticle &&
+        {selectedArticle && !editMode &&
           <ArticleDetails
             article={selectedArticle}
             cancelSelectArticle={cancelSelectArticle}
@@ -34,6 +35,7 @@ export default function ArticleDashboard({ articles, selectedArticle, selectArti
           <ArticleForm
             closeForm={closeForm}
             article={selectedArticle}
+            createOrEdit={createOrEdit}
         />}
       </Row>
 

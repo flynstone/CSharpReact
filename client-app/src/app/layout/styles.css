@@ -25,7 +25,7 @@ article {
   display: flex;
   width: 100vw;
   height: 7vh;
-  background: linear-gradient(to bottom, #07c03e, #333333);
+  background: linear-gradient(135deg, #0bd17f, #12aca4);
 }
 
 .Row {
@@ -42,7 +42,6 @@ article {
   align-items: center;
   padding-right: 1rem;
 }
-
 
 
 .article__header {

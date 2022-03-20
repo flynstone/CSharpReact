@@ -1,7 +1,10 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import { Table, Col, Row } from 'react-bootstrap';
 import { Article } from '../../../app/models/article';
+import Table from 'react-bootstrap/Table';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
 
 interface Props {
   articles: Article[];
@@ -11,11 +14,6 @@ interface Props {
 export default function ArticleList({articles, selectArticle}: Props) {
   return (
     <>
-      <Row>
-        <Col md={2}>
-          <Button variant="outline-info">New Article</Button>       
-        </Col>
-      </Row>
       <br />
       <Row>
         <Col md={12}>

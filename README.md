@@ -15,3 +15,7 @@ Project still under developement
 
 !["screenshot description"](./screenshots/articles.png)
 
+## More Styling added and added "Create" and "Update" functions
+
+!['screenshot description'](./screenshots/2022-03-20.png)
+
