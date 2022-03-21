@@ -42,6 +42,10 @@ function App() {
     setSelectedArticle(article);
   }
 
+  const handleDeleteArticle = (id: string) => {
+    setArticles([...articles.filter(x => x.id !== id)]);
+  }
+
   return (
     <div className="App">
       <Header openForm={handleFormOpen} />
@@ -55,6 +59,7 @@ function App() {
           openForm={handleFormOpen}
           closeForm={handleFormClose}
           createOrEdit={handleCreateOrEditArticle}
+          deleteArticle={handleDeleteArticle}
         />
       </div> 
     </div>

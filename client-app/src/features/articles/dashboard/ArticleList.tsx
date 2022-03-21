@@ -9,9 +9,10 @@ import Row from 'react-bootstrap/Row';
 interface Props {
   articles: Article[];
   selectArticle: (id: string) => void;
+  deleteArticle: (id: string) => void;
 }
 
-export default function ArticleList({articles, selectArticle}: Props) {
+export default function ArticleList({articles, selectArticle, deleteArticle}: Props) {
   return (
     <>
       <br />
@@ -34,6 +35,7 @@ export default function ArticleList({articles, selectArticle}: Props) {
                   <td>{article.dateCreated}</td>
                   <td>
                     <Button onClick={() => selectArticle(article.id)} variant="outline-info">Details</Button>
+                    <Button onClick={() => deleteArticle(article.id)} variant="outline-danger">Delete</Button>
                   </td>
                 </tr>
               ))}
