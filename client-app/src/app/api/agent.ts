@@ -29,7 +29,11 @@ const requests = {
 }
 
 const Articles = {
-  list: () => requests.get<Article[]>('/articles')
+  list: () => requests.get<Article[]>('/articles'),
+  details: (id: string) => requests.get<Article>(`/articles/${id}`),
+  create: (article: Article) => axios.post<void>('/articles', article),
+  update: (article: Article) => axios.put<void>(`/articles/${article.id}`, article),
+  delete: (id: string) => axios.delete<void>(`articles/${id}`)
 }
 
 const agent = {
