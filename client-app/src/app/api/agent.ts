@@ -1,7 +1,23 @@
 import axios, { AxiosResponse } from 'axios';
 import { Article } from '../models/article';
 
+const sleep = (delay: number) => {
+  return new Promise((res) => {
+    setTimeout(res, delay);
+  });
+}
+
 axios.defaults.baseURL = 'http://localhost:4000/api';
+
+axios.interceptors.response.use(async res => {
+  try {
+    await sleep(1000);
+    return res;
+  } catch (error) {
+    console.log(error);
+    return await Promise.reject(error);
+  }
+});
 
 const responseBody = <T> (response: AxiosResponse<T>) => response.data;
 
@@ -13,7 +29,11 @@ const requests = {
 }
 
 const Articles = {
-  list: () => requests.get<Article[]>('/articles')
+  list: () => requests.get<Article[]>('/articles'),
+  details: (id: string) => requests.get<Article>(`/articles/${id}`),
+  create: (article: Article) => axios.post<void>('/articles', article),
+  update: (article: Article) => axios.put<void>(`/articles/${article.id}`, article),
+  delete: (id: string) => axios.delete<void>(`articles/${id}`)
 }
 
 const agent = {
