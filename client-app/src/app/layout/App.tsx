@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Article } from '../models/article';
 import Header from './Header';
 import ArticleDashboard from '../../features/articles/dashboard/ArticleDashboard';
 import { v4 as uuid } from 'uuid';
+import agent from '../api/agent';
 
 function App() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -11,9 +11,13 @@ function App() {
   const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
-    axios.get<Article[]>('http://localhost:4000/api/articles').then(res => {
-      console.log(res);
-      setArticles(res.data);
+    agent.Articles.list().then(res => {
+      let articles: Article[] = [];
+      res.forEach(article => {
+        article.dateCreated = article.dateCreated.split('T')[0];
+        articles.push(article);
+      });
+      setArticles(res);
     });
   }, []);
 
