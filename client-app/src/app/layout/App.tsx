@@ -12,6 +12,11 @@ function App() {
 
   useEffect(() => {
     agent.Articles.list().then(res => {
+      let articles: Article[] = [];
+      res.forEach(article => {
+        article.dateCreated = article.dateCreated.split('T')[0];
+        articles.push(article);
+      });
       setArticles(res);
     });
   }, []);
