@@ -7,9 +7,10 @@ interface Props {
   article: Article | undefined;
   closeForm: () => void;
   createOrEdit: (article: Article) => void;
+  submitting: boolean;
 }
 
-export default function ArticleForm({ article: selectedArticle, closeForm, createOrEdit }: Props) {
+export default function ArticleForm({ article: selectedArticle, closeForm, createOrEdit, submitting }: Props) {
 
   const initialState = selectedArticle ?? {
     id: '',

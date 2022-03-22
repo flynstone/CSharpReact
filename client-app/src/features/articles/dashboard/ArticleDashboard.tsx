@@ -15,10 +15,11 @@ interface Props {
   closeForm: () => void;
   createOrEdit: (article: Article) => void;
   deleteArticle: (id: string) => void;
+  submitting: boolean;
 }
 
 export default function ArticleDashboard({ articles, selectedArticle, selectArticle, cancelSelectArticle,
-    editMode, openForm, closeForm, createOrEdit, deleteArticle}: Props) {
+    editMode, openForm, closeForm, createOrEdit, deleteArticle, submitting}: Props) {
   return (
     <>     
       <Row>
@@ -41,6 +42,7 @@ export default function ArticleDashboard({ articles, selectedArticle, selectArti
             closeForm={closeForm}
             article={selectedArticle}
             createOrEdit={createOrEdit}
+            submitting={submitting}
         />}
       </Row>
 
