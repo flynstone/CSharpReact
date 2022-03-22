@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { Button } from 'semantic-ui-react';
 import { Article } from '../../../app/models/article';
 
 interface Props {
@@ -42,8 +42,8 @@ export default function ArticleForm({ article: selectedArticle, closeForm, creat
           </Form.Group>
 
           <Form.Group className="mb-3 px-3">
-            <Button type="submit" variant="outline-primary">Submit</Button>{' '}
-            <Button onClick={closeForm} type="button" variant="outline-danger">Cancel</Button>
+            <Button loading={submitting} positive type="submit" floated="right">Submit</Button>{' '}
+            <Button onClick={closeForm} type="button" floated="right">Cancel</Button>
           </Form.Group>
         </Form>
       </section>
