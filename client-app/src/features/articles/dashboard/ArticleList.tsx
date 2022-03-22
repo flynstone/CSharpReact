@@ -1,48 +1,34 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import { Article } from '../../../app/models/article';
-import Table from 'react-bootstrap/Table';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import { Button, Segment } from 'semantic-ui-react';
+import { Card } from 'react-bootstrap';
 
 
 interface Props {
   articles: Article[];
   selectArticle: (id: string) => void;
   deleteArticle: (id: string) => void;
+  submitting: boolean;
 }
 
-export default function ArticleList({articles, selectArticle, deleteArticle}: Props) {
+export default function ArticleList({articles, selectArticle, deleteArticle, submitting }: Props) {
   return (
     <>
       <br />
-      <Row>
-        <Col md={12}>
-          <Table responsive striped>
-            <thead> 
-              <tr>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Date</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              {articles.map((article) => (
-                <tr key={article.id}>
-                  <td>{article.title}</td>
-                  <td>{article.body}</td>
-                  <td>{article.dateCreated}</td>
-                  <td>
-                    <Button onClick={() => selectArticle(article.id)} variant="outline-info">Details</Button>
-                    <Button onClick={() => deleteArticle(article.id)} variant="outline-danger">Delete</Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </Col>
-      </Row>
+      <Segment>
+          {articles.map((article) => (
+            <Card key={article.id}>
+              <Card.Header>{article.title}</Card.Header>
+              <Card.Body>
+                {article.body}
+                <br />
+                <Button basic color='yellow' onClick={() => selectArticle(article.id)}>Details</Button>
+                <Button basic color='red' loading={submitting} onClick={() => deleteArticle(article.id)}>Delete</Button>
+              </Card.Body>
+                <Card.Footer>{article.dateCreated}</Card.Footer>
+            </Card>
+          ))}
+      </Segment>
     </>
   )
 }

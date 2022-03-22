@@ -50,7 +50,7 @@ function App() {
         setSelectedArticle(article);
         setEditMode(false);
         setSubmitting(false);
-      })
+      });
     } else {
       article.id = uuid();
       agent.Articles.create(article).then(() => {
@@ -58,12 +58,16 @@ function App() {
         setSelectedArticle(article);
         setEditMode(false);
         setSubmitting(false);
-      })
+      });
     }
   }
 
   const handleDeleteArticle = (id: string) => {
-    setArticles([...articles.filter(x => x.id !== id)]);
+    setSubmitting(true);
+    agent.Articles.delete(id).then(() => {
+      setArticles([...articles.filter(x => x.id !== id)]);
+      setSubmitting(false);
+    });
   }
 
   if (loading) return <LoadingComponent content='Loading app' />

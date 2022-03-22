@@ -12,6 +12,7 @@ interface Props {
 export default function ArticleDetails({article, cancelSelectArticle, openForm}: Props) {
   return (
     <>
+      <br/>
       <Card>
         <Card.Header>{article.title}</Card.Header>
         
