@@ -19,3 +19,7 @@ Project still under developement
 
 !['screenshot description'](./screenshots/2022-03-20.png)
 
+## Finished axios calls and changed page layout
+
+![screendshot description'](./screenshots/2022-03-22.png)
+

@@ -1,15 +1,15 @@
 import React, { ChangeEvent, useState } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { Button, Form, Segment,  } from 'semantic-ui-react';
 import { Article } from '../../../app/models/article';
 
 interface Props {
   article: Article | undefined;
   closeForm: () => void;
   createOrEdit: (article: Article) => void;
+  submitting: boolean;
 }
 
-export default function ArticleForm({ article: selectedArticle, closeForm, createOrEdit }: Props) {
+export default function ArticleForm({ article: selectedArticle, closeForm, createOrEdit, submitting }: Props) {
 
   const initialState = selectedArticle ?? {
     id: '',
@@ -28,24 +28,27 @@ export default function ArticleForm({ article: selectedArticle, closeForm, creat
     const { name, value } = event.target;
     setArticle({ ...article, [name]: value });
   }
+
   
   return (
     <>
-      <section>
+      <br />
+      <Segment>
         <Form onSubmit={handleSubmit} className='article__form' autoComplete='off'>
           <Form.Group className="mb-3 px-3">
-            <Form.Control value={article.title} name="title" placeholder="Title" onChange={handleInputChange}></Form.Control>
+            <Form.Input value={article.title} name="title" placeholder="Title" onChange={handleInputChange} />
           </Form.Group>
           <Form.Group className="mb-3 px-3">
-            <Form.Control value={article.body} name="body" type="textarea" placeholder="Input content here" onChange={handleInputChange} />
+            <Form.TextArea value={article.body} name="body" type="textarea" placeholder="Input content here" onChange={handleInputChange} />
           </Form.Group>
+          <Form.Input value={article.dateCreated} name="dateCreated" onChange={handleInputChange} />
 
           <Form.Group className="mb-3 px-3">
-            <Button type="submit" variant="outline-primary">Submit</Button>{' '}
-            <Button onClick={closeForm} type="button" variant="outline-danger">Cancel</Button>
+            <Button basic color='blue' loading={submitting} type="submit" floated="right">Submit</Button>{' '}
+            <Button basic color='orange' onClick={closeForm} type="button" floated="right">Cancel</Button>
           </Form.Group>
         </Form>
-      </section>
+      </Segment>
     </>
   )
 }
