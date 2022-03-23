@@ -1,15 +1,16 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { Article } from "../../../app/models/article";
+import LoadingComponent from "../../../app/layout/LoadingComponent";
+import { useStore } from "../../../app/stores/store";
 
-interface Props {
-  article: Article;
-  cancelSelectArticle: () => void;
-  openForm: (id: string) => void;
-}
 
-export default function ArticleDetails({article, cancelSelectArticle, openForm}: Props) {
+export default function ArticleDetails() {
+  const { articleStore } = useStore();
+  const { selectedArticle: article, openForm, cancelSelectedArticle } = articleStore;
+
+  if (!article) return <LoadingComponent />;
+
   return (
     <>
       <br/>
@@ -23,7 +24,7 @@ export default function ArticleDetails({article, cancelSelectArticle, openForm}:
 
           <div className="container">
             <Button onClick={() => openForm(article.id)} type="submit" variant="outline-primary">Edit</Button>{' '}
-            <Button onClick={cancelSelectArticle} type="button" variant="outline-warning">Cancel</Button>
+            <Button onClick={cancelSelectedArticle} type="button" variant="outline-warning">Cancel</Button>
           </div>
          
         </Card.Body>
