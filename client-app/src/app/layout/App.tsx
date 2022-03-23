@@ -5,8 +5,12 @@ import ArticleDashboard from '../../features/articles/dashboard/ArticleDashboard
 import { v4 as uuid } from 'uuid';
 import agent from '../api/agent';
 import LoadingComponent from './LoadingComponent';
+import { useStore } from '../stores/store';
+import { Container } from 'semantic-ui-react';
 
 function App() {
+  const { articleStore } = useStore();
+
   const [articles, setArticles] = useState<Article[]>([]);
   const [selectedArticle, setSelectedArticle] = useState<Article | undefined>(undefined);
   const [editMode, setEditMode] = useState(false);
@@ -75,7 +79,9 @@ function App() {
   return (
     <div className="App">
       <Header openForm={handleFormOpen} />
-      <div className="Container">
+      <Container style={{ marginTop: '7rem' }}>
+        <h2>{ articleStore.title }</h2>
+
         <ArticleDashboard
           articles={articles}
           selectedArticle={selectedArticle}
@@ -88,7 +94,7 @@ function App() {
           deleteArticle={handleDeleteArticle}
           submitting={submitting}
         />
-      </div> 
+      </Container> 
     </div>
   );
 }
