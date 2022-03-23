@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
 import { Article } from "../models/article";
 
@@ -21,16 +21,18 @@ export default class ArticleStore {
     // Using mobx to mutate object directly
     try {
       const articles = await agent.Articles.list();
-      articles.forEach(article => {
-        article.dateCreated = article.dateCreated.split('T')[0];
-        this.articles.push(article);
-      });
-      this.loadingInitial = false;
+      runInAction(() => {
+        articles.forEach(article => {
+          article.dateCreated = article.dateCreated.split('T')[0];
+          this.articles.push(article);
+        });
+        this.loadingInitial = false;
+      });  
     } catch (error) {
-      console.log(error);
-      this.loadingInitial = false;
+      runInAction(() => {
+        console.log(error);
+        this.loadingInitial = false;
+      });
     }
   }
-
-
 }
