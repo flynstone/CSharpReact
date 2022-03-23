@@ -93,4 +93,22 @@ export default class ArticleStore {
       });
     }
   }
+
+  deleteArticle = async (id: string) => {
+    this.loading = true;
+
+    try {
+      await agent.Articles.delete(id);
+      runInAction(() => {
+        this.articles = [...this.articles.filter(x => x.id !== id)];
+        if (this.selectedArticle?.id === id) this.cancelSelectedArticle();
+        this.loading = false;
+      })
+    } catch (error) {
+      console.log(error);
+      runInAction(() => {
+        this.loading = false;
+      });
+    }
+  }
 }
