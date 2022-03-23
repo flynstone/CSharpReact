@@ -5,26 +5,29 @@ import { v4 as uuid } from 'uuid';
 
 export default class ArticleStore {
   articles: Article[] = [];
+  articleRegistry = new Map<string, Article>();
   // Union type undefined to allow undefined **Typescript
   selectedArticle: Article | undefined = undefined;
   editMode = false;
   loading = false;
-  loadingInitial = false;
+  loadingInitial = true;
 
   constructor() {
     makeAutoObservable(this)
   }
 
+  get articlesByDate() {
+    return Array.from(this.articleRegistry.values()).sort((a, b) => Date.parse(a.dateCreated) - Date.parse(b.dateCreated));
+  }
+
   // Async function to load articles
   loadArticles = async () => {
-    this.setLoadingInitial(true);
-
     // Using mobx to mutate object directly
     try {
       const articles = await agent.Articles.list();     
       articles.forEach(article => {
         article.dateCreated = article.dateCreated.split('T')[0];
-        this.articles.push(article);
+        this.articleRegistry.set(article.id, article);
       }); 
       this.setLoadingInitial(false);
     } catch (error) {
@@ -39,7 +42,7 @@ export default class ArticleStore {
 
 
   selectArticle = (id: string) => {
-    this.selectedArticle = this.articles.find(x => x.id === id);
+    this.selectedArticle = this.articleRegistry.get(id);
   }
 
   cancelSelectedArticle = () => {
@@ -62,7 +65,7 @@ export default class ArticleStore {
     try {
       await agent.Articles.create(article);
       runInAction(() => {
-        this.articles.push(article);
+        this.articleRegistry.set(article.id, article);
         this.selectedArticle = article;
         this.editMode = false;
         this.loading = false;
@@ -81,7 +84,7 @@ export default class ArticleStore {
     try {
       await agent.Articles.update(article);
       runInAction(() => {
-        this.articles = [...this.articles.filter(x => x.id !== article.id), article];
+        this.articleRegistry.set(article.id, article);
         this.selectedArticle = article;
         this.editMode = false;
         this.loading = false;
@@ -100,7 +103,7 @@ export default class ArticleStore {
     try {
       await agent.Articles.delete(id);
       runInAction(() => {
-        this.articles = [...this.articles.filter(x => x.id !== id)];
+        this.articleRegistry.delete(id);
         if (this.selectedArticle?.id === id) this.cancelSelectedArticle();
         this.loading = false;
       })
