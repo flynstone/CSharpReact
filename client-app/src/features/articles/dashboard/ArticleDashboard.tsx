@@ -9,12 +9,11 @@ import { observer } from "mobx-react-lite";
 
 interface Props {
   articles: Article[];
-  createOrEdit: (article: Article) => void;
   submitting: boolean;
   deleteArticle: (id: string) => void;
 }
 
-export default observer(function ArticleDashboard({ articles, createOrEdit, submitting, deleteArticle }: Props) {
+export default observer(function ArticleDashboard({ articles, submitting, deleteArticle }: Props) {
   const { articleStore } = useStore();
   const { selectedArticle, editMode } = articleStore;
   return (
@@ -34,7 +33,6 @@ export default observer(function ArticleDashboard({ articles, createOrEdit, subm
         )}
         {editMode && (
           <ArticleForm
-            createOrEdit={createOrEdit}
             submitting={submitting}
           />
         )}

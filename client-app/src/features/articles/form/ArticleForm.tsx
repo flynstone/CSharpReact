@@ -1,16 +1,12 @@
+import { observer } from 'mobx-react-lite';
 import React, { ChangeEvent, useState } from 'react';
 import { Button, Form, Segment,  } from 'semantic-ui-react';
-import { Article } from '../../../app/models/article';
 import { useStore } from '../../../app/stores/store';
 
-interface Props {
-  createOrEdit: (article: Article) => void;
-  submitting: boolean;
-}
 
-export default function ArticleForm({ createOrEdit, submitting }: Props) {
+export default observer(function ArticleForm() {
   const { articleStore } = useStore();
-  const { selectedArticle, closeForm } = articleStore;
+  const { selectedArticle, closeForm, createArticle, updateArticle, loading } = articleStore;
 
   const initialState = selectedArticle ?? {
     id: '',
@@ -22,7 +18,7 @@ export default function ArticleForm({ createOrEdit, submitting }: Props) {
   const [article, setArticle] = useState(initialState);
 
   const handleSubmit = () => {
-    createOrEdit(article);
+    article.id ? updateArticle(article) : createArticle(article);
   }
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -45,11 +41,11 @@ export default function ArticleForm({ createOrEdit, submitting }: Props) {
           <Form.Input value={article.dateCreated} name="dateCreated" onChange={handleInputChange} />
 
           <Form.Group className="mb-3 px-3">
-            <Button basic color='blue' loading={submitting} type="submit" floated="right">Submit</Button>{' '}
+            <Button basic color='blue' loading={loading} type="submit" floated="right">Submit</Button>{' '}
             <Button basic color='orange' onClick={closeForm} type="button" floated="right">Cancel</Button>
           </Form.Group>
         </Form>
       </Segment>
     </>
   )
-}
+});
