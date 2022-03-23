@@ -1,15 +1,16 @@
 import React, { ChangeEvent, useState } from 'react';
 import { Button, Form, Segment,  } from 'semantic-ui-react';
 import { Article } from '../../../app/models/article';
+import { useStore } from '../../../app/stores/store';
 
 interface Props {
-  article: Article | undefined;
-  closeForm: () => void;
   createOrEdit: (article: Article) => void;
   submitting: boolean;
 }
 
-export default function ArticleForm({ article: selectedArticle, closeForm, createOrEdit, submitting }: Props) {
+export default function ArticleForm({ createOrEdit, submitting }: Props) {
+  const { articleStore } = useStore();
+  const { selectedArticle, closeForm } = articleStore;
 
   const initialState = selectedArticle ?? {
     id: '',

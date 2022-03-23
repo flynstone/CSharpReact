@@ -1,13 +1,13 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import logo from '../../assets/img/logo.png';
+import { useStore } from '../stores/store';
 import './styles.css';
 
-interface Props {
-  openForm: () => void;
-}
 
-export default function Header({openForm}: Props) {
+export default function Header() {
+  const { articleStore } = useStore();
+
   return (
     <>
       <div className="Header">
@@ -15,9 +15,7 @@ export default function Header({openForm}: Props) {
           <img src={logo} height={85} width={85} alt="Logo" />
         </div>
         <div className="Row">
-          {/* <button onClick={() => }>Login</button> */}
-          <Button className='styledBtn' onClick={openForm}>New Article</Button> 
-          {/* <button onClick={() => }>Logout</button> */}
+          <Button className='styledBtn' onClick={() => articleStore.openForm()}>New Article</Button> 
         </div>
       </div>
     </>

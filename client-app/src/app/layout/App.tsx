@@ -21,23 +21,6 @@ function App() {
     articleStore.loadArticles();
   }, [articleStore]);
 
-  const handleSelectArticle = (id: string) => {
-    setSelectedArticle(articles.find(x => x.id === id));
-  }
-
-  const handleCancelSelectArticle = () => {
-    setSelectedArticle(undefined);
-  }
-
-  const handleFormOpen = (id?: string) => {
-    id ? handleSelectArticle(id) : handleCancelSelectArticle();
-    setEditMode(true);
-  } 
-
-  const handleFormClose = () => {
-    setEditMode(false);
-  }
-
   const handleCreateOrEditArticle = (article: Article) => {
     setSubmitting(true);
     if (article.id) {
@@ -70,16 +53,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header openForm={handleFormOpen} />
+      <Header />
       <Container style={{ marginTop: '7rem' }}>
         <ArticleDashboard
           articles={articleStore.articles}
-          selectedArticle={selectedArticle}
-          selectArticle={handleSelectArticle}
-          cancelSelectArticle={handleCancelSelectArticle}
-          editMode={editMode}
-          openForm={handleFormOpen}
-          closeForm={handleFormClose}
           createOrEdit={handleCreateOrEditArticle}
           deleteArticle={handleDeleteArticle}
           submitting={submitting}

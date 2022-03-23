@@ -4,8 +4,8 @@ import { Article } from "../models/article";
 
 export default class ArticleStore {
   articles: Article[] = [];
-  // Union type null to allow null **Typescript
-  selectedArticle: Article | null = null;
+  // Union type undefined to allow undefined **Typescript
+  selectedArticle: Article | undefined = undefined;
   editMode = false;
   loading = false;
   loadingInitial = false;
@@ -34,5 +34,23 @@ export default class ArticleStore {
 
   setLoadingInitial = ( state: boolean ) => {
     this.loadingInitial = state;
+  }
+
+
+  selectArticle = (id: string) => {
+    this.selectedArticle = this.articles.find(x => x.id === id);
+  }
+
+  cancelSelectedArticle = () => {
+    this.selectedArticle = undefined;
+  }
+
+  openForm = (id?: string) => {
+    id ? this.selectArticle(id) : this.cancelSelectedArticle();
+    this.editMode = true;
+  }
+
+  closeForm = () => {
+    this.editMode = false;
   }
 }
