@@ -7,7 +7,7 @@ import { observer } from 'mobx-react-lite';
 
 export default observer(function ArticleList() {
   const { articleStore } = useStore();
-  const { deleteArticle, articles, loading } = articleStore;
+  const { deleteArticle, articlesByDate, loading } = articleStore;
   
   const [target, setTarget] = useState('');
 
@@ -20,7 +20,7 @@ export default observer(function ArticleList() {
     <>
       <br />
       <Segment>
-        {articles.map((article) => (
+        {articlesByDate.map((article) => (
           <Card key={article.id}>
             <Card.Header>{article.title}</Card.Header>
             <Card.Body>
