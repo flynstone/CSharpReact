@@ -1,6 +1,7 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
 import { Article } from "../models/article";
+import { v4 as uuid } from 'uuid';
 
 export default class ArticleStore {
   articles: Article[] = [];
@@ -52,5 +53,62 @@ export default class ArticleStore {
 
   closeForm = () => {
     this.editMode = false;
+  }
+
+  createArticle = async (article: Article) => {
+    this.loading = true;
+    article.id = uuid();
+
+    try {
+      await agent.Articles.create(article);
+      runInAction(() => {
+        this.articles.push(article);
+        this.selectedArticle = article;
+        this.editMode = false;
+        this.loading = false;
+      })
+    } catch (error) {
+      console.log(error);
+      runInAction(() => {
+        this.loading = false;
+      });
+    }
+  }
+
+  updateArticle = async (article: Article) => {
+    this.loading = true;
+
+    try {
+      await agent.Articles.update(article);
+      runInAction(() => {
+        this.articles = [...this.articles.filter(x => x.id !== article.id), article];
+        this.selectedArticle = article;
+        this.editMode = false;
+        this.loading = false;
+      })
+    } catch (error) {
+      console.log(error);
+      runInAction(() => {
+        this.loading = false;
+      });
+    }
+  }
+
+  deleteArticle = async (id: string) => {
+    this.loading = true;
+
+    try {
+      await agent.Articles.delete(id);
+      runInAction(() => {
+        this.articles = [...this.articles.filter(x => x.id !== id)];
+        if (this.selectedArticle?.id === id) this.cancelSelectedArticle();
+        this.loading = false;
+      })
+    } catch (error) {
+      console.log(error);
+      runInAction(() => {
+        this.loading = false;
+      });
+    }
   }
 }
