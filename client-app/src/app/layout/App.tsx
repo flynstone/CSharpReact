@@ -7,6 +7,7 @@ import agent from '../api/agent';
 import LoadingComponent from './LoadingComponent';
 import { useStore } from '../stores/store';
 import { Container } from 'semantic-ui-react';
+import { observer } from 'mobx-react-lite';
 
 function App() {
   const { articleStore } = useStore();
@@ -14,20 +15,11 @@ function App() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [selectedArticle, setSelectedArticle] = useState<Article | undefined>(undefined);
   const [editMode, setEditMode] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    agent.Articles.list().then(res => {
-      let articles: Article[] = [];
-      res.forEach(article => {
-        article.dateCreated = article.dateCreated.split('T')[0];
-        articles.push(article);
-      });
-      setArticles(res);
-      setLoading(false);
-    });
-  }, []);
+    articleStore.loadArticles();
+  }, [articleStore]);
 
   const handleSelectArticle = (id: string) => {
     setSelectedArticle(articles.find(x => x.id === id));
@@ -74,16 +66,14 @@ function App() {
     });
   }
 
-  if (loading) return <LoadingComponent content='Loading app' />
+  if (articleStore.loadingInitial) return <LoadingComponent content='Loading app' />
 
   return (
     <div className="App">
       <Header openForm={handleFormOpen} />
       <Container style={{ marginTop: '7rem' }}>
-        <h2>{ articleStore.title }</h2>
-
         <ArticleDashboard
-          articles={articles}
+          articles={articleStore.articles}
           selectedArticle={selectedArticle}
           selectArticle={handleSelectArticle}
           cancelSelectArticle={handleCancelSelectArticle}
@@ -99,4 +89,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);
