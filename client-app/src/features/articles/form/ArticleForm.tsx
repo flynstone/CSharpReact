@@ -6,7 +6,7 @@ import { useStore } from '../../../app/stores/store';
 
 export default observer(function ArticleForm() {
   const { articleStore } = useStore();
-  const { selectedArticle, closeForm, createArticle, updateArticle, loading } = articleStore;
+  const { selectedArticle, createArticle, updateArticle, loading } = articleStore;
 
   const initialState = selectedArticle ?? {
     id: '',
@@ -42,7 +42,7 @@ export default observer(function ArticleForm() {
 
           <Form.Group className="mb-3 px-3">
             <Button basic color='blue' loading={loading} type="submit" floated="right">Submit</Button>{' '}
-            <Button basic color='orange' onClick={closeForm} type="button" floated="right">Cancel</Button>
+            <Button basic color='orange' type="button" floated="right">Cancel</Button>
           </Form.Group>
         </Form>
       </Segment>
