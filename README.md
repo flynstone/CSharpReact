@@ -54,6 +54,8 @@ Project still under developement
 
 - React is a library and does not come with a facility and to get that kind of functionality we need to add a package.
 
+<br/>
+
 ## What is Mobx?
 <br/>
 
@@ -83,8 +85,37 @@ Is a package to use Observables instead of Promises
 Because MobX uses Typescript and is fast and easy to work with.
 ```
 
+<br/>
+
 ## Router
 
 Single page applications need routers because they only have 1 page (index.html).
 
 - Although small apps could just use conditionals
+
+For this app I'll be using react router which I believe is the most popular choice.
+
+### How does it work?
+
+- It's API is simple. It starts with ```<BrowserRouter>``` and we surround our app with it.
+
+- Inside our App we use ```<Route>``` components which gets replaced with the components that we want to load when that particular route is navigated.
+
+- There is also 3 types of link we can use
+
+  1. ```<Link>``` 
+  2. ```<NavLink>```
+  3. ```<Redirect>``` 
+
+<br/>
+
+## Router hooks
+
+There are 4 types of router hooks.
+
+1. <b>useHistory</b> => react router uses a history object to keep track of the users (or browser's) current location. The history object that we use provide certain functionality and has methods that allow us to push the new route into the history.
+
+2. useLocation
+- useParams
+- useRouteMatch
+
