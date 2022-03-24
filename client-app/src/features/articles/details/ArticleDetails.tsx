@@ -1,39 +1,47 @@
-import React from "react";
+import { CardActions, CardContent, CardHeader } from "@mui/material";
+import React, { useEffect } from "react";
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import Card from '@mui/material/Card';
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { useStore } from "../../../app/stores/store";
+import { useParams } from "react-router-dom";
+import { observer } from "mobx-react-lite";
 
 
-export default function ArticleDetails() {
+export default observer(function ArticleDetails() {
   const { articleStore } = useStore();
-  const { selectedArticle: article, openForm, cancelSelectedArticle } = articleStore;
+  const { selectedArticle: article, loadArticle, loadingInitial } = articleStore;
+  const { id } = useParams<{ id: string }>();
 
-  if (!article) return <LoadingComponent />;
+  useEffect(() => {
+    if (id) loadArticle(id);
+  }, [id, loadArticle]);
+
+  if (loadingInitial || !article) return <LoadingComponent />;
 
   return (
     <>
-      <br/>
+      <br />
       <Card>
-        <Card.Header>{article.title}</Card.Header>
+        <CardHeader>{article.title}</CardHeader>
         
-        <Card.Body>
+        <CardContent>
 
           {article.body}
-          <br /><br/>
+          <br /><br />
 
           <div className="container">
-            <Button onClick={() => openForm(article.id)} type="submit" variant="outline-primary">Edit</Button>{' '}
-            <Button onClick={cancelSelectedArticle} type="button" variant="outline-warning">Cancel</Button>
+            <Button type="submit" variant="outline-primary">Edit</Button>{' '}
+            <Button type="button" variant="outline-warning">Cancel</Button>
           </div>
          
-        </Card.Body>
+        </CardContent>
 
-        <Card.Footer>
+        <CardActions>
           <small className="text-muted">{article.dateCreated}</small>
           <i className="fa fa-heart"></i>
-        </Card.Footer>
+        </CardActions>
       </Card>
     </>
   )
-}
+});

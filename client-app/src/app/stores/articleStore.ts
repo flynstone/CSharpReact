@@ -26,8 +26,7 @@ export default class ArticleStore {
     try {
       const articles = await agent.Articles.list();     
       articles.forEach(article => {
-        article.dateCreated = article.dateCreated.split('T')[0];
-        this.articleRegistry.set(article.id, article);
+        this.setArticle(article);
       }); 
       this.setLoadingInitial(false);
     } catch (error) {
@@ -36,27 +35,38 @@ export default class ArticleStore {
     }
   }
 
+  loadArticle = async (id: string) => {
+    let article = this.getArticle(id);
+    if (article) {
+      this.selectedArticle = article;
+    } else {
+      this.loadingInitial = true;
+      
+      try {
+        article = await agent.Articles.details(id);
+        this.setArticle(article);
+        this.selectedArticle = article; 
+        this.setLoadingInitial(false);
+      } catch (error) {
+        console.log(error);
+        this.setLoadingInitial(false);
+      }
+    }
+  }
+
+  private getArticle = (id: string) => {
+    return this.articleRegistry.get(id);
+  }
+
+  private setArticle = (article: Article) => {
+    article.dateCreated = article.dateCreated.split('T')[0];
+    this.articleRegistry.set(article.id, article);
+  }
+
   setLoadingInitial = ( state: boolean ) => {
     this.loadingInitial = state;
   }
 
-
-  selectArticle = (id: string) => {
-    this.selectedArticle = this.articleRegistry.get(id);
-  }
-
-  cancelSelectedArticle = () => {
-    this.selectedArticle = undefined;
-  }
-
-  openForm = (id?: string) => {
-    id ? this.selectArticle(id) : this.cancelSelectedArticle();
-    this.editMode = true;
-  }
-
-  closeForm = () => {
-    this.editMode = false;
-  }
 
   createArticle = async (article: Article) => {
     this.loading = true;
@@ -104,7 +114,6 @@ export default class ArticleStore {
       await agent.Articles.delete(id);
       runInAction(() => {
         this.articleRegistry.delete(id);
-        if (this.selectedArticle?.id === id) this.cancelSelectedArticle();
         this.loading = false;
       })
     } catch (error) {
