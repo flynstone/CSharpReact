@@ -113,9 +113,11 @@ For this app I'll be using react router which I believe is the most popular choi
 
 There are 4 types of router hooks.
 
-1. <b>useHistory</b> => react router uses a history object to keep track of the users (or browser's) current location. The history object that we use provide certain functionality and has methods that allow us to push the new route into the history.
+1. <b>useHistory</b> => React router uses a history object to keep track of the users (or browser's) current location. The history object that we use provide certain functionality and has methods that allow us to push the new route into the history and that re-render's and loads up the component that we've gone to.
 
-2. useLocation
-- useParams
-- useRouteMatch
+2. <b>useLocation</b> => It allows us to get the location where we're currently at and any attributes about the location.
+
+3. <b>useParams</b> => It allow us to use paramaters if there are route parameters. 
+
+4. <b>useRouteMatch</b> => It does the same thing as the routes components and how it matches url to a particular route.
 
