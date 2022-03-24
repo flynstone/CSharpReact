@@ -39,6 +39,7 @@ export default class ArticleStore {
     let article = this.getArticle(id);
     if (article) {
       this.selectedArticle = article;
+      return article;
     } else {
       this.loadingInitial = true;
       
@@ -47,6 +48,7 @@ export default class ArticleStore {
         this.setArticle(article);
         this.selectedArticle = article; 
         this.setLoadingInitial(false);
+        return article;
       } catch (error) {
         console.log(error);
         this.setLoadingInitial(false);

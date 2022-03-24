@@ -24,7 +24,7 @@ function App() {
           <Route exact path='/' component={Home} />
           <Route exact path='/articles' component={ArticleDashboard} />
           <Route path='/articles/:id' component={ArticleDetails} />
-          <Route path='/createArticle' component={ArticleForm} />
+          <Route path={['/createArticle', 'manage/:id']} component={ArticleForm} />
         </Container> 
       </div>
     </ThemeProvider>  

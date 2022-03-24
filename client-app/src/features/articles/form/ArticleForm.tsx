@@ -1,21 +1,26 @@
 import { observer } from 'mobx-react-lite';
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Button, Form, Segment,  } from 'semantic-ui-react';
+import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { useStore } from '../../../app/stores/store';
 
 
 export default observer(function ArticleForm() {
   const { articleStore } = useStore();
-  const { selectedArticle, createArticle, updateArticle, loading } = articleStore;
+  const { createArticle, updateArticle, loading, loadArticle, loadingInitial } = articleStore;
+  const { id } = useParams<{ id: string }>();
 
-  const initialState = selectedArticle ?? {
+  const [article, setArticle] = useState({
     id: '',
     title: '',
     body: '',
     dateCreated: ''
-  }
+  });
 
-  const [article, setArticle] = useState(initialState);
+  useEffect(() => {
+    if (id) loadArticle(id).then(article => setArticle(article!));
+  }, [id, loadArticle]);
 
   const handleSubmit = () => {
     article.id ? updateArticle(article) : createArticle(article);
@@ -26,6 +31,7 @@ export default observer(function ArticleForm() {
     setArticle({ ...article, [name]: value });
   }
 
+  if (loadingInitial) return <LoadingComponent content='Loading article...' />
   
   return (
     <>
