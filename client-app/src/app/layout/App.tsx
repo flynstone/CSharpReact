@@ -3,7 +3,7 @@ import Header from './Header';
 import ArticleDashboard from '../../features/articles/dashboard/ArticleDashboard';
 import { Container } from 'semantic-ui-react';
 import { observer } from 'mobx-react-lite';
-import { Route } from 'react-router-dom';
+import { Route, useLocation } from 'react-router-dom';
 import Home from '../../features/home/Home';
 import ArticleForm from '../../features/articles/form/ArticleForm';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -16,6 +16,8 @@ const darkTheme = createTheme({
 });
 
 function App() {
+  const location = useLocation();
+
   return (
     <ThemeProvider theme={darkTheme}>
       <div className="App">
@@ -24,7 +26,7 @@ function App() {
           <Route exact path='/' component={Home} />
           <Route exact path='/articles' component={ArticleDashboard} />
           <Route path='/articles/:id' component={ArticleDetails} />
-          <Route path={['/createArticle', 'manage/:id']} component={ArticleForm} />
+          <Route key={location.key} path={['/createArticle', 'manage/:id']} component={ArticleForm} />
         </Container> 
       </div>
     </ThemeProvider>  
