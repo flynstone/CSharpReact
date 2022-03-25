@@ -1,12 +1,13 @@
 import { observer } from 'mobx-react-lite';
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { Button, Form, Segment,  } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { useStore } from '../../../app/stores/store';
-
+import { v4 as uuid } from 'uuid';
 
 export default observer(function ArticleForm() {
+  const history = useHistory();
   const { articleStore } = useStore();
   const { createArticle, updateArticle, loading, loadArticle, loadingInitial } = articleStore;
   const { id } = useParams<{ id: string }>();
@@ -23,7 +24,15 @@ export default observer(function ArticleForm() {
   }, [id, loadArticle]);
 
   const handleSubmit = () => {
-    article.id ? updateArticle(article) : createArticle(article);
+    if (article.id.length === 0) {
+      let newArticle = {
+        ...article,
+        id: uuid()
+      }
+      createArticle(newArticle).then(() => history.push(`/articles/${newArticle.id}`));
+    } else {
+      updateArticle(article).then(() => history.push(`/articles/${article.id}`));
+    }
   }
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
