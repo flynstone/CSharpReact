@@ -1,11 +1,11 @@
 import { CardActions, CardContent, CardHeader } from "@mui/material";
 import React, { useEffect } from "react";
-import Button from 'react-bootstrap/Button';
 import Card from '@mui/material/Card';
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { useStore } from "../../../app/stores/store";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { observer } from "mobx-react-lite";
+import { Button } from "semantic-ui-react";
 
 
 export default observer(function ArticleDetails() {
@@ -31,8 +31,8 @@ export default observer(function ArticleDetails() {
           <br /><br />
 
           <div className="container">
-            <Button type="submit" variant="outline-primary">Edit</Button>{' '}
-            <Button type="button" variant="outline-warning">Cancel</Button>
+            <Button as={Link} to={`/manage/${article.id}`} type="submit" variant="outline-primary">Edit</Button>{' '}
+            <Button as={Link} to={`/articles`} type="button" variant="outline-warning">Cancel</Button>
           </div>
          
         </CardContent>

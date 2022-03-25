@@ -39,14 +39,18 @@ export default class ArticleStore {
     let article = this.getArticle(id);
     if (article) {
       this.selectedArticle = article;
+      return article;
     } else {
       this.loadingInitial = true;
       
       try {
         article = await agent.Articles.details(id);
         this.setArticle(article);
-        this.selectedArticle = article; 
+        runInAction(() => {
+          this.selectedArticle = article;
+        });
         this.setLoadingInitial(false);
+        return article;
       } catch (error) {
         console.log(error);
         this.setLoadingInitial(false);
