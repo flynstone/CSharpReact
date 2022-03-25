@@ -21,13 +21,21 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <div className="App">
-        <Header />
-        <Container style={{ marginTop: '7rem' }}>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/articles' component={ArticleDashboard} />
-          <Route path='/articles/:id' component={ArticleDetails} />
-          <Route key={location.key} path={['/createArticle', 'manage/:id']} component={ArticleForm} />
-        </Container> 
+        <Route exact path='/' component={Home} />
+        <Route
+          path={'/(.+)'}
+          render={() => (
+            <>
+              <Header />
+              <Container style={{ marginTop: '7rem' }}>
+                <Route exact path='/articles' component={ArticleDashboard} />
+                <Route path='/articles/:id' component={ArticleDetails} />
+                <Route key={location.key} path={['/createArticle', 'manage/:id']} component={ArticleForm} />
+              </Container> 
+            </>
+          )}
+        />
+       
       </div>
     </ThemeProvider>  
   );

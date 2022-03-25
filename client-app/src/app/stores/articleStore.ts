@@ -1,7 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
 import { Article } from "../models/article";
-import { v4 as uuid } from 'uuid';
 
 export default class ArticleStore {
   articles: Article[] = [];
@@ -74,8 +73,6 @@ export default class ArticleStore {
 
   createArticle = async (article: Article) => {
     this.loading = true;
-    article.id = uuid();
-
     try {
       await agent.Articles.create(article);
       runInAction(() => {
