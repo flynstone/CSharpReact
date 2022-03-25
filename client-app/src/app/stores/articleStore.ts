@@ -73,7 +73,6 @@ export default class ArticleStore {
 
   createArticle = async (article: Article) => {
     this.loading = true;
-
     try {
       await agent.Articles.create(article);
       runInAction(() => {
