@@ -7,10 +7,11 @@ import LoadingComponent from "../../../app/layout/LoadingComponent";
 
 export default observer(function ArticleDashboard() {
   const { articleStore } = useStore();
+  const { loadArticles, articleRegistry } = articleStore;
   
   useEffect(() => {
-    articleStore.loadArticles();
-  }, [articleStore]);
+    if (articleRegistry.size <= 1) loadArticles();
+  }, [articleRegistry.size, loadArticles]);
 
   if (articleStore.loadingInitial) return <LoadingComponent content="Loading app" />
   return (

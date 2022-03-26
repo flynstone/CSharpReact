@@ -30,7 +30,7 @@ function App() {
               <Container style={{ marginTop: '7rem' }}>
                 <Route exact path='/articles' component={ArticleDashboard} />
                 <Route path='/articles/:id' component={ArticleDetails} />
-                <Route key={location.key} path={['/createArticle', 'manage/:id']} component={ArticleForm} />
+                <Route key={location.key} path={['/createArticle', '/manage/:id']} component={ArticleForm} />
               </Container> 
             </>
           )}

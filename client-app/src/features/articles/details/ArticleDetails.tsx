@@ -31,8 +31,8 @@ export default observer(function ArticleDetails() {
           <br /><br />
 
           <div className="container">
-            <Button as={Link} to={`/manage/${article.id}`} type="submit" variant="outline-primary">Edit</Button>{' '}
-            <Button as={Link} to={`/articles`} type="button" variant="outline-warning">Cancel</Button>
+            <Button as={Link} to={`/manage/${article.id}`} basic color="blue">Edit</Button>{' '}
+            <Button as={Link} to={`/articles`} basic color="grey">Cancel</Button>
           </div>
          
         </CardContent>
