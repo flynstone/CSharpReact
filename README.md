@@ -121,3 +121,43 @@ There are 4 types of router hooks.
 
 4. <b>useRouteMatch</b> => It does the same thing as the routes components and how it matches url to a particular route.
 
+<br/>
+
+## Error Handling
+
+- Validation => There are various levels of validations possible. 
+
+```
+Ex. 
+At the database level or entity level or also
+at the business logic level "data transfer objects" => interactions between client and server 
+```
+
+- Http Error Responses => The api send http requests and receives http responses
+
+```diff
++ 200 - OK
+- 400 - Bad Reqest
+- 401 - Unauthorized
+- 403 - Forbidden
+- 404 - Not Found
+- 500 - Server Error
+```
+
+- Exception Handling (Custom middleware)
+
+- On the front-end using Axios interceptors
+
+## CQRS + Mediator Pattern
+
+- Clean Architecture pattern
+- CQRS => Command Query Responsibility Segregation => seperate our commands and our queries, we have 1 type of thing that:
+```
+Commands => That does something with the database data in some way (modifies state) and should not return a value
+```
+and then we have the 
+```
+Queries => Which reads data from the database (does not modify state) and should return a value
+```
+
+- Mediator is used to mediate between different layers in the Clean Architecture pattern
