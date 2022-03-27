@@ -21,7 +21,7 @@ namespace CSharpReact.Api.Controllers
         [HttpGet("server-error")]
         public ActionResult GetServerError()
         {
-            throw new Exception("Internal Server Error!"); 
+            throw new Exception("Internal Server Error!");
         }
 
         [HttpGet("unauthorized")]

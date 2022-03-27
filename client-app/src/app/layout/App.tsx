@@ -9,6 +9,7 @@ import ArticleForm from '../../features/articles/form/ArticleForm';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ArticleDetails from '../../features/articles/details/ArticleDetails';
 import TestErrors from '../../features/errors/TestError';
+import { ToastContainer } from 'react-toastify';
 
 const darkTheme = createTheme({
   palette: {
@@ -21,24 +22,22 @@ function App() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <div className="App">
-        <Route exact path='/' component={Home} />
-        <Route
-          path={'/(.+)'}
-          render={() => (
-            <>
-              <Header />
-              <Container style={{ marginTop: '7rem' }}>
-                <Route exact path='/articles' component={ArticleDashboard} />
-                <Route path='/articles/:id' component={ArticleDetails} />
-                <Route key={location.key} path={['/createArticle', '/manage/:id']} component={ArticleForm} />
-                <Route path='/errors' component={TestErrors} />
-              </Container> 
-            </>
-          )}
-        />
-       
-      </div>
+      <ToastContainer position='bottom-right' hideProgressBar />
+      <Route exact path='/' component={Home} />
+      <Route
+        path={'/(.+)'}
+        render={() => (
+          <>
+            <Header />
+            <Container style={{ marginTop: '7rem' }}>
+              <Route exact path='/articles' component={ArticleDashboard} />
+              <Route path='/articles/:id' component={ArticleDetails} />
+              <Route key={location.key} path={['/createArticle', '/manage/:id']} component={ArticleForm} />
+              <Route path='/errors' component={TestErrors} />
+            </Container> 
+          </>
+        )}
+      />   
     </ThemeProvider>  
   );
 }
