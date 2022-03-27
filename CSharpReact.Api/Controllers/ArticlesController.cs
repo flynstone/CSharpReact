@@ -16,9 +16,9 @@ namespace CSharpReact.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Article>> GetArticle(Guid id)
+        public async Task<IActionResult> GetArticle(Guid id)
         {
-            return await Mediator.Send(new Details.Query { Id = id });
+            return HandleResult(await Mediator.Send(new Details.Query { Id = id }));
         }
 
         [HttpPost]
