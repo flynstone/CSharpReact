@@ -1,6 +1,7 @@
 using AutoMapper;
 using CSharpReact.Api.Extensions;
 using CSharpReact.Repositories.Repositories.Articles;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,7 +24,10 @@ namespace CSharpReact.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers().AddFluentValidation(config =>
+            {
+                config.RegisterValidatorsFromAssemblyContaining<Create>();
+            });
             services.ConfigureSqlContext(Configuration);
             services.ConfigureCors();
             services.ConfigureSwagger();

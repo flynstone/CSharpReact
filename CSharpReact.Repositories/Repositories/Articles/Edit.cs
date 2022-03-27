@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
 using CSharpReact.Entities;
 using CSharpReact.Entities.Models;
+using FluentValidation;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,6 +13,15 @@ namespace CSharpReact.Repositories.Repositories.Articles
         public class Command : IRequest
         {
             public Article Article { get; set; }
+        }
+
+        // Using FluentValidation
+        public class CommandValidator : AbstractValidator<Command>
+        {
+            public CommandValidator()
+            {
+                RuleFor(x => x.Article).SetValidator(new ArticleValidator());
+            }
         }
 
         public class Handler : IRequestHandler<Command>
