@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
 using CSharpReact.Entities;
 using CSharpReact.Entities.Models;
+using CSharpReact.Repositories.Core;
+using FluentValidation;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,12 +11,22 @@ namespace CSharpReact.Repositories.Repositories.Articles
 {
     public class Edit
     {
-        public class Command : IRequest
+        // Not returning a result using ** Unit from MediatR
+        public class Command : IRequest<Result<Unit>>
         {
             public Article Article { get; set; }
         }
 
-        public class Handler : IRequestHandler<Command>
+        // Using FluentValidation
+        public class CommandValidator : AbstractValidator<Command>
+        {
+            public CommandValidator()
+            {
+                RuleFor(x => x.Article).SetValidator(new ArticleValidator());
+            }
+        }
+
+        public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly AppDbContext _context; 
             private readonly IMapper _mapper;
@@ -28,15 +36,22 @@ namespace CSharpReact.Repositories.Repositories.Articles
                 _mapper = mapper;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var article = await _context.Articles.FindAsync(request.Article.Id);
 
+                // Handle null result
+                if (article == null) return null;
+
                 _mapper.Map(request.Article, article);
 
-                await _context.SaveChangesAsync();
+                // Return true or false if the result is found or not
+                var result = await _context.SaveChangesAsync() > 0;
 
-                return Unit.Value;
+                // Handle not found
+                if (!result) return Result<Unit>.Failure("Failed to update the article");
+
+                return Result<Unit>.Success(Unit.Value);
             }
         }
     }

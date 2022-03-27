@@ -1,6 +1,8 @@
 using AutoMapper;
 using CSharpReact.Api.Extensions;
+using CSharpReact.Api.Middleware;
 using CSharpReact.Repositories.Repositories.Articles;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,7 +25,10 @@ namespace CSharpReact.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers().AddFluentValidation(config =>
+            {
+                config.RegisterValidatorsFromAssemblyContaining<Create>();
+            });
             services.ConfigureSqlContext(Configuration);
             services.ConfigureCors();
             services.ConfigureSwagger();
@@ -35,9 +40,10 @@ namespace CSharpReact.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseMiddleware<ExceptionMiddleware>();
+
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CSharpReact.Api v1"));
             }

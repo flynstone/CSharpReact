@@ -148,6 +148,14 @@ at the business logic level "data transfer objects" => interactions between clie
 
 - On the front-end using Axios interceptors
 
+
+## Entity Framework Error Handling
+
+```
+Will use fluent validation. This is done to validate in the application layer "Repositories" instead of inside the domain layer "Entities".
+```
+
+
 ## CQRS + Mediator Pattern
 
 - Clean Architecture pattern
