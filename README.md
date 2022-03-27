@@ -149,6 +149,19 @@ at the business logic level "data transfer objects" => interactions between clie
 - On the front-end using Axios interceptors
 
 
+## Screenshot of current event handler
+
+<br/>
+
+<details>
+  <summary>Open screenshot</summary>
+  
+  ![screendshot description'](./screenshots/2022-03-27.png)
+</details>
+
+<br/>
+
+
 ## Entity Framework Error Handling
 
 ```

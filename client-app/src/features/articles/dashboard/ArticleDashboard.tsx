@@ -15,7 +15,7 @@ export default observer(function ArticleDashboard() {
 
   if (articleStore.loadingInitial) return <LoadingComponent content="Loading app" />
   return (
-    <Grid>
+    <Grid style={{ padding: '2rem' }}>
       <Grid.Column width="10">
         <ArticleList/>
       </Grid.Column>

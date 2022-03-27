@@ -16,7 +16,7 @@ export default function Header() {
         <Link to='/'><img src={logo} height={85} width={85} alt="Logo" /></Link>
           
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-
+            <Link to='/errors'>Errors</Link>
           </Typography>
           
           <Button as={NavLink} to='/createArticle' positive >New Article</Button> 

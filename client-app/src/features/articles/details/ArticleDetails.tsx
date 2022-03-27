@@ -22,8 +22,8 @@ export default observer(function ArticleDetails() {
   return (
     <>
       <br />
-      <Card>
-        <CardHeader>{article.title}</CardHeader>
+      <Card style={{paddingLeft: '2rem'}}>
+        <CardHeader />{article.title}
         
         <CardContent>
 
