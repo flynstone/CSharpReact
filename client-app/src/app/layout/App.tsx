@@ -8,6 +8,7 @@ import Home from '../../features/home/Home';
 import ArticleForm from '../../features/articles/form/ArticleForm';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ArticleDetails from '../../features/articles/details/ArticleDetails';
+import TestErrors from '../../features/errors/TestError';
 
 const darkTheme = createTheme({
   palette: {
@@ -31,6 +32,7 @@ function App() {
                 <Route exact path='/articles' component={ArticleDashboard} />
                 <Route path='/articles/:id' component={ArticleDetails} />
                 <Route key={location.key} path={['/createArticle', '/manage/:id']} component={ArticleForm} />
+                <Route path='/errors' component={TestErrors} />
               </Container> 
             </>
           )}
