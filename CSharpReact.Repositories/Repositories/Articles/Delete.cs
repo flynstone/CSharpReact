@@ -1,4 +1,5 @@
 ﻿using CSharpReact.Entities;
+using CSharpReact.Repositories.Core;
 using MediatR;
 using System;
 using System.Threading;
@@ -8,12 +9,13 @@ namespace CSharpReact.Repositories.Repositories.Articles
 {
     public class Delete
     {
-        public class Command : IRequest
+        // Not returning a result using ** Unit from MediatR
+        public class Command : IRequest<Result<Unit>>
         {
             public Guid Id { get; set; }
         }
 
-        public class Handler: IRequestHandler<Command>
+        public class Handler: IRequestHandler<Command, Result<Unit>>
         {
             private readonly AppDbContext _context;
             public Handler(AppDbContext context)
@@ -21,15 +23,21 @@ namespace CSharpReact.Repositories.Repositories.Articles
                 _context = context;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var article = await _context.Articles.FindAsync(request.Id);
 
+                if (article == null) return null;
+
                 _context.Remove(article);
 
-                await _context.SaveChangesAsync();
+                // Return true or false if the result is found or not
+                var result = await _context.SaveChangesAsync() > 0;
 
-                return Unit.Value;
+                // Handle not found
+                if (!result) return Result<Unit>.Failure("Failed to delete the article");
+
+                return Result<Unit>.Success(Unit.Value);
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using CSharpReact.Entities;
 using CSharpReact.Entities.Models;
+using CSharpReact.Repositories.Core;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace CSharpReact.Repositories.Repositories.Articles
 {
     public class List
     {
-        public class Query : IRequest<List<Article>> {}
+        public class Query : IRequest<Result<List<Article>>> {}
 
-        public class Handler : IRequestHandler<Query, List<Article>>
+        public class Handler : IRequestHandler<Query, Result<List<Article>>>
         {
             private readonly AppDbContext _context;
             public Handler(AppDbContext context)
@@ -20,9 +21,9 @@ namespace CSharpReact.Repositories.Repositories.Articles
                 _context = context;
             }
 
-            public async Task<List<Article>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Result<List<Article>>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Articles.ToListAsync();
+                return Result<List<Article>>.Success(await _context.Articles.ToListAsync(cancellationToken));
             }
         }
     }

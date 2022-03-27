@@ -15,6 +15,7 @@ namespace CSharpReact.Api.Controllers
 
         protected ActionResult HandleResult<T>(Result<T> result)
         {
+            if (result == null) return NotFound();
             // Check if an article is found and return accordingly
             if (result.IsSuccess && result.Value != null)
                 return Ok(result.Value);
