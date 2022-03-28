@@ -11,6 +11,7 @@ import ArticleDetails from '../../features/articles/details/ArticleDetails';
 import TestErrors from '../../features/errors/TestError';
 import { ToastContainer } from 'react-toastify';
 import NotFound from '../../features/errors/NotFound';
+import ServerError from '../../features/errors/ServerError';
 
 const darkTheme = createTheme({
   palette: {
@@ -37,6 +38,7 @@ function App() {
                 <Route path='/articles/:id' component={ArticleDetails} />
                 <Route key={location.key} path={['/createArticle', '/manage/:id']} component={ArticleForm} />
                 <Route path='/errors' component={TestErrors} />
+                <Route path='/server-error' component={ServerError} />
                 <Route component={NotFound} />
               </Switch>
             </Container> 
