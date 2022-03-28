@@ -1,7 +1,10 @@
+import { CardHeader } from "@mui/material";
 import React from "react";
 
 export default function ArticleDetailedSidebar() {
   return (
-    <h1>Sidebar</h1>
+    <>
+      <CardHeader /> Sidebar
+    </>
   )
 }

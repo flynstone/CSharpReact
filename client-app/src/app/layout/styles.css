@@ -31,6 +31,12 @@ article {
   padding: 2rem;
 }
 
+.Content {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+}
+
 .Header {
   display: flex;
   width: 100vw;
@@ -43,7 +49,7 @@ article {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
+  color: beige;
 }
 
 .Buttons {

@@ -6,8 +6,9 @@ import { observer } from "mobx-react-lite";
 import { Grid } from "semantic-ui-react";
 import ArticleDetailedHeader from "./ArticleDetailedHeader";
 import ArticleDetailedInfo from "./ArticleDetailedInfo";
-import ArticleDetailedChat from "./ArticleDetailedChat";
+import ArticleDetailedComment from "./ArticleDetailedComment";
 import ArticleDetailedSidebar from "./ArticleDetailedSidebar";
+import { Card } from "@mui/material";
 
 
 export default observer(function ArticleDetails() {
@@ -24,16 +25,21 @@ export default observer(function ArticleDetails() {
   return (
     <>
       <br />
-      <Grid>
+      <Grid className="pt-3">
         <Grid.Column width={10}>
-          <ArticleDetailedHeader />
-          <ArticleDetailedInfo />
-          <ArticleDetailedChat />
+          <Card>
+            <ArticleDetailedHeader article={article} />
+            <ArticleDetailedInfo article={article} />
+            <ArticleDetailedComment />
+          </Card>         
         </Grid.Column>
         <Grid.Column width={6}>
-          <ArticleDetailedSidebar />
+          <Card>
+            <ArticleDetailedSidebar />
+          </Card>   
         </Grid.Column>
       </Grid>
+
       {/* <Card style={{paddingLeft: '2rem'}}>
         <CardHeader />{article.title}
         
@@ -55,5 +61,5 @@ export default observer(function ArticleDetails() {
         </CardActions>
       </Card> */}
     </>
-  )
+  );
 });
