@@ -4,6 +4,7 @@ import { Grid } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
 import { observer } from "mobx-react-lite";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
+import ArticleFilters from "./ArticleFilters";
 
 export default observer(function ArticleDashboard() {
   const { articleStore } = useStore();
@@ -20,8 +21,8 @@ export default observer(function ArticleDashboard() {
         <ArticleList/>
       </Grid.Column>
 
-      <Grid.Column width="6" className="pt-3">
-        <h2>Article filters</h2>
+      <Grid.Column width="6" style={{padding: '5rem'}}>
+        <ArticleFilters />
       </Grid.Column>
     </Grid>
   );
