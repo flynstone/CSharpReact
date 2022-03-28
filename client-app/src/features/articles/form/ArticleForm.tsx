@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { Button, Form, Segment,  } from 'semantic-ui-react';
+import { Button, Form } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { useStore } from '../../../app/stores/store';
 import { v4 as uuid } from 'uuid';
@@ -46,7 +46,6 @@ export default observer(function ArticleForm() {
   return (
     <>
       <br />
-      <Segment>
         <Formik initialValues={article} onSubmit={values => console.log(values)}>
           {({ values: article, handleChange, handleSubmit }) => {
             <Form onSubmit={handleSubmit} className='article__form' autoComplete='off'>
@@ -65,7 +64,6 @@ export default observer(function ArticleForm() {
           </Form>
           }}
         </Formik>      
-      </Segment>
     </>
   )
 });

@@ -1,11 +1,13 @@
-import { CardActions, CardContent, CardHeader } from "@mui/material";
 import React, { useEffect } from "react";
-import Card from '@mui/material/Card';
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { useStore } from "../../../app/stores/store";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { observer } from "mobx-react-lite";
-import { Button } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
+import ArticleDetailedHeader from "./ArticleDetailedHeader";
+import ArticleDetailedInfo from "./ArticleDetailedInfo";
+import ArticleDetailedChat from "./ArticleDetailedChat";
+import ArticleDetailedSidebar from "./ArticleDetailedSidebar";
 
 
 export default observer(function ArticleDetails() {
@@ -22,7 +24,17 @@ export default observer(function ArticleDetails() {
   return (
     <>
       <br />
-      <Card style={{paddingLeft: '2rem'}}>
+      <Grid>
+        <Grid.Column width={10}>
+          <ArticleDetailedHeader />
+          <ArticleDetailedInfo />
+          <ArticleDetailedChat />
+        </Grid.Column>
+        <Grid.Column width={6}>
+          <ArticleDetailedSidebar />
+        </Grid.Column>
+      </Grid>
+      {/* <Card style={{paddingLeft: '2rem'}}>
         <CardHeader />{article.title}
         
         <CardContent>
@@ -41,7 +53,7 @@ export default observer(function ArticleDetails() {
           <small className="text-muted">{article.dateCreated}</small>
           <i className="fa fa-heart"></i>
         </CardActions>
-      </Card>
+      </Card> */}
     </>
   )
 });
