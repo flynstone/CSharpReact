@@ -19,6 +19,16 @@ export default class ArticleStore {
     return Array.from(this.articleRegistry.values()).sort((a, b) => Date.parse(a.dateCreated) - Date.parse(b.dateCreated));
   }
 
+  get groupedArticle() {
+    return Object.entries(
+      this.articlesByDate.reduce((articles, article) => {
+        const date = article.dateCreated;
+        articles[date] = articles[date] ? [...articles[date], article] : [article];
+        return articles;
+      }, {} as {[key: string]: Article[]})
+    )
+  }
+
   // Async function to load articles
   loadArticles = async () => {
     // Using mobx to mutate object directly
