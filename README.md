@@ -182,3 +182,10 @@ Queries => Which reads data from the database (does not modify state) and should
 ```
 
 - Mediator is used to mediate between different layers in the Clean Architecture pattern
+
+
+## Forms with Formik
+
+- Most popular form library for React, it is written in typescript.
+- Validation with Formik/Yup
+- Creating reausable form inputs
