@@ -1,4 +1,4 @@
-import { CardHeader } from "@mui/material";
+import { CardHeader } from '@mui/material';
 import React from "react";
 
 export default function ArticleDetailedSidebar() {

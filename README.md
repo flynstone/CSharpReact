@@ -11,7 +11,7 @@ Project still under developement
   <summary>Open screenshot</summary>
 
 
-  !["screenshot description"](./screenshots/2022-03-18%20(1).png)
+  !["screenshot description"](./screenshots/2022-03-18.png)
 </details>
 
 <br/>
@@ -24,26 +24,38 @@ Project still under developement
 
 <br/>
 
-### More Styling added and added "Create" and "Update" functions
+### Articles List
 
 <br/>
 
 <details>
   <summary>Open screenshot</summary>
   
-  !['screenshot description'](./screenshots/2022-03-20.png)
+  !['screenshot description'](./screenshots/2022-03-30(1).png)
 </details>
 
 <br/>
 
-### Finished axios calls and changed page layout
+### Articles Edit Form
 
 <br/>
 
 <details>
   <summary>Open screenshot</summary>
   
-  ![screendshot description'](./screenshots/2022-03-22.png)
+  ![screendshot description'](./screenshots/2022-03-30.png)
+</details>
+
+<br/>
+
+### Articles Form Validations
+
+<br/>
+
+<details>
+  <summary>Open screenshot</summary>
+  
+  ![screendshot description'](./screenshots/2022-03-30(3).png)
 </details>
 
 <br/>

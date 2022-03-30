@@ -1,4 +1,4 @@
-import { Card, CardHeader, MenuItem } from "@mui/material";
+import { Card, MenuItem } from '@mui/material';
 import React from "react";
 
 export default function ArticleFilters() {

@@ -1,27 +1,36 @@
-import { observer } from 'mobx-react-lite';
-import React, { useEffect, useState } from 'react';
-import { Link, useHistory, useParams } from 'react-router-dom';
-import { Button, Form } from 'semantic-ui-react';
-import LoadingComponent from '../../../app/layout/LoadingComponent';
-import { useStore } from '../../../app/stores/store';
-import { v4 as uuid } from 'uuid';
-import { Formik } from 'formik';
+import { observer } from "mobx-react-lite";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory, useParams } from "react-router-dom";
+import { Button, FormField, Label } from "semantic-ui-react";
+import LoadingComponent from "../../../app/layout/LoadingComponent";
+import { useStore } from "../../../app/stores/store";
+import { v4 as uuid } from "uuid";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Article } from "../../../app/models/article";
+import * as Yup from 'yup';
+import { Card } from "@mui/material";
+import MyTextInput from "../../../app/common/form/MyTextInput";
 
 export default observer(function ArticleForm() {
   const history = useHistory();
   const { articleStore } = useStore();
-  const { createArticle, updateArticle, loading, loadArticle, loadingInitial } = articleStore;
+  const { createArticle, updateArticle, loading, loadArticle, loadingInitial } =
+    articleStore;
   const { id } = useParams<{ id: string }>();
 
-  const [article, setArticle] = useState({
-    id: '',
-    title: '',
-    body: '',
-    dateCreated: ''
+  const [article, setArticle] = useState<Article>({
+    id: "",
+    title: "",
+    body: "",
+    dateCreated: "",
+  });
+
+  const validationSchema = Yup.object({
+    title: Yup.string().required('The article title is required')
   });
 
   useEffect(() => {
-    if (id) loadArticle(id).then(article => setArticle(article!));
+    if (id) loadArticle(id).then((article) => setArticle(article!));
   }, [id, loadArticle]);
 
   // const handleSubmit = () => {
@@ -41,29 +50,38 @@ export default observer(function ArticleForm() {
   //   setArticle({ ...article, [name]: value });
   // }
 
-  if (loadingInitial) return <LoadingComponent content='Loading article...' />
-  
+  if (loadingInitial) return <LoadingComponent content="Loading article..." />;
+
   return (
     <>
-      <br />
-        <Formik initialValues={article} onSubmit={values => console.log(values)}>
-          {({ values: article, handleChange, handleSubmit }) => {
-            <Form onSubmit={handleSubmit} className='article__form' autoComplete='off'>
-            <Form.Group className="mb-3 px-3">
-              <Form.Input value={article.title} name="title" placeholder="Title" onChange={handleChange} />
-            </Form.Group>
-            <Form.Group className="mb-3 px-3">
-              <Form.TextArea value={article.body} name="body" type="textarea" placeholder="Input content here" onChange={handleChange} />
-            </Form.Group>
-            <Form.Input value={article.dateCreated} name="dateCreated" onChange={handleChange} />
-  
-            <Form.Group className="mb-3 px-3">
-              <Button basic color='blue' loading={loading} type="submit" floated="right">Submit</Button>{' '}
-              <Button as={Link} to='/articles' basic color='orange' type="button" floated="right">Cancel</Button>
-            </Form.Group>
+      <br/> <br/>
+      <Formik
+        validationSchema={validationSchema}
+        enableReinitialize
+        initialValues={article}
+        onSubmit={(values) => console.log(values)}>
+        {({ handleSubmit }) => (
+          <Form onSubmit={handleSubmit} autoComplete="off">
+            <Card className="Container">
+              <div className="Row">
+                <MyTextInput name="title" placeholder="Title" />
+                
+                <Field style={{backgroundColor: '#343434', color: 'beige', borderStyle: 'none'}} placeholder="Date" name="dateCreated" />
+              </div>
+              
+              <FormField className="py-5 px-3" >
+                <Field name="body" style={{display: 'flex', minWidth: '100%', backgroundColor: '#343434', color: 'beige', borderStyle: 'none'}} type="textarea" placeholder="Input content here" />
+              </FormField>
+              
+              <FormField className="px-5 Btn">
+                <Button basic color="blue" loading={loading} type="submit" floated="right">Submit</Button>{" "}
+                <Button as={Link} to="/articles" basic color="orange" type="button" floated="right">Cancel</Button>
+              </FormField>         
+            </Card>
+            
           </Form>
-          }}
-        </Formik>      
+        )}
+      </Formik>
     </>
-  )
+  );
 });

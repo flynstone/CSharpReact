@@ -58,6 +58,14 @@ article {
   color: beige;
 }
 
+.Btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: beige;
+}
+
 .Buttons {
   display: flex;
   flex-direction: row;

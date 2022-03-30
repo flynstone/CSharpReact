@@ -9,7 +9,7 @@ export default class ArticleStore {
   selectedArticle: Article | undefined = undefined;
   editMode = false;
   loading = false;
-  loadingInitial = true;
+  loadingInitial = false;
 
   constructor() {
     makeAutoObservable(this)

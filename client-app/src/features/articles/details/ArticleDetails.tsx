@@ -8,7 +8,7 @@ import ArticleDetailedHeader from "./ArticleDetailedHeader";
 import ArticleDetailedInfo from "./ArticleDetailedInfo";
 import ArticleDetailedComment from "./ArticleDetailedComment";
 import ArticleDetailedSidebar from "./ArticleDetailedSidebar";
-import { Card } from "@mui/material";
+import { Card } from '@mui/material';
 
 
 export default observer(function ArticleDetails() {
