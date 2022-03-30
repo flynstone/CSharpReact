@@ -10,6 +10,9 @@ import { Article } from "../../../app/models/article";
 import * as Yup from 'yup';
 import { Card } from "@mui/material";
 import MyTextInput from "../../../app/common/form/MyTextInput";
+import MyTextArea from "../../../app/common/form/MyTextArea";
+import { categoryOptions } from "../../../app/common/options/categoryOptions";
+import MySelectInput from "../../../app/common/form/MySelectInput";
 
 export default observer(function ArticleForm() {
   const history = useHistory();
@@ -26,7 +29,8 @@ export default observer(function ArticleForm() {
   });
 
   const validationSchema = Yup.object({
-    title: Yup.string().required('The article title is required')
+    title: Yup.string().required('The article title is required'),
+    body: Yup.string().required('The article body is required'),
   });
 
   useEffect(() => {
@@ -70,7 +74,11 @@ export default observer(function ArticleForm() {
               </div>
               
               <FormField className="py-5 px-3" >
-                <Field name="body" style={{display: 'flex', minWidth: '100%', backgroundColor: '#343434', color: 'beige', borderStyle: 'none'}} type="textarea" placeholder="Input content here" />
+                <MyTextArea rows={3} name="body" placeholder="Input content here" />
+              </FormField>
+
+              <FormField className="py-5 px-3">
+                <MySelectInput options={categoryOptions} placeholder='Category' name='category' />
               </FormField>
               
               <FormField className="px-5 Btn">
