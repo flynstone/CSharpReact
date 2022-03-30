@@ -1,4 +1,4 @@
-import { Card, CardActions, CardContent } from "@mui/material";
+import { Card, CardActions, CardContent } from '@mui/material';
 import React, { SyntheticEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "semantic-ui-react";

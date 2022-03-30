@@ -1,4 +1,4 @@
-import { CardHeader } from "@mui/material";
+import { CardHeader } from '@mui/material';
 import { observer } from "mobx-react-lite";
 import React from "react";
 import { Article } from "../../../app/models/article";
