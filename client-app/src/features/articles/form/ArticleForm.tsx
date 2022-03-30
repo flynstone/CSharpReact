@@ -9,6 +9,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Article } from "../../../app/models/article";
 import * as Yup from 'yup';
 import { Card } from "@mui/material";
+import MyTextInput from "../../../app/common/form/MyTextInput";
 
 export default observer(function ArticleForm() {
   const history = useHistory();
@@ -63,19 +64,10 @@ export default observer(function ArticleForm() {
           <Form onSubmit={handleSubmit} autoComplete="off">
             <Card className="Container">
               <div className="Row">
-                <FormField>
-                  <Field style={{ backgroundColor: '#343434', color: 'beige', borderStyle: 'none' }} name="title" placeholder="Title" />
-                  <ErrorMessage
-                    name='title'
-                    render={error =>
-                      <Label pointing='left' style={{ backgroundColor: '#343434', color: 'red', borderStyle: 'none', fontSize: '18px' }} content={error} />
-                    }
-                  />
-                </FormField>
+                <MyTextInput name="title" placeholder="Title" />
                 
                 <Field style={{backgroundColor: '#343434', color: 'beige', borderStyle: 'none'}} placeholder="Date" name="dateCreated" />
               </div>
-
               
               <FormField className="py-5 px-3" >
                 <Field name="body" style={{display: 'flex', minWidth: '100%', backgroundColor: '#343434', color: 'beige', borderStyle: 'none'}} type="textarea" placeholder="Input content here" />
