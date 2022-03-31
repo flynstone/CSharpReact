@@ -1,4 +1,5 @@
 ﻿using CSharpReact.Entities.Models;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,11 @@ namespace CSharpReact.Api.Services
 {
     public class TokenService
     {
+        private readonly IConfiguration _config;
+        public TokenService(IConfiguration config)
+        {
+            _config = config;
+        }
         public string CreateToken(AppUser user)
         {
             // Token Claims
@@ -21,7 +27,7 @@ namespace CSharpReact.Api.Services
             };
 
             // Store in variable "key" => Signing token (Never leaves the server)
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("My$3cr3tk3y91356490"));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"]));
 
             // Generate credentials for token => Store in variable "creds"
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);

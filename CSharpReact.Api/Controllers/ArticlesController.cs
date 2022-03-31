@@ -1,8 +1,8 @@
 ﻿using CSharpReact.Entities.Models;
 using CSharpReact.Repositories.Repositories.Articles;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CSharpReact.Api.Controllers
