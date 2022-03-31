@@ -227,6 +227,20 @@ This is done automatically with AspNet Core Identity
 - Password Hashing => Is a one way operation you can only hash something, you cannot "dehash".
 - Password Salting => It adds a randomized element to the hash and each time we salt a hashed password, then it becomes more and more difficult to get de unhashed version of that password.
 
+<br/>
+
+```css
+Screenshot below demonstrates password using hash + salt (Both are identical passwords)
+```
+
+<details>
+  <summary>Open screenshot</summary>
+  
+  ![screendshot description'](./screenshots/2022-03-31.png)
+</details>
+
+<br/>
+
 ## Authorization
 
 - Using Authorization Headers => Bearer Token
