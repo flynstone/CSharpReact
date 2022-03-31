@@ -7,25 +7,19 @@ namespace CSharpReact.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "Articles",
-                keyColumn: "Id",
-                keyValue: new Guid("35e0d22f-2476-4336-8db7-9e082b785144"));
-
-            migrationBuilder.DeleteData(
-                table: "Articles",
-                keyColumn: "Id",
-                keyValue: new Guid("3e9cb0cb-f54c-4d05-b4be-eb0d7c0e2777"));
-
-            migrationBuilder.DeleteData(
-                table: "Articles",
-                keyColumn: "Id",
-                keyValue: new Guid("8ec89d2d-80dd-4987-9c69-aa9e046d0cc3"));
-
-            migrationBuilder.DeleteData(
-                table: "Articles",
-                keyColumn: "Id",
-                keyValue: new Guid("b8358ff4-12ff-4b21-9128-27f11d278fb7"));
+            migrationBuilder.CreateTable(
+                name: "Articles",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Body = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Articles", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
@@ -174,17 +168,6 @@ namespace CSharpReact.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "Articles",
-                columns: new[] { "Id", "Body", "DateCreated", "Title" },
-                values: new object[,]
-                {
-                    { new Guid("3ffdb9d3-4628-4948-b584-4f3bab4feb9e"), "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", new DateTime(2022, 3, 31, 11, 21, 11, 146, DateTimeKind.Local).AddTicks(4043), "What is Lorem Ipsum?" },
-                    { new Guid("42cdbe37-1b68-4a0d-a30c-4f7583c7b940"), "Contrary to popular belief, Lorem Ipsum is not simply random text.", new DateTime(2022, 3, 31, 11, 21, 11, 147, DateTimeKind.Local).AddTicks(8948), "Where does it come from?" },
-                    { new Guid("a3f7930e-b7c5-41e1-b995-5a5ff2793e08"), "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", new DateTime(2022, 3, 31, 11, 21, 11, 147, DateTimeKind.Local).AddTicks(8965), "Why do we use it?" },
-                    { new Guid("800cae2e-4cbd-47a7-9772-30864f54a939"), "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.", new DateTime(2022, 3, 31, 11, 21, 11, 147, DateTimeKind.Local).AddTicks(8968), "Where can I get some?" }
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -228,6 +211,9 @@ namespace CSharpReact.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Articles");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
@@ -247,37 +233,6 @@ namespace CSharpReact.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DeleteData(
-                table: "Articles",
-                keyColumn: "Id",
-                keyValue: new Guid("3ffdb9d3-4628-4948-b584-4f3bab4feb9e"));
-
-            migrationBuilder.DeleteData(
-                table: "Articles",
-                keyColumn: "Id",
-                keyValue: new Guid("42cdbe37-1b68-4a0d-a30c-4f7583c7b940"));
-
-            migrationBuilder.DeleteData(
-                table: "Articles",
-                keyColumn: "Id",
-                keyValue: new Guid("800cae2e-4cbd-47a7-9772-30864f54a939"));
-
-            migrationBuilder.DeleteData(
-                table: "Articles",
-                keyColumn: "Id",
-                keyValue: new Guid("a3f7930e-b7c5-41e1-b995-5a5ff2793e08"));
-
-            migrationBuilder.InsertData(
-                table: "Articles",
-                columns: new[] { "Id", "Body", "DateCreated", "Title" },
-                values: new object[,]
-                {
-                    { new Guid("b8358ff4-12ff-4b21-9128-27f11d278fb7"), "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", new DateTime(2022, 3, 31, 9, 39, 43, 907, DateTimeKind.Local).AddTicks(985), "What is Lorem Ipsum?" },
-                    { new Guid("8ec89d2d-80dd-4987-9c69-aa9e046d0cc3"), "Contrary to popular belief, Lorem Ipsum is not simply random text.", new DateTime(2022, 3, 31, 9, 39, 43, 908, DateTimeKind.Local).AddTicks(5411), "Where does it come from?" },
-                    { new Guid("35e0d22f-2476-4336-8db7-9e082b785144"), "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.", new DateTime(2022, 3, 31, 9, 39, 43, 908, DateTimeKind.Local).AddTicks(5430), "Why do we use it?" },
-                    { new Guid("3e9cb0cb-f54c-4d05-b4be-eb0d7c0e2777"), "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.", new DateTime(2022, 3, 31, 9, 39, 43, 908, DateTimeKind.Local).AddTicks(5433), "Where can I get some?" }
-                });
         }
     }
 }

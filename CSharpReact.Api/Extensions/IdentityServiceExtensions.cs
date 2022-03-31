@@ -17,7 +17,7 @@ namespace CSharpReact.Api.Extensions
                 options.Password.RequireLowercase = true;
                 options.Password.RequireUppercase = true;
                 options.Password.RequireDigit = true;
-                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireNonAlphanumeric = true;
             })
             .AddEntityFrameworkStores<AppDbContext>()
             .AddSignInManager<SignInManager<AppUser>>();

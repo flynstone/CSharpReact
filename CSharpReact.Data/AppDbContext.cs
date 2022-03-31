@@ -1,5 +1,4 @@
 ﻿using CSharpReact.Entities.Models;
-using CSharpReact.Data.Seeds;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
@@ -17,7 +16,7 @@ namespace CSharpReact.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.ApplyConfiguration(new ArticlesConfiguration());
+            //modelBuilder.ApplyConfiguration(new ArticlesConfiguration());
         }
     }
 }

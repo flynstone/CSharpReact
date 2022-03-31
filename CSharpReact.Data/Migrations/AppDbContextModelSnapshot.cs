@@ -108,36 +108,6 @@ namespace CSharpReact.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Articles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("3ffdb9d3-4628-4948-b584-4f3bab4feb9e"),
-                            Body = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                            DateCreated = new DateTime(2022, 3, 31, 11, 21, 11, 146, DateTimeKind.Local).AddTicks(4043),
-                            Title = "What is Lorem Ipsum?"
-                        },
-                        new
-                        {
-                            Id = new Guid("42cdbe37-1b68-4a0d-a30c-4f7583c7b940"),
-                            Body = "Contrary to popular belief, Lorem Ipsum is not simply random text.",
-                            DateCreated = new DateTime(2022, 3, 31, 11, 21, 11, 147, DateTimeKind.Local).AddTicks(8948),
-                            Title = "Where does it come from?"
-                        },
-                        new
-                        {
-                            Id = new Guid("a3f7930e-b7c5-41e1-b995-5a5ff2793e08"),
-                            Body = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-                            DateCreated = new DateTime(2022, 3, 31, 11, 21, 11, 147, DateTimeKind.Local).AddTicks(8965),
-                            Title = "Why do we use it?"
-                        },
-                        new
-                        {
-                            Id = new Guid("800cae2e-4cbd-47a7-9772-30864f54a939"),
-                            Body = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.",
-                            DateCreated = new DateTime(2022, 3, 31, 11, 21, 11, 147, DateTimeKind.Local).AddTicks(8968),
-                            Title = "Where can I get some?"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
