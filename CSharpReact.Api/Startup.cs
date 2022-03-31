@@ -24,7 +24,7 @@ namespace CSharpReact.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddAutoMapper(typeof(MappingProfiles));
             services.AddControllers().AddFluentValidation(config =>
             {
                 config.RegisterValidatorsFromAssemblyContaining<Create>();
@@ -33,8 +33,7 @@ namespace CSharpReact.Api
             services.ConfigureCors();
             services.ConfigureSwagger();
             services.AddMediatR(typeof(List.Handler));
-            services.AddAutoMapper(typeof(MappingProfiles));
-
+            services.AddIdentityServices(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
