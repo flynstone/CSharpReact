@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpReact.Api", "CSharpRe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpReact.Entities", "CSharpReact.Entities\CSharpReact.Entities.csproj", "{68C5000D-6928-469A-B143-2B7F48F87642}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpReact.Repositories", "CSharpReact.Repositories\CSharpReact.Repositories.csproj", "{70896D5C-62A3-4AF3-8FAB-01DC4CCC2EA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpReact.Repositories", "CSharpReact.Repositories\CSharpReact.Repositories.csproj", "{70896D5C-62A3-4AF3-8FAB-01DC4CCC2EA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpReact.Data", "CSharpReact.Data\CSharpReact.Data.csproj", "{CC9053D9-36F9-41CE-8A83-3C59EA6860EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{70896D5C-62A3-4AF3-8FAB-01DC4CCC2EA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70896D5C-62A3-4AF3-8FAB-01DC4CCC2EA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70896D5C-62A3-4AF3-8FAB-01DC4CCC2EA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC9053D9-36F9-41CE-8A83-3C59EA6860EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC9053D9-36F9-41CE-8A83-3C59EA6860EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC9053D9-36F9-41CE-8A83-3C59EA6860EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC9053D9-36F9-41CE-8A83-3C59EA6860EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

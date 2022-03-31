@@ -1,4 +1,4 @@
-﻿using CSharpReact.Entities;
+﻿using CSharpReact.Data;
 using CSharpReact.Repositories.Core;
 using MediatR;
 using System;

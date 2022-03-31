@@ -1577,6 +1577,19 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "CSharpReact.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "CSharpReact.Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CSharpReact.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CSharpReact.Data.dll": {}
+        }
+      },
       "CSharpReact.Entities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -5956,6 +5969,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "CSharpReact.Data/1.0.0": {
+      "type": "project",
+      "path": "../CSharpReact.Data/CSharpReact.Data.csproj",
+      "msbuildProject": "../CSharpReact.Data/CSharpReact.Data.csproj"
+    },
     "CSharpReact.Entities/1.0.0": {
       "type": "project",
       "path": "../CSharpReact.Entities/CSharpReact.Entities.csproj",
@@ -5965,6 +5983,7 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.0",
+      "CSharpReact.Data >= 1.0.0",
       "CSharpReact.Entities >= 1.0.0",
       "FluentValidation.AspNetCore >= 10.4.0",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 10.0.1"
@@ -5997,6 +6016,9 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
+            "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Data\\CSharpReact.Data.csproj": {
+              "projectPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Data\\CSharpReact.Data.csproj"
+            },
             "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Entities\\CSharpReact.Entities.csproj": {
               "projectPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Entities\\CSharpReact.Entities.csproj"
             }

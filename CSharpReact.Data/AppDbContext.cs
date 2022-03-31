@@ -1,8 +1,8 @@
 ﻿using CSharpReact.Entities.Models;
-using CSharpReact.Entities.Seeds;
+using CSharpReact.Data.Seeds;
 using Microsoft.EntityFrameworkCore;
 
-namespace CSharpReact.Entities
+namespace CSharpReact.Data
 {
     public class AppDbContext : DbContext
     {

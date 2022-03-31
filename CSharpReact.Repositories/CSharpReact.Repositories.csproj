@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CSharpReact.Data\CSharpReact.Data.csproj" />
     <ProjectReference Include="..\CSharpReact.Entities\CSharpReact.Entities.csproj" />
   </ItemGroup>
 
