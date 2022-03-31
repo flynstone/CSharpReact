@@ -15,7 +15,6 @@ namespace CSharpReact.Api.Controllers
             return HandleResult(await Mediator.Send(new List.Query()));
         }
 
-        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetArticle(Guid id)
         {

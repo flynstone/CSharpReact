@@ -1,12 +1,14 @@
 ﻿using CSharpReact.Api.DataTransferObjects;
 using CSharpReact.Api.Services;
 using CSharpReact.Entities.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace CSharpReact.Api.Controllers
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
