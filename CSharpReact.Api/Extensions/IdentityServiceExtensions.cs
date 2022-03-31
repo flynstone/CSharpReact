@@ -27,7 +27,7 @@ namespace CSharpReact.Api.Extensions
             .AddSignInManager<SignInManager<AppUser>>();
 
             // Must match key from service
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("My$3cr3tk3y91356490"));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(opt =>
