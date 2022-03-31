@@ -1,4 +1,5 @@
-﻿using CSharpReact.Data;
+﻿using CSharpReact.Api.Services;
+using CSharpReact.Data;
 using CSharpReact.Entities.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +24,7 @@ namespace CSharpReact.Api.Extensions
             .AddSignInManager<SignInManager<AppUser>>();
 
             services.AddAuthentication();
+            services.AddScoped<TokenService>();
 
             return services;
         }

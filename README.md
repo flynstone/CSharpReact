@@ -251,3 +251,17 @@ Screenshot below demonstrates password using hash + salt (Both are identical pas
 - Documentation at => https://jwt.io/
 
 - The server will store the JWT on the client if authentication is passed (using browsers local storage)
+
+<br/>
+
+```css
+Screenshot below of Bearer Token
+```
+
+<details>
+  <summary>Open screenshot</summary>
+  
+  ![screendshot description'](./screenshots/2022-03-31(1).png)
+</details>
+
+<br/>
