@@ -244,3 +244,10 @@ Screenshot below demonstrates password using hash + salt (Both are identical pas
 ## Authorization
 
 - Using Authorization Headers => Bearer Token
+
+
+## JSON Web Tokens => JWT
+
+- Documentation at => https://jwt.io/
+
+- The server will store the JWT on the client if authentication is passed (using browsers local storage)
