@@ -1,9 +1,12 @@
 ﻿using CSharpReact.Api.Services;
 using CSharpReact.Data;
 using CSharpReact.Entities.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace CSharpReact.Api.Extensions
 {
@@ -23,7 +26,20 @@ namespace CSharpReact.Api.Extensions
             .AddEntityFrameworkStores<AppDbContext>()
             .AddSignInManager<SignInManager<AppUser>>();
 
-            services.AddAuthentication();
+            // Must match key from service
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("My$3cr3tk3y91356490"));
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(opt =>
+                {
+                    opt.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = key,
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
             services.AddScoped<TokenService>();
 
             return services;

@@ -1,8 +1,8 @@
 ﻿using CSharpReact.Entities.Models;
 using CSharpReact.Repositories.Repositories.Articles;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CSharpReact.Api.Controllers
@@ -15,6 +15,7 @@ namespace CSharpReact.Api.Controllers
             return HandleResult(await Mediator.Send(new List.Query()));
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetArticle(Guid id)
         {
