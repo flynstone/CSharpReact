@@ -201,3 +201,28 @@ Queries => Which reads data from the database (does not modify state) and should
 - Most popular form library for React, it is written in typescript.
 - Validation with Formik/Yup
 - Creating reausable form inputs
+
+
+## Identity
+
+- JWT Token Authentication => typacally used with web api 
+- Login / Register
+- Authenticate requests
+
+## AspNet Core Identity
+
+- Membership system
+- Supports login stored in Identity
+- Supports external providers
+- Comes with default user stores
+- UserManager
+- SignInManager
+
+### Password Hashing + Salting 
+
+```css
+This is done automatically with AspNet Core Identity
+```
+
+- Password Hashing => Is a one way operation you can only hash something, you cannot "dehash".
+- Password Salting => It adds a randomized element to the hash and each time we salt a hashed password, then it becomes more and more difficult to get de unhashed version of that password.
