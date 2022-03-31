@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CSharpReact.Entities;
+using CSharpReact.Data;
 using CSharpReact.Entities.Models;
 using CSharpReact.Repositories.Core;
 using FluentValidation;

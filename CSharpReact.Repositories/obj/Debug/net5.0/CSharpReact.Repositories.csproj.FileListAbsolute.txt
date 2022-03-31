@@ -13,3 +13,5 @@ C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\obj\Debug\net5.
 C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\obj\Debug\net5.0\refint\CSharpReact.Repositories.dll
 C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\obj\Debug\net5.0\CSharpReact.Repositories.pdb
 C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\obj\Debug\net5.0\ref\CSharpReact.Repositories.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\bin\Debug\net5.0\CSharpReact.Data.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Repositories\bin\Debug\net5.0\CSharpReact.Data.pdb
