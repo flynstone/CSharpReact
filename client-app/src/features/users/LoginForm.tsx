@@ -1,8 +1,8 @@
 import { Card } from "@mui/material";
-import { Form, Formik } from "formik";
+import { ErrorMessage, Form, Formik } from "formik";
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Label } from "semantic-ui-react";
 import MyTextInput from "../../app/common/form/MyTextInput";
 import { useStore } from "../../app/stores/store";
 
@@ -12,16 +12,22 @@ export default observer(function LoginForm() {
     <>
       <br />
       <Formik
-        initialValues={{ email: '', password: '' }}
-        onSubmit={values => userStore.login(values)}
+        initialValues={{ email: '', password: '', error: null }}
+        onSubmit={(values, { setErrors }) => userStore.login(values).catch(error => setErrors({ error: 'Invalid email or password' }))}
       >
-      {({ handleSubmit, isSubmitting }) => (
-        <Form className="ui form" onSubmit={handleSubmit} autoComplete="off">
-          <Card className="Container">
-            <MyTextInput name="email" placeholder="Email" />
-            <MyTextInput name="password" placeholder="Password" type="password" />
-            <Button loading={isSubmitting} positive content="Login" type="submit" fluid />
-           </Card>        
+        {({ handleSubmit, isSubmitting, errors }) => ( 
+          <Form className="ui form" onSubmit={handleSubmit} autoComplete="off">
+            <Card className="Container">
+              <div className="Dark">
+                <MyTextInput name="email" placeholder="Email" />
+                <MyTextInput name="password" placeholder="Password" type="password" />
+              </div>
+              
+              <ErrorMessage   
+                name='error' render={() => <Label basic style={{ marginBottom: 10, marginTop: 10, backgroundColor: '#343434', color: 'red', borderStyle: 'none', fontSize: '18px' }} content={errors.error} />}
+              />  
+              <Button loading={isSubmitting} positive content="Login" type="submit" fluid />
+            </Card>        
         </Form>
       )}   
       </Formik>    

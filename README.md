@@ -3,6 +3,17 @@
 Project still under developement
 ```
 
+## Why Asp.Net Core instead of Node/Express?
+
+- You can read a great article comparing both frameworks => https://inveritasoft.com/blog/net-core-vs-nodejs-what-to-choose
+
+- An important factor mentioned on inveritasoft's website is ``` Stability Reliability and Security ```
+
+```
+Asp.Net Core is definetely a winner in this category.
+C# language provides a reliability and security to the platform which makes it a great option ti create a robust software.
+```
+
 ### Screenshots showing front-end connection to back-end
 
 <br/>
