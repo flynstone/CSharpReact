@@ -26,6 +26,10 @@ h3 {
   font-size: 16px !important;
 }
 
+input {
+  background-color: #343434 !important;
+}
+
 article {
   display: block;
   padding: 2rem;
