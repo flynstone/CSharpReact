@@ -2,7 +2,7 @@ import { Card } from "@mui/material";
 import { ErrorMessage, Form, Formik } from "formik";
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { Button, FormField, Label } from "semantic-ui-react";
+import { Button, CardHeader, FormField, Label } from "semantic-ui-react";
 import MyTextInput from "../../app/common/form/MyTextInput";
 import { useStore } from "../../app/stores/store";
 
@@ -14,8 +14,9 @@ export default observer(function LoginForm() {
       onSubmit={(values, { setErrors }) => userStore.login(values).catch(error => setErrors({ error: 'Invalid email or password' }))}
     >
       {({ handleSubmit, isSubmitting, errors }) => ( 
-        <Form className="ui form" onSubmit={handleSubmit} autoComplete="off">
+        <Form className="ui form" onSubmit={handleSubmit} autoComplete='off'>
           <Card className="Container">
+            <CardHeader ><h2>Login</h2></CardHeader>
             <FormField className="py-2 px-3" >
               <MyTextInput name="email" placeholder="Email" />        
             </FormField>

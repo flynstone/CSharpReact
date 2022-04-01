@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from 'semantic-ui-react';
 import { useStore } from '../../app/stores/store';
 import LoginForm from '../users/LoginForm';
+import RegisterForm from '../users/RegisterForm';
 
 const HomeStyle = {
   height: '100vh',
@@ -29,7 +30,7 @@ export default function Home() {
               <Button onClick={() => modalStore.openModal(<LoginForm />)} size='huge' inverted>
                 Login
               </Button>
-              <Button onClick={() => modalStore.openModal(<></>)} size='huge' inverted>
+              <Button onClick={() => modalStore.openModal(<RegisterForm />)} size='huge' inverted>
                 Register
               </Button> 
             </>
