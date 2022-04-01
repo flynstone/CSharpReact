@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CSharpReact.Api.Controllers
 {
+    [AllowAnonymous]
     public class ArticlesController : BaseApiController
     {
         [HttpGet]

@@ -7,7 +7,7 @@ export default function Home() {
     <Card>
       <CardHeader /> Home Page
       <CardContent>
-        <h3>Go to <Link to='/articles'>Articles</Link></h3>
+        <h3>Go to <Link to='/login'>Login</Link></h3>
       </CardContent>
     </Card>
   )
