@@ -15,7 +15,7 @@ export default observer(function Header() {
         <Toolbar className="Header">            
             
           <Link to='/'><img src={logo} height={85} width={85} alt="Logo" /></Link>
-
+          <Button as={NavLink} to='/createArticle' positive content='New Article' />
           <div style={{ flexGrow: 1 }}>         
             <Link to='/errors'>Errors</Link>          
           </div>
@@ -30,7 +30,7 @@ export default observer(function Header() {
             </Dropdown>
           </Menu.Item>
             
-          <Button as={NavLink} to='/createArticle' positive content='New Article' />
+          
 
         </Toolbar>
       </AppBar>
