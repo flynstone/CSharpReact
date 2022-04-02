@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 
 namespace CSharpReact.Entities.Models
 {
@@ -6,5 +7,6 @@ namespace CSharpReact.Entities.Models
     {
         public string DisplayName { get; set; }
         public string Bio { get; set; }
+        public ICollection<ArticleContributor> Articles { get; set; }
     }
 }

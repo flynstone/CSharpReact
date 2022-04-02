@@ -11,12 +11,26 @@ namespace CSharpReact.Data
         }
 
         public DbSet<Article> Articles { get; set; }
+        public DbSet<ArticleContributor> ArticleContributors { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) 
+        protected override void OnModelCreating(ModelBuilder builder) 
         {
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(builder);
 
-            //modelBuilder.ApplyConfiguration(new ArticlesConfiguration());
+            // Create primary key for many to many
+            builder.Entity<ArticleContributor>(x => x.HasKey(y => new {y.AppUserId, y.ArticleId}));
+
+            // Create many-to-many
+            builder.Entity<ArticleContributor>()
+                .HasOne(u => u.AppUser)
+                .WithMany(a => a.Articles)
+                .HasForeignKey(y => y.AppUserId);
+
+            // Create many-to-many
+            builder.Entity<ArticleContributor>()
+                .HasOne(u => u.Article)
+                .WithMany(a => a.Contributors)
+                .HasForeignKey(y => y.ArticleId);
         }
     }
 }

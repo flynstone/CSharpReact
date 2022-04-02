@@ -1,0 +1,12 @@
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\bin\Debug\net5.0\CSharpReact.Infrastructure.deps.json
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\bin\Debug\net5.0\CSharpReact.Infrastructure.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\bin\Debug\net5.0\CSharpReact.Infrastructure.pdb
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\obj\Debug\net5.0\CSharpReact.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\obj\Debug\net5.0\CSharpReact.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\obj\Debug\net5.0\CSharpReact.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\obj\Debug\net5.0\CSharpReact.Infrastructure.AssemblyInfo.cs
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\obj\Debug\net5.0\CSharpReact.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\obj\Debug\net5.0\CSharpReact.Infrastructure.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\obj\Debug\net5.0\refint\CSharpReact.Infrastructure.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\obj\Debug\net5.0\CSharpReact.Infrastructure.pdb
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\obj\Debug\net5.0\ref\CSharpReact.Infrastructure.dll

@@ -110,6 +110,24 @@ namespace CSharpReact.Data.Migrations
                     b.ToTable("Articles");
                 });
 
+            modelBuilder.Entity("CSharpReact.Entities.Models.ArticleContributor", b =>
+                {
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("ArticleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsCreator")
+                        .HasColumnType("bit");
+
+                    b.HasKey("AppUserId", "ArticleId");
+
+                    b.HasIndex("ArticleId");
+
+                    b.ToTable("ArticleContributors");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -241,6 +259,25 @@ namespace CSharpReact.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("CSharpReact.Entities.Models.ArticleContributor", b =>
+                {
+                    b.HasOne("CSharpReact.Entities.Models.AppUser", "AppUser")
+                        .WithMany("Articles")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CSharpReact.Entities.Models.Article", "Article")
+                        .WithMany("Contributors")
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Article");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -290,6 +327,16 @@ namespace CSharpReact.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CSharpReact.Entities.Models.AppUser", b =>
+                {
+                    b.Navigation("Articles");
+                });
+
+            modelBuilder.Entity("CSharpReact.Entities.Models.Article", b =>
+                {
+                    b.Navigation("Contributors");
                 });
 #pragma warning restore 612, 618
         }

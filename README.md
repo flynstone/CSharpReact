@@ -14,6 +14,36 @@ Asp.Net Core is definetely a winner in this category.
 C# language provides a reliability and security to the platform which makes it a great option ti create a robust software.
 ```
 
+## Data relations
+<br/>
+
+```
+One to One
+```
+
+- Is a relationship where a record in one entity (or table) is associated with exacly one record in another entity.
+
+<br/>
+
+```
+One to Many
+```
+
+- Is the most common type of relationship.
+- A row in table X can have many matching rows in table Y.
+- Can only be created if only one of the related columns is a primary key.
+
+<br/>
+
+```
+Many to Many
+```
+
+- Is created with a third table that is called a junction table.
+- The "Primary Key" of the junction table consists of the foreign keys from both table X and table Y. 
+
+<br/>
+
 ### Screenshots showing front-end connection to back-end
 
 <br/>
