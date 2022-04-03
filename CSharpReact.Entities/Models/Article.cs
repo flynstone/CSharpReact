@@ -9,6 +9,6 @@ namespace CSharpReact.Entities.Models
         public string Title { get; set; }
         public string Body { get; set; }
         public DateTime DateCreated { get; set; }
-        public ICollection<ArticleContributor> Contributors { get; set; }
+        public ICollection<ArticleContributor> Contributors { get; set; } = new List<ArticleContributor>();
     }
 }

@@ -1,6 +1,7 @@
 using AutoMapper;
 using CSharpReact.Api.Extensions;
 using CSharpReact.Api.Middleware;
+using CSharpReact.Repositories.Core;
 using CSharpReact.Repositories.Repositories.Articles;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -41,6 +42,7 @@ namespace CSharpReact.Api
             services.ConfigureSwagger();
             services.AddMediatR(typeof(List.Handler));
             services.AddIdentityServices(Configuration);
+            services.ConfigureScopes();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

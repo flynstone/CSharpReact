@@ -1,4 +1,6 @@
 ﻿using CSharpReact.Data;
+using CSharpReact.Infrastructure.Security;
+using CSharpReact.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -66,6 +68,11 @@ namespace CSharpReact.Api.Extensions
 
                 });
             });
+        }
+
+        public static void ConfigureScopes(this IServiceCollection services)
+        {
+            services.AddScoped<IUserAccessor, UserAccessor>();
         }
 
         // Configure SQL Server

@@ -10,3 +10,10 @@ C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\obj\Debug\net
 C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\obj\Debug\net5.0\refint\CSharpReact.Infrastructure.dll
 C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\obj\Debug\net5.0\CSharpReact.Infrastructure.pdb
 C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\obj\Debug\net5.0\ref\CSharpReact.Infrastructure.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\bin\Debug\net5.0\CSharpReact.Data.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\bin\Debug\net5.0\CSharpReact.Entities.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\bin\Debug\net5.0\CSharpReact.Repositories.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\bin\Debug\net5.0\CSharpReact.Repositories.pdb
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\bin\Debug\net5.0\CSharpReact.Data.pdb
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\bin\Debug\net5.0\CSharpReact.Entities.pdb
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.Infrastructure\obj\Debug\net5.0\CSharpReact.Infrastructure.csproj.CopyComplete

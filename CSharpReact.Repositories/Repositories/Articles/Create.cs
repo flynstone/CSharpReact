@@ -1,8 +1,10 @@
 ﻿using CSharpReact.Data;
 using CSharpReact.Entities.Models;
 using CSharpReact.Repositories.Core;
+using CSharpReact.Repositories.Interfaces;
 using FluentValidation;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -28,13 +30,28 @@ namespace CSharpReact.Repositories.Repositories.Articles
         public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly AppDbContext _context;
-            public Handler(AppDbContext context)
+            private readonly IUserAccessor _userAccessor;
+            public Handler(AppDbContext context, IUserAccessor userAccessor)
             {
                 _context = context;
+                _userAccessor = userAccessor;
             }
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
+                // Get User => store it in variable user
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == _userAccessor.GetUsername());
+
+                var contributor = new ArticleContributor
+                {
+                    AppUser = user,
+                    Article = request.Article,
+                    IsCreator = true
+                };
+
+                request.Article.Contributors.Add(contributor);
+
+                // Add article (in memory)
                 _context.Articles.Add(request.Article);
 
                 // Return true or false if the result is found or not

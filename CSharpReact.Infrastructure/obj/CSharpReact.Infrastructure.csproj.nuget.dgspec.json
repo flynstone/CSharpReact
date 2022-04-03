@@ -4,14 +4,80 @@
     "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Infrastructure\\CSharpReact.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Infrastructure\\CSharpReact.Infrastructure.csproj": {
+    "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Data\\CSharpReact.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Infrastructure\\CSharpReact.Infrastructure.csproj",
-        "projectName": "CSharpReact.Infrastructure",
-        "projectPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Infrastructure\\CSharpReact.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Data\\CSharpReact.Data.csproj",
+        "projectName": "CSharpReact.Data",
+        "projectPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Data\\CSharpReact.Data.csproj",
         "packagesPath": "C:\\Users\\flyns\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\flyns\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Entities\\CSharpReact.Entities.csproj": {
+                "projectPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Entities\\CSharpReact.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.15, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Entities\\CSharpReact.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Entities\\CSharpReact.Entities.csproj",
+        "projectName": "CSharpReact.Entities",
+        "projectPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Entities\\CSharpReact.Entities.csproj",
+        "packagesPath": "C:\\Users\\flyns\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\flyns\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +105,159 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.15, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Infrastructure\\CSharpReact.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Infrastructure\\CSharpReact.Infrastructure.csproj",
+        "projectName": "CSharpReact.Infrastructure",
+        "projectPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Infrastructure\\CSharpReact.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\flyns\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\flyns\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Repositories\\CSharpReact.Repositories.csproj": {
+                "projectPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Repositories\\CSharpReact.Repositories.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Repositories\\CSharpReact.Repositories.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Repositories\\CSharpReact.Repositories.csproj",
+        "projectName": "CSharpReact.Repositories",
+        "projectPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Repositories\\CSharpReact.Repositories.csproj",
+        "packagesPath": "C:\\Users\\flyns\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Repositories\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\flyns\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Data\\CSharpReact.Data.csproj": {
+                "projectPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Data\\CSharpReact.Data.csproj"
+              },
+              "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Entities\\CSharpReact.Entities.csproj": {
+                "projectPath": "C:\\Users\\flyns\\source\\repos\\CSharpReact\\CSharpReact.Entities\\CSharpReact.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[10.4.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[10.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

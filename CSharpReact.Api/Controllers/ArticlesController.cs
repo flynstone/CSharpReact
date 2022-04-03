@@ -1,13 +1,11 @@
 ﻿using CSharpReact.Entities.Models;
 using CSharpReact.Repositories.Repositories.Articles;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
 namespace CSharpReact.Api.Controllers
 {
-    [AllowAnonymous]
     public class ArticlesController : BaseApiController
     {
         [HttpGet]

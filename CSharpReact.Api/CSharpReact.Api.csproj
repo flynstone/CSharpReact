@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CSharpReact.Entities\CSharpReact.Entities.csproj" />
+    <ProjectReference Include="..\CSharpReact.Infrastructure\CSharpReact.Infrastructure.csproj" />
     <ProjectReference Include="..\CSharpReact.Repositories\CSharpReact.Repositories.csproj" />
   </ItemGroup>
 
