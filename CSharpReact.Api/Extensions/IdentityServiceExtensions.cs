@@ -1,7 +1,9 @@
 ﻿using CSharpReact.Api.Services;
 using CSharpReact.Data;
 using CSharpReact.Entities.Models;
+using CSharpReact.Infrastructure.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,6 +42,16 @@ namespace CSharpReact.Api.Extensions
                         ValidateAudience = false
                     };
                 });
+
+            services.AddAuthorization(opt =>
+            {
+                opt.AddPolicy("IsArticleCreator", policy =>
+                {
+                    policy.Requirements.Add(new IsCreatorRequirement());
+                });
+            });
+
+            services.AddTransient<IAuthorizationHandler, IsCreatorRequirementHandler>();
             services.AddScoped<TokenService>();
 
             return services;
