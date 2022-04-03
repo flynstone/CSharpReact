@@ -46,6 +46,14 @@ namespace CSharpReact.Data.Seeds
                         Title = "What is Lorem Ipsum?",
                         Body = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                         DateCreated = DateTime.Now,
+                        Contributors = new List<ArticleContributor>
+                        {
+                            new ArticleContributor
+                            {
+                                AppUser = users[0],
+                                IsCreator = true,
+                            }
+                        }
                     },
                     new Article
                     {
@@ -53,6 +61,19 @@ namespace CSharpReact.Data.Seeds
                         Title = "Where does it come from?",
                         Body = "Contrary to popular belief, Lorem Ipsum is not simply random text.",
                         DateCreated = DateTime.Now,
+                        Contributors = new List<ArticleContributor>
+                        {
+                            new ArticleContributor
+                            {
+                                AppUser = users[0],
+                                IsCreator = true,
+                            },
+                            new ArticleContributor
+                            {
+                                AppUser= users[1],
+                                IsCreator = false
+                            }
+                        }
                     },
                     new Article
                     {
@@ -60,6 +81,19 @@ namespace CSharpReact.Data.Seeds
                         Title = "Why do we use it?",
                         Body = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
                         DateCreated = DateTime.Now,
+                        Contributors = new List<ArticleContributor>
+                        {
+                            new ArticleContributor
+                            {
+                                AppUser = users[1],
+                                IsCreator = true,
+                            },
+                            new ArticleContributor
+                            {
+                                AppUser= users[0],
+                                IsCreator = false
+                            }
+                        }
                     },
                     new Article
                     {
@@ -67,6 +101,14 @@ namespace CSharpReact.Data.Seeds
                         Title = "Where can I get some?",
                         Body = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.",
                         DateCreated = DateTime.Now,
+                        Contributors = new List<ArticleContributor>
+                        {
+                            new ArticleContributor
+                            {
+                                AppUser = users[1],
+                                IsCreator = true,
+                            }
+                        }
                     }
                 };
 
