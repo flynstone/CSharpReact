@@ -1,4 +1,7 @@
-﻿namespace CSharpReact.Repositories.Profiles
+﻿using CSharpReact.Entities.Models;
+using System.Collections.Generic;
+
+namespace CSharpReact.Repositories.Profiles
 {
     public class Profile
     {
@@ -6,6 +9,6 @@
         public string DisplayName { get; set; }
         public string Bio { get; set; }
         public string Image { get; set; }
-
+        public ICollection<Photo> Photos { get; set; }
     }
 }

@@ -13,6 +13,6 @@ namespace CSharpReact.Repositories.Repositories.Articles
         public string Category { get; set; }
         public string CreatorUsername { get; set; }
         public bool IsClosed { get; set; }
-        public ICollection<Profile> Contributors { get; set; }
+        public ICollection<ArticleDto> Contributors { get; set; }
     }
 }
