@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
 import { Article } from "../models/article";
+import { store } from "./store";
 
 export default class ArticleStore {
   articles: Article[] = [];
@@ -72,6 +73,11 @@ export default class ArticleStore {
   }
 
   private setArticle = (article: Article) => {
+    const user = store.userStore.user;
+    if (user) {
+      article.isCreator = article.creatorUsername === user.username;
+      article.creator = article.contributors?.find(x => x.username === article.creatorUsername);
+    }
     article.dateCreated = article.dateCreated.split('T')[0];
     this.articleRegistry.set(article.id, article);
   }

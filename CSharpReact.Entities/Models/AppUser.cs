@@ -8,5 +8,6 @@ namespace CSharpReact.Entities.Models
         public string DisplayName { get; set; }
         public string Bio { get; set; }
         public ICollection<ArticleContributor> Articles { get; set; }
+        public ICollection<Photo> Photos { get; set; } 
     }
 }

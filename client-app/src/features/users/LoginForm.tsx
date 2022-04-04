@@ -2,13 +2,14 @@ import { Card } from "@mui/material";
 import { ErrorMessage, Form, Formik } from "formik";
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { Button, CardHeader, FormField, Label } from "semantic-ui-react";
+import { Button, CardHeader, FormField, Label } from 'semantic-ui-react';
 import MyTextInput from "../../app/common/form/MyTextInput";
 import { useStore } from "../../app/stores/store";
 
 export default observer(function LoginForm() {
   const { userStore } = useStore();
   return (
+    <div className="Container">
     <Formik
       initialValues={{ email: '', password: '', error: null }}
       onSubmit={(values, { setErrors }) => userStore.login(values).catch(error => setErrors({ error: 'Invalid email or password' }))}
@@ -31,6 +32,7 @@ export default observer(function LoginForm() {
           
       </Form>
     )}   
-    </Formik>    
+      </Formik>  
+      </div>  
   )
 })

@@ -315,3 +315,38 @@ Screenshot below of Bearer Token
 - MobX reactions
 - Form submission errors
 - Modal
+
+## Photo Storage Options
+
+<br/>
+
+```
+Database
+```
+
+- Inefficient
+- Stores files as BLOBs
+- Disk space is an issue
+- Authentication is easy
+
+<br/>
+
+```
+File System
+```
+
+- Good for storing files
+- Disk space is an issue
+- File permissions
+
+<br/>
+
+```
+Cloud Service
+```
+
+- Highly Scalable
+- Could be more expensive
+- Secured with API Key
+
+

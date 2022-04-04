@@ -1,4 +1,5 @@
 ﻿using CSharpReact.Data;
+using CSharpReact.Infrastructure.Photos;
 using CSharpReact.Infrastructure.Security;
 using CSharpReact.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -73,6 +74,12 @@ namespace CSharpReact.Api.Extensions
         public static void ConfigureScopes(this IServiceCollection services)
         {
             services.AddScoped<IUserAccessor, UserAccessor>();
+            services.AddScoped<IPhotoAccessor, PhotoAccessor>();
+        }
+
+        public static void ConfigureCloudinary(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<CloudinarySettings>(configuration.GetSection("Cloudinary"));
         }
 
         // Configure SQL Server

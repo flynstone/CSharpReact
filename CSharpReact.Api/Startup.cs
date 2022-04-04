@@ -43,6 +43,7 @@ namespace CSharpReact.Api
             services.AddMediatR(typeof(List.Handler));
             services.AddIdentityServices(Configuration);
             services.ConfigureScopes();
+            services.ConfigureCloudinary(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

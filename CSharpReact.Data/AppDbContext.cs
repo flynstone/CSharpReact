@@ -12,6 +12,7 @@ namespace CSharpReact.Data
 
         public DbSet<Article> Articles { get; set; }
         public DbSet<ArticleContributor> ArticleContributors { get; set; }
+        public DbSet<Photo> Photos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder) 
         {
