@@ -75,6 +75,7 @@ namespace CSharpReact.Api.Extensions
         {
             services.AddScoped<IUserAccessor, UserAccessor>();
             services.AddScoped<IPhotoAccessor, PhotoAccessor>();
+            services.AddSignalR();
         }
 
         public static void ConfigureCloudinary(this IServiceCollection services, IConfiguration configuration)

@@ -1,6 +1,7 @@
 using AutoMapper;
 using CSharpReact.Api.Extensions;
 using CSharpReact.Api.Middleware;
+using CSharpReact.Api.SignalR;
 using CSharpReact.Repositories.Core;
 using CSharpReact.Repositories.Repositories.Articles;
 using FluentValidation.AspNetCore;
@@ -71,6 +72,7 @@ namespace CSharpReact.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/chat");
             });
         }
     }
