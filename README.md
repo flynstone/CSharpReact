@@ -14,35 +14,6 @@ Asp.Net Core is definetely a winner in this category.
 C# language provides a reliability and security to the platform which makes it a great option ti create a robust software.
 ```
 
-## Data relations
-<br/>
-
-```
-One to One
-```
-
-- Is a relationship where a record in one entity (or table) is associated with exacly one record in another entity.
-
-<br/>
-
-```
-One to Many
-```
-
-- Is the most common type of relationship.
-- A row in table X can have many matching rows in table Y.
-- Can only be created if only one of the related columns is a primary key.
-
-<br/>
-
-```
-Many to Many
-```
-
-- Is created with a third table that is called a junction table.
-- The "Primary Key" of the junction table consists of the foreign keys from both table X and table Y. 
-
-<br/>
 
 
 ### Screenshots showing front-end connection to back-end
@@ -50,7 +21,7 @@ Many to Many
 <br/>
 
 <details>
-  <summary>Open screenshot</summary>
+  <summary>Open Screenshot</summary>
 
 
   !["screenshot description"](./screenshots/2022-03-18.png)
@@ -59,19 +30,21 @@ Many to Many
 <br/>
 
 <details>
-  <summary>Open screenshot</summary>
+  <summary>Open Screenshot</summary>
 
   !["screenshot description"](./screenshots/2022-03-18.png)
 </details>
 
 <br/>
+
+
 
 ### Articles List
 
 <br/>
 
 <details>
-  <summary>Open screenshot</summary>
+  <summary>Open Screenshot</summary>
   
   !['screenshot description'](./screenshots/2022-03-30(1).png)
 </details>
@@ -83,7 +56,7 @@ Many to Many
 <br/>
 
 <details>
-  <summary>Open screenshot</summary>
+  <summary>Open Screenshot</summary>
   
   ![screendshot description'](./screenshots/2022-03-30.png)
 </details>
@@ -95,12 +68,37 @@ Many to Many
 <br/>
 
 <details>
-  <summary>Open screenshot</summary>
+  <summary>Open Screenshot</summary>
   
   ![screendshot description'](./screenshots/2022-03-30(3).png)
 </details>
 
 <br/>
+
+## SignalR
+
+```
+What is SignalR?
+```
+
+- Adds real-time web functionality to apps
+- Connected clients receive content instantly
+
+Is ideal for:
+
+```
+Chat apps
+Dashboard
+Monitoring
+```
+
+Transports:
+
+```
+WebSockets
+Server-sent events
+Long polling
+```
 
 ## Why axios?
 
@@ -236,6 +234,37 @@ Queries => Which reads data from the database (does not modify state) and should
 ```
 
 - Mediator is used to mediate between different layers in the Clean Architecture pattern
+
+
+## Data relations
+<br/>
+
+```
+One to One
+```
+
+- Is a relationship where a record in one entity (or table) is associated with exacly one record in another entity.
+
+<br/>
+
+```
+One to Many
+```
+
+- Is the most common type of relationship.
+- A row in table X can have many matching rows in table Y.
+- Can only be created if only one of the related columns is a primary key.
+
+<br/>
+
+```
+Many to Many
+```
+
+- Is created with a third table that is called a junction table.
+- The "Primary Key" of the junction table consists of the foreign keys from both table X and table Y. 
+
+<br/>
 
 
 ## Forms with Formik

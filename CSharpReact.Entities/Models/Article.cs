@@ -11,5 +11,6 @@ namespace CSharpReact.Entities.Models
         public DateTime DateCreated { get; set; }
         public bool IsClosed { get; set; }
         public ICollection<ArticleContributor> Contributors { get; set; } = new List<ArticleContributor>();
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
     }
 }

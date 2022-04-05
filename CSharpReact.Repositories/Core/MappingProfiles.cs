@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CSharpReact.Entities.Models;
+using CSharpReact.Repositories.Comments;
 using CSharpReact.Repositories.Repositories.Articles;
 using System.Linq;
 
@@ -23,6 +24,11 @@ namespace CSharpReact.Repositories.Core
 
             CreateMap<AppUser, Profiles.Profile>()
                 .ForMember(d => d.Image, opt => opt.MapFrom(s => s.Photos.FirstOrDefault(x => x.IsMain).Url));
+
+            CreateMap<Comment, CommentDto>()
+                .ForMember(x => x.DisplayName, opt => opt.MapFrom(y => y.Author.DisplayName))
+                .ForMember(x => x.Username, opt => opt.MapFrom(y => y.Author.UserName))
+                .ForMember(d => d.Image, opt => opt.MapFrom(s => s.Author.Photos.FirstOrDefault(x => x.IsMain).Url));
         }
     }
 }

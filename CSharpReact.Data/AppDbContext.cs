@@ -12,6 +12,7 @@ namespace CSharpReact.Data
 
         public DbSet<Article> Articles { get; set; }
         public DbSet<ArticleContributor> ArticleContributors { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         public DbSet<Photo> Photos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder) 
@@ -32,6 +33,11 @@ namespace CSharpReact.Data
                 .HasOne(u => u.Article)
                 .WithMany(a => a.Contributors)
                 .HasForeignKey(y => y.ArticleId);
+
+            builder.Entity<Comment>()
+                .HasOne(a => a.Article)
+                .WithMany(c => c.Comments)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

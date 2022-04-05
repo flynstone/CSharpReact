@@ -11,7 +11,6 @@ export default observer(function ModalContainer() {
       open={modalStore.modal.open}
       onClose={modalStore.closeModal}
       style={{ backgroundColor: '#343434' }}>
-
       <Modal.Content style={{backgroundColor: '#343434'}}>
         {modalStore.modal.body}
       </Modal.Content>
