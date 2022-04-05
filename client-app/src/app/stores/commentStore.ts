@@ -47,4 +47,13 @@ export default class CommentStore {
     this.comments = [];
     this.stopHubConnection();
   }
+
+  addComment = async (values: any) => {
+    values.articleId = store.articleStore.selectedArticle?.id;
+    try {
+      await this.hubConnection?.invoke('SendComment', values);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

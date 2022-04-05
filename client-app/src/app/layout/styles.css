@@ -38,6 +38,14 @@ article {
   padding: 2rem;
 }
 
+.Fill {
+  display: flex;
+  padding: 2rem;
+  padding-left: 8rem;
+  flex-direction: column;
+  min-width: 50vw !important;
+}
+
 .Content {
   display: flex;
   flex-direction: column;

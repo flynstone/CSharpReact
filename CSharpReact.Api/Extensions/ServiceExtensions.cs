@@ -20,6 +20,7 @@ namespace CSharpReact.Api.Extensions
                 options.AddPolicy("CorsPolicy", builder =>
                 builder.AllowAnyMethod()
                        .AllowAnyHeader()
+                       .AllowCredentials()
                        .WithOrigins("http://localhost:3000"));
             });
 

@@ -30,7 +30,7 @@ export default observer(function ArticleDetails() {
           <Card>
             <ArticleDetailedHeader article={article} />
             <ArticleDetailedInfo article={article} />
-            <ArticleDetailedComment />
+            <ArticleDetailedComment articleId={article.id} />
           </Card>         
         </Grid.Column>
         <Grid.Column width={6}>
@@ -39,7 +39,6 @@ export default observer(function ArticleDetails() {
           </Card>   
         </Grid.Column>
       </Grid>
-
       {/* <Card style={{paddingLeft: '2rem'}}>
         <CardHeader />{article.title}
         
