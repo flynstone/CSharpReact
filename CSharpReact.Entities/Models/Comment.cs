@@ -8,6 +8,6 @@ namespace CSharpReact.Entities.Models
         public string Message { get; set; }
         public AppUser Author { get; set; }
         public Article Article { get; set; }
-        public DateTime CreateAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }

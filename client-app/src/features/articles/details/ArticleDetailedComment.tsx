@@ -1,15 +1,17 @@
-import { Formik, Form } from "formik";
+import { Formik, Form, Field, FieldProps } from "formik";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button, Comment, Header, Segment } from "semantic-ui-react";
-import MyTextArea from "../../../app/common/form/MyTextArea";
+import { Comment, Header, Loader, Segment } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
+import * as Yup from 'yup';
+import { observer } from "mobx-react-lite";
+import { formatDistanceToNow } from "date-fns";
 
 interface Props {
   articleId: string;
 }
 
-export default function ArticleDetailedComment({ articleId }: Props) {
+export default observer(function ArticleDetailedComment({ articleId }: Props) {
   const { commentStore } = useStore();
 
   useEffect(() => {
@@ -33,40 +35,57 @@ export default function ArticleDetailedComment({ articleId }: Props) {
       >
         <Header><h2>Comment on this article</h2></Header>
       </Segment>
-      <Segment attached clearing style={{ backgroundColor: '#121212', paddingLeft: '2rem' }}>
-        <Comment.Group>
+      <Segment attached style={{ backgroundColor: '#121212', paddingLeft: '2rem', paddingTop: '2rem' }}>
+        <Comment.Group style={{minWidth: '100%'}}>
           {commentStore.comments.map(comment => (         
           <Comment key={comment.id}>
               <Comment.Avatar src={comment.image || '/img/user.png'} />
-            <Comment.Content>
-              <Comment.Author style={{color: 'teal'}} as={Link} to={`/profiles/${comment.username}`}>{comment.displayName}</Comment.Author>
-              <Comment.Metadata>
-                  <div style={{color: 'beige'}}>{ comment.createdAt }</div>
-              </Comment.Metadata>
-              <Comment.Text style={{color: 'white'}}>{comment.message}</Comment.Text>
+              <Comment.Content>
+                <div className="Row">
+                <Comment.Author style={{ color: 'teal' }} as={Link} to={`/profiles/${comment.username}`}>
+                  {comment.displayName}
+                </Comment.Author>
+                <Comment.Metadata>
+                  <div style={{color: 'beige'}}>{formatDistanceToNow(comment.createdAt)}</div>  
+                </Comment.Metadata>
+                </div>
+              <Comment.Text style={{whiteSpace: 'pre-wrap', color: 'white'}}>{comment.message}</Comment.Text>
             </Comment.Content>
           </Comment>   
           ))}
 
           <Formik
             onSubmit={(values, { resetForm }) => commentStore.addComment(values).then(() => resetForm())}
-            initialValues={{body: ''}}
+            initialValues={{ message: '' }}
+            validationSchema={Yup.object({
+              message: Yup.string().required()
+            })}
           >
-            {({ isSubmitting, isValid }) => (
+            {({ isSubmitting, isValid, handleSubmit }) => (
               <Form className="ui form">
-                <div className="Fill">
-                  <MyTextArea placeholder="Add comment" name="message" rows={2} />
-                </div>
-                <Button
-                    loading={isSubmitting}
-                    disabled={isSubmitting || !isValid}
-                    content='Add Reply'
-                    labelPosition='left'
-                    icon='edit'
-                    primary
-                    type='submit'
-                    floated='right'
-                  />
+                <Field name='message'>
+                  {(props: FieldProps) => (
+                    <div style={{position: 'relative'}}>
+                      <Loader active={isSubmitting} />
+                      <br /><br />
+                      <textarea
+                        style={{backgroundColor: '#343434', color: 'white', width: '100%'}}
+                        placeholder="Enter your comment (Enter to submit, SHIFT + enter for new line)"
+                        rows={2}
+                        {...props.field}
+                        onKeyPress={e => {
+                          if (e.key === 'Enter' && e.shiftKey) {
+                            return;
+                          }
+                          if (e.key === 'Enter' && !e.shiftKey) {
+                            e.preventDefault();
+                            isValid && handleSubmit()
+                          }
+                        }}
+                      />
+                    </div>
+                  )}
+                </Field>
               </Form>
             )}
           </Formik>
@@ -75,4 +94,4 @@ export default function ArticleDetailedComment({ articleId }: Props) {
       </Segment>
     </>
   )
-}
+})

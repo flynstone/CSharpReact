@@ -33,7 +33,7 @@ namespace CSharpReact.Repositories.Comments
             {
                 var comments = await _context.Comments
                     .Where(x => x.Article.Id == request.ArticleId)
-                    .OrderBy(x => x.CreateAt)
+                    .OrderByDescending(x => x.CreatedAt)
                     .ProjectTo<CommentDto>(_mapper.ConfigurationProvider)
                     .ToListAsync();
 

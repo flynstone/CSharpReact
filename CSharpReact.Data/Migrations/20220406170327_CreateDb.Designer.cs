@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharpReact.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220402205453_articlecontributor")]
-    partial class articlecontributor
+    [Migration("20220406170327_CreateDb")]
+    partial class CreateDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -104,6 +104,9 @@ namespace CSharpReact.Data.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsClosed")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -128,6 +131,55 @@ namespace CSharpReact.Data.Migrations
                     b.HasIndex("ArticleId");
 
                     b.ToTable("ArticleContributors");
+                });
+
+            modelBuilder.Entity("CSharpReact.Entities.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<Guid?>("ArticleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AuthorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ArticleId");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("CSharpReact.Entities.Models.Photo", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsMain")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Photos");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -280,6 +332,29 @@ namespace CSharpReact.Data.Migrations
                     b.Navigation("Article");
                 });
 
+            modelBuilder.Entity("CSharpReact.Entities.Models.Comment", b =>
+                {
+                    b.HasOne("CSharpReact.Entities.Models.Article", "Article")
+                        .WithMany("Comments")
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CSharpReact.Entities.Models.AppUser", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
+
+                    b.Navigation("Article");
+
+                    b.Navigation("Author");
+                });
+
+            modelBuilder.Entity("CSharpReact.Entities.Models.Photo", b =>
+                {
+                    b.HasOne("CSharpReact.Entities.Models.AppUser", null)
+                        .WithMany("Photos")
+                        .HasForeignKey("AppUserId");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -334,10 +409,14 @@ namespace CSharpReact.Data.Migrations
             modelBuilder.Entity("CSharpReact.Entities.Models.AppUser", b =>
                 {
                     b.Navigation("Articles");
+
+                    b.Navigation("Photos");
                 });
 
             modelBuilder.Entity("CSharpReact.Entities.Models.Article", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("Contributors");
                 });
 #pragma warning restore 612, 618

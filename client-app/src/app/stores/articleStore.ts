@@ -140,4 +140,8 @@ export default class ArticleStore {
       });
     }
   }
+
+  clearSelectedArticle = () => {
+    this.selectedArticle = undefined;
+  }
 }

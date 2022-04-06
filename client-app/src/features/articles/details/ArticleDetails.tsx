@@ -7,36 +7,31 @@ import { Grid } from "semantic-ui-react";
 import ArticleDetailedHeader from "./ArticleDetailedHeader";
 import ArticleDetailedInfo from "./ArticleDetailedInfo";
 import ArticleDetailedComment from "./ArticleDetailedComment";
-import ArticleDetailedSidebar from "./ArticleDetailedSidebar";
 import { Card } from '@mui/material';
 
 
 export default observer(function ArticleDetails() {
   const { articleStore } = useStore();
-  const { selectedArticle: article, loadArticle, loadingInitial } = articleStore;
+  const { selectedArticle: article, loadArticle, loadingInitial, clearSelectedArticle } = articleStore;
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
     if (id) loadArticle(id);
-  }, [id, loadArticle]);
+    return () => clearSelectedArticle();
+  }, [id, loadArticle, clearSelectedArticle]);
 
   if (loadingInitial || !article) return <LoadingComponent />;
 
   return (
     <>
       <br />
-      <Grid className="pt-3">
-        <Grid.Column width={10}>
+      <Grid className="pt-3 justify-content-center">
+        <Grid.Column width={14}>
           <Card>
             <ArticleDetailedHeader article={article} />
             <ArticleDetailedInfo article={article} />
             <ArticleDetailedComment articleId={article.id} />
           </Card>         
-        </Grid.Column>
-        <Grid.Column width={6}>
-          <Card>
-            <ArticleDetailedSidebar />
-          </Card>   
         </Grid.Column>
       </Grid>
       {/* <Card style={{paddingLeft: '2rem'}}>
