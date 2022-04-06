@@ -88,7 +88,7 @@ namespace CSharpReact.Api.Extensions
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<AppDbContext>(opts =>
-                opts.UseSqlServer(configuration.GetConnectionString("sqlConnection"), (b => b.MigrationsAssembly("CSharpReact.Data"))));
+                opts.UseNpgsql(configuration.GetConnectionString("sqlConnection"), (b => b.MigrationsAssembly("CSharpReact.Data"))));
         }
 
     }
