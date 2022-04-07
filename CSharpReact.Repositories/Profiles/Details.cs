@@ -2,6 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using CSharpReact.Data;
 using CSharpReact.Repositories.Core;
+using CSharpReact.Repositories.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -21,16 +22,18 @@ namespace CSharpReact.Repositories.Profiles
         {
             private readonly AppDbContext _context;
             private readonly IMapper _mapper;
-            public Handler(AppDbContext context, IMapper mapper)
+            private readonly IUserAccessor _userAccessor;
+            public Handler(AppDbContext context, IMapper mapper, IUserAccessor userAccessor)
             {
                 _context = context;
                 _mapper = mapper;
+                _userAccessor = userAccessor;
             }
 
             public async Task<Result<Profile>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var user = await _context.Users
-                    .ProjectTo<Profile>(_mapper.ConfigurationProvider)
+                    .ProjectTo<Profile>(_mapper.ConfigurationProvider, new { currentUsername = _userAccessor.GetUsername() })
                     .SingleOrDefaultAsync(x => x.Username == request.Username);
 
                 if (user == null) return null;

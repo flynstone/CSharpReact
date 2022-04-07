@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using CSharpReact.Data;
-using CSharpReact.Entities.Models;
 using CSharpReact.Repositories.Core;
+using CSharpReact.Repositories.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -19,16 +19,18 @@ namespace CSharpReact.Repositories.Repositories.Articles
         {
             private readonly AppDbContext _context;
             private readonly IMapper _mapper;
-            public Handler(AppDbContext context, IMapper mapper)
+            private readonly IUserAccessor _userAccessor;
+            public Handler(AppDbContext context, IMapper mapper, IUserAccessor userAccessor)
             {
                 _context = context;
                 _mapper = mapper;
+                _userAccessor = userAccessor;
             }
 
             public async Task<Result<List<ArticleDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var articles = await _context.Articles
-                    .ProjectTo<ArticleDto>(_mapper.ConfigurationProvider)
+                    .ProjectTo<ArticleDto>(_mapper.ConfigurationProvider, new { currentUsername = _userAccessor.GetUsername() })
                     .ToListAsync(cancellationToken);
 
                 return Result<List<ArticleDto>>.Success(articles);
