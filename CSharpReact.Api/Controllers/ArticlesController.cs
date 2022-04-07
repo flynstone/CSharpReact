@@ -1,4 +1,5 @@
 ﻿using CSharpReact.Entities.Models;
+using CSharpReact.Repositories.Core;
 using CSharpReact.Repositories.Repositories.Articles;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +11,9 @@ namespace CSharpReact.Api.Controllers
     public class ArticlesController : BaseApiController
     {
         [HttpGet]
-        public async Task<IActionResult> GetArticles()
+        public async Task<IActionResult> GetArticles([FromQuery]PagingParams param)
         {
-            return HandleResult(await Mediator.Send(new List.Query()));
+            return HandlePagedResult(await Mediator.Send(new List.Query { Params = param }));
         }
 
         [HttpGet("{id}")]

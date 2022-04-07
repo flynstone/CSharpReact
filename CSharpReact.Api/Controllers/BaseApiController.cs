@@ -1,4 +1,5 @@
-﻿using CSharpReact.Repositories.Core;
+﻿using CSharpReact.Api.Extensions;
+using CSharpReact.Repositories.Core;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,22 @@ namespace CSharpReact.Api.Controllers
             // Check if an article is found and return accordingly
             if (result.IsSuccess && result.Value != null)
                 return Ok(result.Value);
+            if (result.IsSuccess && result.Value == null)
+                return NotFound();
+            return BadRequest(result.Error);
+        }
+
+        protected ActionResult HandlePagedResult<T>(Result<PagedList<T>> result)
+        {
+            if (result == null) return NotFound();
+            // Check if an article is found and return accordingly
+            if (result.IsSuccess && result.Value != null)
+            {
+                // Add header for pagination
+                Response.AddPaginationHeader(result.Value.CurrentPage, result.Value.PageSize, result.Value.TotalCount, result.Value.TotalPages);
+                return Ok(result.Value);
+            }
+                
             if (result.IsSuccess && result.Value == null)
                 return NotFound();
             return BadRequest(result.Error);

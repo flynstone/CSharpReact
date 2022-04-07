@@ -6,6 +6,7 @@ using CSharpReact.Repositories.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,9 +14,12 @@ namespace CSharpReact.Repositories.Repositories.Articles
 {
     public class List
     {
-        public class Query : IRequest<Result<List<ArticleDto>>> {}
+        public class Query : IRequest<Result<PagedList<ArticleDto>>> 
+        {
+            public PagingParams Params { get; set; }
+        }
 
-        public class Handler : IRequestHandler<Query, Result<List<ArticleDto>>>
+        public class Handler : IRequestHandler<Query, Result<PagedList<ArticleDto>>>
         {
             private readonly AppDbContext _context;
             private readonly IMapper _mapper;
@@ -27,13 +31,16 @@ namespace CSharpReact.Repositories.Repositories.Articles
                 _userAccessor = userAccessor;
             }
 
-            public async Task<Result<List<ArticleDto>>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Result<PagedList<ArticleDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var articles = await _context.Articles
+                var query = _context.Articles
+                    .OrderBy(d => d.DateCreated)
                     .ProjectTo<ArticleDto>(_mapper.ConfigurationProvider, new { currentUsername = _userAccessor.GetUsername() })
-                    .ToListAsync(cancellationToken);
+                    .AsQueryable();
 
-                return Result<List<ArticleDto>>.Success(articles);
+                return Result<PagedList<ArticleDto>>.Success(
+                    await PagedList<ArticleDto>.CreateAsync(query, request.Params.PageNumber, request.Params.PageSize)
+                );
             }
         }
     }
