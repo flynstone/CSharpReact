@@ -32,6 +32,10 @@ article {
   padding: 2rem;
 }
 
+.label {
+  color: beige !important;
+}
+
 .Container {
   display: flex;
   flex-direction: column;
