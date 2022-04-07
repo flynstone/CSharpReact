@@ -8,12 +8,24 @@ interface Props {
   contributors: Profile[];
 }
 
-export default observer(function ArticleListItemContributor({contributors}: Props) {
+export default observer(function ArticleListItemContributor({ contributors }: Props) {
+  const styles = {
+    borderColor: 'orange',
+    borderWidth: 2
+  }
+
+
   return (
     <List horizontal>
       {contributors.map(contributor => (
          <List.Item key={contributor.username} as={Link} to={`/profiles/${contributor.username}`}>        
-          <Image size='mini' circular src={contributor.image || '/img/user.png'} />       
+          <Image
+            size='mini'
+            circular
+            src={contributor.image || '/img/user.png'}
+            bordered
+            style={contributor.following ? styles : null}
+          />       
         </List.Item>
       ))}
     </List>

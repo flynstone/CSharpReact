@@ -141,6 +141,17 @@ export default class ArticleStore {
     }
   }
 
+  updateArticleFollowing = (username: string) => {
+    this.articleRegistry.forEach(article => {
+      article.contributors?.forEach(contributor => {
+        if (contributor.username === username) {
+          contributor.following ? contributor.followersCount-- : contributor.followersCount++
+          contributor.following = !contributor.following;
+        }
+      })
+    })
+  }
+
   clearSelectedArticle = () => {
     this.selectedArticle = undefined;
   }

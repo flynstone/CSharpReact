@@ -8,6 +8,7 @@ import ArticleDetailedHeader from "./ArticleDetailedHeader";
 import ArticleDetailedInfo from "./ArticleDetailedInfo";
 import ArticleDetailedComment from "./ArticleDetailedComment";
 import { Card } from '@mui/material';
+import ArticleDetailedSidebar from "./ArticleDetailedSidebar";
 
 
 export default observer(function ArticleDetails() {
@@ -31,6 +32,7 @@ export default observer(function ArticleDetails() {
             <ArticleDetailedHeader article={article} />
             <ArticleDetailedInfo article={article} />
             <ArticleDetailedComment articleId={article.id} />
+            <ArticleDetailedSidebar article={article} />
           </Card>         
         </Grid.Column>
       </Grid>
