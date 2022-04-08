@@ -29,7 +29,7 @@ export default observer(function ProfilePhotos({ profile }: Props) {
   }
 
   return (
-    <Tab.Pane style={{ backgroundColor: '#343434', color: 'white' }}>
+    <Tab.Pane style={{ backgroundColor: 'teal' }}>
       <Grid>
         <Grid.Column width={16}>
           <Header floated="left" icon='image' content='Photos' />
@@ -37,6 +37,7 @@ export default observer(function ProfilePhotos({ profile }: Props) {
             <Button
               floated="right"
               basic
+              color='olive'
               content={addPhotoMode ? 'Cancel' : 'Add Photo'}
               onClick={() => setAddPhotoMode(!addPhotoMode)}
             />
@@ -53,7 +54,6 @@ export default observer(function ProfilePhotos({ profile }: Props) {
                     {isCurrentUser && (
                       <Button.Group fluid widths={2}>
                         <Button
-                          basic
                           color='green'
                           content='Main'
                           name={'main' + photo.id}
@@ -62,7 +62,6 @@ export default observer(function ProfilePhotos({ profile }: Props) {
                           onClick={e => handleSetMainPhoto(photo, e)}
                         />
                         <Button
-                          basic
                           color='red'
                           icon='trash'
                           loading={target === photo.id && loading}

@@ -8,7 +8,6 @@ import Home from '../../features/home/Home';
 import ArticleForm from '../../features/articles/form/ArticleForm';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ArticleDetails from '../../features/articles/details/ArticleDetails';
-import TestErrors from '../../features/errors/TestError';
 import { ToastContainer } from 'react-toastify';
 import NotFound from '../../features/errors/NotFound';
 import ServerError from '../../features/errors/ServerError';
@@ -55,7 +54,7 @@ function App() {
                   <Route path='/articles/:id' component={ArticleDetails} />
                   <Route key={location.key} path={['/createArticle', '/manage/:id']} component={ArticleForm} />
                   <Route path='/profiles/:username' component={ProfilePage} />
-                  <Route path='/errors' component={TestErrors} />
+                  {/* <Route path='/errors' component={TestErrors} /> */}
                   <Route path='/server-error' component={ServerError} />
                   <Route path='/login' component={LoginForm} />
                   <Route component={NotFound} />

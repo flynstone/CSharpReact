@@ -14,46 +14,42 @@ Asp.Net Core is definetely a winner in this category.
 C# language provides a reliability and security to the platform which makes it a great option ti create a robust software.
 ```
 
+<br/><br/>
+<hr>
+<br/><br/>
 
-
-### Screenshots showing front-end connection to back-end
-
-<br/>
-
-<details>
-  <summary>Open Screenshot</summary>
-
-
-  !["screenshot description"](./screenshots/2022-03-18.png)
-</details>
+## Screenshots
 
 <br/>
 
-<details>
-  <summary>Open Screenshot</summary>
+```
+Articles List
+```
 
-  !["screenshot description"](./screenshots/2022-03-18.png)
-</details>
-
-<br/>
-
-
-
-### Articles List
-
-<br/>
 
 <details>
   <summary>Open Screenshot</summary>
   
-  !['screenshot description'](./screenshots/2022-03-30(1).png)
+  !['screenshot description'](./screenshots/List.png)
 </details>
 
 <br/>
 
-### Articles Edit Form
+```
+Article Details
+```
+
+<details>
+  <summary>Open Screenshot</summary>
+  
+  !['screenshot description'](./screenshots/Details.png)
+</details>
 
 <br/>
+
+```
+Articles Edit Form
+```
 
 <details>
   <summary>Open Screenshot</summary>
@@ -63,9 +59,9 @@ C# language provides a reliability and security to the platform which makes it a
 
 <br/>
 
-### Articles Form Validations
-
-<br/>
+```
+Articles Form Validations
+```
 
 <details>
   <summary>Open Screenshot</summary>
@@ -74,6 +70,45 @@ C# language provides a reliability and security to the platform which makes it a
 </details>
 
 <br/>
+
+```
+Profile
+```
+
+<details>
+  <summary>Open Screenshot</summary>
+  
+  ![screendshot description'](./screenshots/Profile.png)
+</details>
+
+<br/>
+
+```
+Pictures
+```
+
+<details>
+  <summary>Open Screenshot</summary>
+  
+  ![screendshot description'](./screenshots/Photo.png)
+</details>
+
+<br/>
+
+```
+Following
+```
+
+<details>
+  <summary>Open Screenshot</summary>
+  
+  ![screendshot description'](./screenshots/Followings.png)
+</details>
+
+<br/><br/>
+<hr>
+<br/><br/>
+
 
 ## SignalR
 
@@ -100,13 +135,17 @@ Server-sent events
 Long polling
 ```
 
+<br/><br/>
+<hr>
+<br/><br/>
+
 ## Why axios?
 
 - It offers the kind of features that we would get if we were using a full framework like Angular (which comes with a powerful http client). 
 
 - React is a library and does not come with a facility and to get that kind of functionality we need to add a package.
 
-<br/>
+<br/><br/>
 
 ## What is Mobx?
 <br/>
@@ -137,7 +176,9 @@ Is a package to use Observables instead of Promises
 Because MobX uses Typescript and is fast and easy to work with.
 ```
 
-<br/>
+<br/><br/>
+<hr>
+<br/><br/>
 
 ## Router
 
@@ -173,7 +214,9 @@ There are 4 types of router hooks.
 
 4. <b>useRouteMatch</b> => It does the same thing as the routes components and how it matches url to a particular route.
 
-<br/>
+<br/><br/>
+<hr>
+<br/><br/>
 
 ## Error Handling
 
@@ -201,24 +244,15 @@ at the business logic level "data transfer objects" => interactions between clie
 - On the front-end using Axios interceptors
 
 
-## Screenshot of current event handler
-
-<br/>
-
-<details>
-  <summary>Open screenshot</summary>
-  
-  ![screendshot description'](./screenshots/2022-03-27.png)
-</details>
-
-<br/>
-
-
 ## Entity Framework Error Handling
 
 ```
 Will use fluent validation. This is done to validate in the application layer "Repositories" instead of inside the domain layer "Entities".
 ```
+
+<br/><br/>
+<hr>
+<br/><br/>
 
 
 ## CQRS + Mediator Pattern
@@ -235,37 +269,9 @@ Queries => Which reads data from the database (does not modify state) and should
 
 - Mediator is used to mediate between different layers in the Clean Architecture pattern
 
-
-## Data relations
 <br/>
-
-```
-One to One
-```
-
-- Is a relationship where a record in one entity (or table) is associated with exacly one record in another entity.
-
+<hr>
 <br/>
-
-```
-One to Many
-```
-
-- Is the most common type of relationship.
-- A row in table X can have many matching rows in table Y.
-- Can only be created if only one of the related columns is a primary key.
-
-<br/>
-
-```
-Many to Many
-```
-
-- Is created with a third table that is called a junction table.
-- The "Primary Key" of the junction table consists of the foreign keys from both table X and table Y. 
-
-<br/>
-
 
 ## Forms with Formik
 
@@ -274,11 +280,15 @@ Many to Many
 - Creating reausable form inputs
 
 
-## Identity
+<br/>
+
+# Identity
 
 - JWT Token Authentication => typacally used with web api 
 - Login / Register
 - Authenticate requests
+
+<br/>
 
 ## AspNet Core Identity
 
@@ -288,6 +298,8 @@ Many to Many
 - Comes with default user stores
 - UserManager
 - SignInManager
+
+<br/>
 
 ### Password Hashing + Salting 
 

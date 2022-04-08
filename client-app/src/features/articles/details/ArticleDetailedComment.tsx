@@ -6,7 +6,7 @@ import { useStore } from "../../../app/stores/store";
 import * as Yup from 'yup';
 import { observer } from "mobx-react-lite";
 import { formatDistanceToNow } from "date-fns";
-import { Card, CardContent, CardHeader } from "@mui/material";
+import { Card, CardContent } from "@mui/material";
 
 interface Props {
   articleId: string;
@@ -27,9 +27,9 @@ export default observer(function ArticleDetailedComment({ articleId }: Props) {
 
   return (
     <>
-
+      <br/>
       <Card>
-        <CardHeader /><h2>Comment on this article</h2>
+        <h2>Comment on this article</h2>
         <CardContent>
         <Comment.Group style={{minWidth: '100%'}}>
           {commentStore.comments.map(comment => (         
