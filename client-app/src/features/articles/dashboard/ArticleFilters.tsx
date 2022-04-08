@@ -1,7 +1,12 @@
-import { Card, MenuItem } from '@mui/material';
+import { Card } from '@mui/material';
+import { observer } from 'mobx-react-lite';
 import React from "react";
+import { MenuItem } from 'semantic-ui-react';
+import { useStore } from '../../../app/stores/store';
 
-export default function ArticleFilters() {
+export default observer(function ArticleFilters() {
+  const { articleStore: {predicate, setPredicate} } = useStore();
+
   return (
     <>
       <Card>
@@ -9,10 +14,27 @@ export default function ArticleFilters() {
         <h2>Filters</h2>
         </div>
 
-        <MenuItem>All Articles</MenuItem>
-        <MenuItem>All Comments</MenuItem>
-        <MenuItem>My Articles</MenuItem>
+        <div className='Container'>
+          <MenuItem
+            content='All Articles'
+            active={predicate.has('all')}
+            onClick={() => setPredicate('all', 'true')}
+          />
+  
+          <MenuItem
+            content='Contributions'
+            active={predicate.has('isContributor')}
+            onClick={() => setPredicate('isContributor', 'true')}
+          />
+
+          <MenuItem
+            content='My Articles'
+            active={predicate.has('isCreator')}
+            onClick={() => setPredicate('isCreator', 'true')}
+          />
+        </div>
+        
       </Card>
     </>
   )
-}
+})

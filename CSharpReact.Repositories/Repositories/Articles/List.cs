@@ -16,7 +16,7 @@ namespace CSharpReact.Repositories.Repositories.Articles
     {
         public class Query : IRequest<Result<PagedList<ArticleDto>>> 
         {
-            public PagingParams Params { get; set; }
+            public ArticleParams Params { get; set; }
         }
 
         public class Handler : IRequestHandler<Query, Result<PagedList<ArticleDto>>>
@@ -34,9 +34,20 @@ namespace CSharpReact.Repositories.Repositories.Articles
             public async Task<Result<PagedList<ArticleDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var query = _context.Articles
+                    .Where(d => d.DateCreated <= request.Params.StartDate)
                     .OrderBy(d => d.DateCreated)
                     .ProjectTo<ArticleDto>(_mapper.ConfigurationProvider, new { currentUsername = _userAccessor.GetUsername() })
                     .AsQueryable();
+
+                if (request.Params.IsContributor && !request.Params.IsCreator)
+                {
+                    query = query.Where(x => x.Contributors.Any(a => a.Username == _userAccessor.GetUsername()));
+                }
+
+                if (request.Params.IsCreator && !request.Params.IsContributor)
+                {
+                    query = query.Where(x => x.CreatorUsername == _userAccessor.GetUsername());
+                }
 
                 return Result<PagedList<ArticleDto>>.Success(
                     await PagedList<ArticleDto>.CreateAsync(query, request.Params.PageNumber, request.Params.PageSize)
