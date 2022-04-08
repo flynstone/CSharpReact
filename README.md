@@ -1,9 +1,11 @@
 # Asp.Net Core Web Api => using .net core 5 and React
-```css
-Project still under developement
-```
+
+
+<br/>
 
 ## Why Asp.Net Core instead of Node/Express?
+
+<br/>
 
 - You can read a great article comparing both frameworks => https://inveritasoft.com/blog/net-core-vs-nodejs-what-to-choose
 
@@ -14,9 +16,9 @@ Asp.Net Core is definetely a winner in this category.
 C# language provides a reliability and security to the platform which makes it a great option ti create a robust software.
 ```
 
-<br/><br/>
+<br/>
 <hr>
-<br/><br/>
+<br/>
 
 ## Screenshots
 
