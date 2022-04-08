@@ -1,4 +1,4 @@
-import { makeAutoObservable, reaction, runInAction, toJS } from "mobx";
+import { makeAutoObservable, reaction, runInAction } from "mobx";
 import agent from "../api/agent";
 import { Photo, Profile } from "../models/profile";
 import { store } from "./store";

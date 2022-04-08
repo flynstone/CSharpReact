@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
 import { Article } from "../models/article";
+import { Pagination, PagingParams } from "../models/pagination";
 import { store } from "./store";
 
 export default class ArticleStore {
@@ -11,9 +12,22 @@ export default class ArticleStore {
   editMode = false;
   loading = false;
   loadingInitial = false;
+  pagination: Pagination | null = null;
+  pagingParams = new PagingParams();
 
   constructor() {
     makeAutoObservable(this)
+  }
+
+  setPagingParams = (pagingParams: PagingParams) => {
+    this.pagingParams = pagingParams;
+  }
+
+  get axiosParams() {
+    const params = new URLSearchParams();
+    params.append('pageNumber', this.pagingParams.pageNumber.toString());
+    params.append('pageSize', this.pagingParams.pageSize.toString());
+    return params;
   }
 
   get articlesByDate() {
@@ -34,15 +48,20 @@ export default class ArticleStore {
   loadArticles = async () => {
     // Using mobx to mutate object directly
     try {
-      const articles = await agent.Articles.list();     
-      articles.forEach(article => {
+      const result = await agent.Articles.list(this.axiosParams);     
+      result.data.forEach(article => {
         this.setArticle(article);
       }); 
+      this.setPagination(result.pagination);
       this.setLoadingInitial(false);
     } catch (error) {
       console.log(error);
       this.setLoadingInitial(false);
     }
+  }
+
+  setPagination = (pagination: Pagination) => {
+    this.pagination = pagination;
   }
 
   loadArticle = async (id: string) => {
