@@ -22,7 +22,7 @@ export default observer(function ArticleDetailedSidebar({ article: { contributor
       >
         {contributors.length} {contributors?.length === 1 ? 'Person' : 'People'} contributed
       </Segment>
-      <Segment attached>
+      <Segment attached style={{backgroundColor: '#121212'}}>
         <List relaxed divided>
           {contributors.map(contributor => (
             <Item style={{ position: 'relative' }} key={contributor.username}>

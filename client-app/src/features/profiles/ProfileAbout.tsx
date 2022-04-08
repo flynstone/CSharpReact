@@ -11,7 +11,7 @@ export default observer(function ProfileAbout() {
 
   return (
     <Tab.Pane>
-      <Grid>
+      <Grid style={{backgroundColor: 'teal', color: 'white'}}>
         <Grid.Column width="16">
           <Header
             floated="left"
@@ -22,6 +22,7 @@ export default observer(function ProfileAbout() {
             <Button
               floated="right"
               basic
+              color='olive'
               content={editMode ? "Cancel" : "Edit Profile"}
               onClick={() => setEditMode(!editMode)}
             />

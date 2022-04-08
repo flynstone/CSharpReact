@@ -10,7 +10,7 @@ export default observer(function ProfileFollowings() {
 
   return (
     <Tab.Pane loading={loadingFollowings}>
-      <Grid>
+      <Grid style={{backgroundColor: 'teal'}}>
         <Grid.Column width={16}>
           <Header floated="left" icon='user' content={activeTab === 3 ? `People following ${profile?.displayName}` : `People ${profile?.displayName} is following`} />
         </Grid.Column>

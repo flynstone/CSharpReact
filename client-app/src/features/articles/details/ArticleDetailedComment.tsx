@@ -1,11 +1,12 @@
 import { Formik, Form, Field, FieldProps } from "formik";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Comment, Header, Loader, Segment } from "semantic-ui-react";
+import { Comment, Loader } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
 import * as Yup from 'yup';
 import { observer } from "mobx-react-lite";
 import { formatDistanceToNow } from "date-fns";
+import { Card, CardContent, CardHeader } from "@mui/material";
 
 interface Props {
   articleId: string;
@@ -26,16 +27,10 @@ export default observer(function ArticleDetailedComment({ articleId }: Props) {
 
   return (
     <>
-      <Segment
-        textAlign="center"
-        attached="top"
-        inverted
-        color="teal"
-        style={{border: 'none'}}
-      >
-        <Header><h2>Comment on this article</h2></Header>
-      </Segment>
-      <Segment attached style={{ backgroundColor: '#121212', paddingLeft: '2rem', paddingTop: '2rem' }}>
+
+      <Card>
+        <CardHeader /><h2>Comment on this article</h2>
+        <CardContent>
         <Comment.Group style={{minWidth: '100%'}}>
           {commentStore.comments.map(comment => (         
           <Comment key={comment.id}>
@@ -91,7 +86,9 @@ export default observer(function ArticleDetailedComment({ articleId }: Props) {
           </Formik>
           
         </Comment.Group>
-      </Segment>
+        </CardContent>
+      </Card>
+
     </>
   )
 })
