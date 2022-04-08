@@ -25,6 +25,19 @@ C# language provides a reliability and security to the platform which makes it a
 <br/>
 
 ```
+Database Diagram
+```
+
+
+<details>
+  <summary>Open Screenshot</summary>
+  
+  !['screenshot description'](./screenshots/Diagram.png)
+</details>
+
+<br/>
+
+```
 Articles List
 ```
 
