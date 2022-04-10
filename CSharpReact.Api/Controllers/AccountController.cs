@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace CSharpReact.Api.Controllers
@@ -40,7 +42,14 @@ namespace CSharpReact.Api.Controllers
                 .FirstOrDefaultAsync(x => x.Email == loginDto.Email);
 
             // Handle email not found in the database
-            if (user == null) return Unauthorized();
+            if (user == null) return Unauthorized("Invalid email");
+
+            // For testing purpose
+            if (user.UserName == "guest") user.EmailConfirmed = true;
+            if (user.UserName == "test") user.EmailConfirmed = true;
+
+            // Handle email not validated
+            if (!user.EmailConfirmed) return Unauthorized("Email needs to be confirmed");
 
             // Use AspNetCore Identity to validate sign in
             var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
@@ -52,7 +61,7 @@ namespace CSharpReact.Api.Controllers
                 return CreateUserObject(user);
             }
 
-            return Unauthorized();
+            return Unauthorized("Please check your password");
         }
 
         [AllowAnonymous]
@@ -78,15 +87,56 @@ namespace CSharpReact.Api.Controllers
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
 
-            if (result.Succeeded)
-            {
-                // added refresh token
-                await SetRefreshToken(user);
-                return CreateUserObject(user);
-            }
+            if (!result.Succeeded) return BadRequest("There was a problem registering the user");
 
-            return BadRequest("There was a problem registering user");
+            var origin = Request.Headers["origin"];
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
+
+            var verifyUrl = $"{origin}/account/verifyEmail?token={token}&email={user.Email}";
+
+            var message = new Message(new string[] { user.Email }, "Confirmation email link", verifyUrl, null);
+
+            await _emailSender.SendEmailAsync(message);
+
+            return Ok("Registration Successful, please verify your email.");
         } 
+
+        [AllowAnonymous]
+        [HttpPost("verifyEmail")]
+        public async Task<IActionResult> VerifyEmail(string token, string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null) return Unauthorized();
+            var decodedTokenBytes = WebEncoders.Base64UrlDecode(token);
+            var decodedToken = Encoding.UTF8.GetString(decodedTokenBytes);
+            var result = await _userManager.ConfirmEmailAsync(user, decodedToken);
+
+            if (!result.Succeeded) return BadRequest("There was a problem verifying email");
+
+            return Ok("Email confirmed, you can now login");
+        }
+
+        [AllowAnonymous]
+        [HttpGet("resendEmailConfirmationLink")]
+        public async Task<IActionResult> ResendEmailConfirmationLink(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+
+            if (user == null) return Unauthorized();
+
+            var origin = Request.Headers["origin"];
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
+
+            var verifyUrl = $"{origin}/account/verifyEmail?token={token}&email={user.Email}";
+
+            var message = new Message(new string[] { user.Email }, "Confirmation email link", verifyUrl, null);
+
+            await _emailSender.SendEmailAsync(message);
+
+            return Ok("Email verification link was sent to your email");
+        }
 
         [Authorize]
         [HttpGet]
@@ -136,22 +186,10 @@ namespace CSharpReact.Api.Controllers
 
             Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOptions);
         }
-        /*
-        [HttpGet]
-        public async Task SendEmailConfirmationLink(AppUser user, string returnUrl)
-        {
-            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            var confirmationLink = Url.Action(nameof(ConfirmEmail), "Account", new { token, email = user.Email, returnUrl }, Request.Scheme);
-
-            var message = new Message(new string[] { user.Email }, "Confirmation email link", confirmationLink, null);
-
-            await _emailSender.SendEmailAsync(message);
-        }
-
+        
         [HttpGet]
         public async Task<ActionResult<UserDto>> ConfirmEmail(string token, string email)
         {
-
             var user = await _userManager.FindByEmailAsync(email);
             if (user == null)
                 return BadRequest("User not found"); ;
@@ -162,8 +200,8 @@ namespace CSharpReact.Api.Controllers
                 return CreateUserObject(user);
             }
 
-            return BadRequest("There was a problem confiming your email");
-        }*/
+            return BadRequest("There was a problem confirming your email");
+        }
 
         private UserDto CreateUserObject(AppUser user)
         {

@@ -43,7 +43,7 @@ namespace CSharpReact.Api
             services.ConfigureSwagger();
             services.AddMediatR(typeof(List.Handler));
             services.AddIdentityServices(Configuration);
-            services.ConfigureScopes();
+            services.ConfigureScopes(Configuration);
             services.ConfigureCloudinary(Configuration);
         }
 

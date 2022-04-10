@@ -1,4 +1,5 @@
 ﻿using CSharpReact.Data;
+using CSharpReact.EmailService;
 using CSharpReact.Infrastructure.Photos;
 using CSharpReact.Infrastructure.Security;
 using CSharpReact.Repositories.Interfaces;
@@ -73,11 +74,15 @@ namespace CSharpReact.Api.Extensions
             });
         }
 
-        public static void ConfigureScopes(this IServiceCollection services)
+        public static void ConfigureScopes(this IServiceCollection services, IConfiguration config)
         {
             services.AddScoped<IUserAccessor, UserAccessor>();
             services.AddScoped<IPhotoAccessor, PhotoAccessor>();
             services.AddSignalR();
+
+            var emailConfig = config.GetSection("EmailConfiguration").Get<EmailConfiguration>();
+            services.AddSingleton(emailConfig);
+            services.AddScoped<IEmailSender, EmailSender>();
         }
 
         public static void ConfigureCloudinary(this IServiceCollection services, IConfiguration configuration)
