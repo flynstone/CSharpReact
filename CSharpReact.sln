@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpReact.Repositories", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpReact.Data", "CSharpReact.Data\CSharpReact.Data.csproj", "{CC9053D9-36F9-41CE-8A83-3C59EA6860EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpReact.Infrastructure", "CSharpReact.Infrastructure\CSharpReact.Infrastructure.csproj", "{452E5870-4DAD-46DD-ABF6-6F32C2C3C69B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpReact.Infrastructure", "CSharpReact.Infrastructure\CSharpReact.Infrastructure.csproj", "{452E5870-4DAD-46DD-ABF6-6F32C2C3C69B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpReact.EmailService", "CSharpReact.EmailService\CSharpReact.EmailService.csproj", "{C01FF5E2-6523-4FE7-8ABF-CABC017A66D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{452E5870-4DAD-46DD-ABF6-6F32C2C3C69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{452E5870-4DAD-46DD-ABF6-6F32C2C3C69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{452E5870-4DAD-46DD-ABF6-6F32C2C3C69B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C01FF5E2-6523-4FE7-8ABF-CABC017A66D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C01FF5E2-6523-4FE7-8ABF-CABC017A66D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C01FF5E2-6523-4FE7-8ABF-CABC017A66D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C01FF5E2-6523-4FE7-8ABF-CABC017A66D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

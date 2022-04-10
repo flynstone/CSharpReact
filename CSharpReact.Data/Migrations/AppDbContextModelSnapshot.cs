@@ -179,6 +179,32 @@ namespace CSharpReact.Data.Migrations
                     b.ToTable("Photos");
                 });
 
+            modelBuilder.Entity("CSharpReact.Entities.Models.ResetToken+RefreshToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Expires")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<DateTime?>("Revoked")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("RefreshToken");
+                });
+
             modelBuilder.Entity("CSharpReact.Entities.Models.UserFollowing", b =>
                 {
                     b.Property<string>("ObserverId")
@@ -366,6 +392,15 @@ namespace CSharpReact.Data.Migrations
                         .HasForeignKey("AppUserId");
                 });
 
+            modelBuilder.Entity("CSharpReact.Entities.Models.ResetToken+RefreshToken", b =>
+                {
+                    b.HasOne("CSharpReact.Entities.Models.AppUser", "AppUser")
+                        .WithMany("RefreshTokens")
+                        .HasForeignKey("AppUserId");
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("CSharpReact.Entities.Models.UserFollowing", b =>
                 {
                     b.HasOne("CSharpReact.Entities.Models.AppUser", "Observer")
@@ -445,6 +480,8 @@ namespace CSharpReact.Data.Migrations
                     b.Navigation("Followings");
 
                     b.Navigation("Photos");
+
+                    b.Navigation("RefreshTokens");
                 });
 
             modelBuilder.Entity("CSharpReact.Entities.Models.Article", b =>

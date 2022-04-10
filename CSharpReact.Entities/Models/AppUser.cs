@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
+using static CSharpReact.Entities.Models.ResetToken;
 
 namespace CSharpReact.Entities.Models
 {
@@ -11,5 +12,6 @@ namespace CSharpReact.Entities.Models
         public ICollection<Photo> Photos { get; set; } 
         public ICollection<UserFollowing> Followings { get; set; }
         public ICollection<UserFollowing> Followers { get; set; }
+        public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
     }
 }

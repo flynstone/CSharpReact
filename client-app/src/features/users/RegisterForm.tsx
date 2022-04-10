@@ -1,4 +1,3 @@
-import { Card } from "@mui/material";
 import { ErrorMessage, Form, Formik } from "formik";
 import { observer } from "mobx-react-lite";
 import React from "react";
@@ -6,6 +5,7 @@ import { Button, CardHeader, FormField, Label } from 'semantic-ui-react';
 import MyTextInput from "../../app/common/form/MyTextInput";
 import { useStore } from "../../app/stores/store";
 import * as Yup from 'yup';
+import { Card } from "@mui/material";
 
 export default observer(function RegisterForm() {
   const { userStore } = useStore();
@@ -22,8 +22,8 @@ export default observer(function RegisterForm() {
     >
       {({ handleSubmit, isSubmitting, errors, isValid, dirty }) => ( 
         <Form className="ui form" onSubmit={handleSubmit} autoComplete='off'>    
-          <Card className="Container">
-          <CardHeader><h2>Register</h2></CardHeader>
+          <Card className="Container" style={{backgroundColor: '#343434', width: '100%'}}>
+          <CardHeader><h2 className="py-3" style={{color: 'white'}}>Register</h2></CardHeader>
             <FormField className="py-2 px-3" >
               <MyTextInput name="displayName" placeholder="Display Name" />        
             </FormField>

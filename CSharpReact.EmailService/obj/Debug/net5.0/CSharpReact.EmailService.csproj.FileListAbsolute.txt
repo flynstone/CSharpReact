@@ -1,0 +1,12 @@
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.EmailService\bin\Debug\net5.0\CSharpReact.EmailService.deps.json
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.EmailService\bin\Debug\net5.0\CSharpReact.EmailService.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.EmailService\bin\Debug\net5.0\CSharpReact.EmailService.pdb
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.EmailService\obj\Debug\net5.0\CSharpReact.EmailService.csproj.AssemblyReference.cache
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.EmailService\obj\Debug\net5.0\CSharpReact.EmailService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.EmailService\obj\Debug\net5.0\CSharpReact.EmailService.AssemblyInfoInputs.cache
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.EmailService\obj\Debug\net5.0\CSharpReact.EmailService.AssemblyInfo.cs
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.EmailService\obj\Debug\net5.0\CSharpReact.EmailService.csproj.CoreCompileInputs.cache
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.EmailService\obj\Debug\net5.0\CSharpReact.EmailService.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.EmailService\obj\Debug\net5.0\refint\CSharpReact.EmailService.dll
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.EmailService\obj\Debug\net5.0\CSharpReact.EmailService.pdb
+C:\Users\flyns\source\repos\CSharpReact\CSharpReact.EmailService\obj\Debug\net5.0\ref\CSharpReact.EmailService.dll

@@ -1,17 +1,20 @@
 ﻿using CSharpReact.Api.DataTransferObjects;
 using CSharpReact.Api.Services;
+using CSharpReact.EmailService;
 using CSharpReact.Entities.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CSharpReact.Api.Controllers
 {
-    [AllowAnonymous]
+
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
@@ -19,13 +22,16 @@ namespace CSharpReact.Api.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly TokenService _tokenService;
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, TokenService tokenService)
+        private readonly IEmailSender _emailSender;
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, TokenService tokenService, IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _tokenService = tokenService;
+            _emailSender = emailSender;
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
@@ -41,12 +47,15 @@ namespace CSharpReact.Api.Controllers
 
             if (result.Succeeded)
             {
+                // added refresh token
+                await SetRefreshToken(user);
                 return CreateUserObject(user);
             }
 
             return Unauthorized();
         }
 
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
@@ -71,6 +80,8 @@ namespace CSharpReact.Api.Controllers
 
             if (result.Succeeded)
             {
+                // added refresh token
+                await SetRefreshToken(user);
                 return CreateUserObject(user);
             }
 
@@ -83,10 +94,76 @@ namespace CSharpReact.Api.Controllers
         {
             var user = await _userManager.Users.Include(p => p.Photos)
                 .FirstOrDefaultAsync(x => x.Email == User.FindFirstValue(ClaimTypes.Email));
+            // added refresh token
+            await SetRefreshToken(user);
+            return CreateUserObject(user);
+        }
+
+        [Authorize]
+        [HttpPost("refreshToken")]
+        public async Task<ActionResult<UserDto>> RefreshToken()
+        {
+            var refreshToken = Request.Cookies["refreshToken"];
+
+            var user = await _userManager.Users
+                .Include(r => r.RefreshTokens)
+                .Include(p => p.Photos)
+                .FirstOrDefaultAsync(x => x.UserName == User.FindFirstValue(ClaimTypes.Name));
+
+            // Handle user null
+            if (user == null) return Unauthorized();
+
+            var oldToken = user.RefreshTokens.SingleOrDefault(x => x.Token == refreshToken);
+
+            if (oldToken != null && !oldToken.IsActive) return Unauthorized();
 
             return CreateUserObject(user);
         }
 
+        private async Task SetRefreshToken(AppUser user)
+        {
+            var refreshToken = _tokenService.GenerateRefreshToken();
+
+            user.RefreshTokens.Add(refreshToken);
+
+            await _userManager.UpdateAsync(user);
+
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,
+                Expires = DateTime.UtcNow.AddDays(7)
+            };
+
+            Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOptions);
+        }
+        /*
+        [HttpGet]
+        public async Task SendEmailConfirmationLink(AppUser user, string returnUrl)
+        {
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            var confirmationLink = Url.Action(nameof(ConfirmEmail), "Account", new { token, email = user.Email, returnUrl }, Request.Scheme);
+
+            var message = new Message(new string[] { user.Email }, "Confirmation email link", confirmationLink, null);
+
+            await _emailSender.SendEmailAsync(message);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<UserDto>> ConfirmEmail(string token, string email)
+        {
+
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+                return BadRequest("User not found"); ;
+
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+            if (result.Succeeded)
+            {
+                return CreateUserObject(user);
+            }
+
+            return BadRequest("There was a problem confiming your email");
+        }*/
 
         private UserDto CreateUserObject(AppUser user)
         {

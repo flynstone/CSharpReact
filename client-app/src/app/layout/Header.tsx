@@ -14,7 +14,7 @@ export default observer(function Header() {
       <AppBar position="static">
         <Toolbar className="Header">            
             
-          <Link to='/'><img src={logo} height={85} width={85} alt="Logo" /></Link>
+          <Link to='/'><img src={logo} height={65} width={65} alt="Logo" /></Link>
 
           <div style={{ flexGrow: 1 }}></div>
 
