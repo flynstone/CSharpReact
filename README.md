@@ -349,7 +349,7 @@ Screenshot below demonstrates password using hash + salt (Both are identical pas
 - Documentation at => https://jwt.io/
 
 - The server will store the JWT on the client if authentication is passed (using browsers local storage)
-- Will implement refresh tokens later.
+- Refresh token implemented on client and server.
 
 <br/>
 
