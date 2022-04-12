@@ -8,31 +8,31 @@ import { useStore } from '../stores/store';
 import { observer } from 'mobx-react-lite';
 
 export default observer(function Header() {
-  const { userStore: {user, logout} } = useStore();
+  const { userStore: {user, logout, isLoggedIn} } = useStore();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar className="Header">            
-            
-          <Link to='/'><img src={logo} height={65} width={65} alt="Logo" /></Link>
+        <Toolbar className="Header">
+          <Link to="/">
+            <img src={logo} height={65} width={65} alt="Logo" />
+          </Link>
+          {isLoggedIn &&
+            <>
+              <div style={{ flexGrow: 1 }}></div>
 
-          <div style={{ flexGrow: 1 }}></div>
-
-          <Menu.Item position='right' style={{paddingRight: '2rem'}}>
-            <Image src={user?.image || '/img/user.png'} avatar spaced='right' />
-            <Dropdown pointing='top' text={user?.displayName} >
-              <Dropdown.Menu style={{backgroundColor: 'teal'}}>
-                <Dropdown.Item as={NavLink} to='/createArticle' positive content='New Article' icon='plus' />
-                <Dropdown.Item as={Link} to={`/profiles/${user?.username}`} text='My Profile' icon='user' />
-                <Dropdown.Item onClick={logout} text='Logout' icon='power' />
-              </Dropdown.Menu>           
-            </Dropdown>
-          </Menu.Item>
-            
-          
-
+              <Menu.Item position="right" style={{ paddingRight: "2rem" }}>
+                <Image src={user?.image || "/img/user.png"} avatar spaced="right" />
+                <Dropdown pointing="top" text={user?.displayName}>
+                  <Dropdown.Menu style={{ backgroundColor: "teal" }}>
+                    <Dropdown.Item as={NavLink} to="/createArticle" positive content="New Article" icon="plus" />
+                    <Dropdown.Item as={Link} to={`/profiles/${user?.username}`} text="My Profile" icon="user" />
+                    <Dropdown.Item onClick={logout} text="Logout" icon="power" />
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Menu.Item>
+            </>}
         </Toolbar>
       </AppBar>
     </Box>
-  )
+  );
 })

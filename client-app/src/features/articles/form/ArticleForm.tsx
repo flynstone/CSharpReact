@@ -25,7 +25,7 @@ export default observer(function ArticleForm() {
     id: "",
     title: "",
     body: "",
-    dateCreated: "",
+    dateCreated: null,
   });
 
   const validationSchema = Yup.object({

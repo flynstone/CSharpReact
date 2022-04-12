@@ -15,7 +15,7 @@ export default class CommentStore {
   createHubConnection = (articleId: string) => {
     if (store.articleStore.selectedArticle) {
       this.hubConnection = new HubConnectionBuilder()
-        .withUrl('http://localhost:4000/chat?articleId=' + articleId, {
+        .withUrl(process.env.REACT_APP_CHAT_URL + '?articleId=' + articleId, {
           // Pass token to signalR
           accessTokenFactory: () => store.userStore.user?.token!
         })

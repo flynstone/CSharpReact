@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CSharpReact.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220410134852_RefreshTokens")]
-    partial class RefreshTokens
+    [Migration("20220410201014_InitialDbReCreate")]
+    partial class InitialDbReCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

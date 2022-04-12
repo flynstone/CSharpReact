@@ -1,4 +1,5 @@
 import { Card, CardActions, CardContent } from '@mui/material';
+import { format } from 'date-fns';
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "semantic-ui-react";
@@ -16,7 +17,7 @@ export default function ArticleListItem({ article }: Props) {
       <Card key={article.id} style={{ paddingBottom: "2rem" }}>
         <div className="card-header">
           <h2 className='pt-3 px-3'>{article.title}</h2>
-          <small className='px-3'>{article.dateCreated}</small>
+          <small className='px-3'>{format(article.dateCreated!, 'dd MMM yyyy h:mm aa')}</small>
         </div>
 
         <CardContent>

@@ -11,11 +11,13 @@ import ArticleDetails from '../../features/articles/details/ArticleDetails';
 import { ToastContainer } from 'react-toastify';
 import NotFound from '../../features/errors/NotFound';
 import ServerError from '../../features/errors/ServerError';
-import LoginForm from '../../features/users/LoginForm';
 import { useStore } from '../stores/store';
 import LoadingComponent from './LoadingComponent';
 import ModalContainer from '../common/modals/ModalContainer';
 import ProfilePage from '../../features/profiles/ProfilePage';
+import RegisterSuccess from '../../features/users/RegisterSuccess';
+import ConfirmEmail from '../../features/users/ConfirmEmail';
+import PrivateRoute from './PrivateRoute';
 
 const darkTheme = createTheme({
   palette: {
@@ -50,13 +52,13 @@ function App() {
               <Header />
               <Container style={{ width: '100vw' }}>
                 <Switch>
-                  <Route exact path='/articles' component={ArticleDashboard} />
-                  <Route path='/articles/:id' component={ArticleDetails} />
-                  <Route key={location.key} path={['/createArticle', '/manage/:id']} component={ArticleForm} />
-                  <Route path='/profiles/:username' component={ProfilePage} />
-                  {/* <Route path='/errors' component={TestErrors} /> */}
+                  <PrivateRoute exact path='/articles' component={ArticleDashboard} />
+                  <PrivateRoute path='/articles/:id' component={ArticleDetails} />
+                  <PrivateRoute key={location.key} path={['/createArticle', '/manage/:id']} component={ArticleForm} />
+                  <PrivateRoute path='/profiles/:username' component={ProfilePage} />
                   <Route path='/server-error' component={ServerError} />
-                  <Route path='/login' component={LoginForm} />
+                  <Route path='/account/registerSuccess' component={RegisterSuccess} />
+                  <Route path='/account/verifyEmail' component={ConfirmEmail} />
                   <Route component={NotFound} />
                 </Switch>
               </Container> 

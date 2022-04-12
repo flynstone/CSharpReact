@@ -4,7 +4,7 @@ export interface Article {
   id: string;
   title: string;
   body: string;
-  dateCreated: string;
+  dateCreated: Date | null;
   creatorUsername?: string;
   isClosed?: boolean;
   isCreator?: boolean;
