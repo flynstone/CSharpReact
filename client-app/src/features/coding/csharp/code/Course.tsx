@@ -1,21 +1,18 @@
 import React from 'react';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
-export default function Class() {
+export default function Course() {
   const [code, setCode] = React.useState(
-    `public class Student 
+    `public class Course 
 {
-    // 2 methods to create ids.
-    // First one is by default starting at number 1 and automatically
-    // increaments by 1 when inserting new data.
+    // Configure primary key to be manually created.
+    // Ex. 101
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public int Id { get; set; }
+    public string Title { get; set; }
 
-    // This second method generates a globaly unique identifier (128-bit text string that represents an identification "Id").
-    public Guid Id { get; set; }
-
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public bool IsEnrolled { get; set; }
+    // Creating a collection of enrollments.
+    public ICollection<Enrollment> Enrollments { get; set; }
 }`
   );
 

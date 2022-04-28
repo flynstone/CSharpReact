@@ -1,20 +1,25 @@
 import React from 'react';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
-export default function DataContext() {
+export default function SeedContext() {
   const [code, setCode] = React.useState(
     `
 public class ApplicationDbContext : DbContext
 {
-    // Class constructor.
     public ApplicationDbContext(DbContextOptions options): base(options)
     {
-        // We could add the database connection string here, but it is better practice to keep
-        // in a more private file => appsettings.json.
     }
   
-    // Create table in the database.
     public DbSet<Student> Students { get; set; }
+
+    // We need to add this section.
+    protected override void OnModelCreating(ModelBuilder builder) 
+    {
+        base.OnModelCreating(builder);
+
+        // Seed the data.
+        builder.ApplyConfiguration(new StudentsConfiguration());
+    }
 }`
   );
 
