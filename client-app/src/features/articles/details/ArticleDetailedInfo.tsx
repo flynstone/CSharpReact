@@ -11,7 +11,7 @@ interface Props {
 export default function ArticleDetailedInfo({article}: Props) {
   return (
     <CardContent>        
-      {article.body}
+      {article.content}
            
       <br /><br />
            

@@ -24,13 +24,13 @@ export default observer(function ArticleForm() {
   const [article, setArticle] = useState<Article>({
     id: "",
     title: "",
-    body: "",
-    dateCreated: null,
+    content: "",
+    createdAt: "",
   });
 
   const validationSchema = Yup.object({
     title: Yup.string().required('The article title is required'),
-    body: Yup.string().required('The article body is required'),
+    content: Yup.string().required('The article body is required'),
   });
 
   useEffect(() => {
@@ -69,11 +69,7 @@ export default observer(function ArticleForm() {
               </div>
               
               <FormField className="py-5 px-3" >
-                <MyTextArea rows={3} name="body" placeholder="Input content here" />
-              </FormField>
-
-              <FormField className="py-5 px-3">
-                <MySelectInput options={categoryOptions} placeholder='Category' name='category' />
+                <MyTextArea rows={3} name="content" placeholder="Input content here" />
               </FormField>
               
               <FormField className="px-5 Btn">

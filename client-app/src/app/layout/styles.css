@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
 body {
   margin: 0;
   font-family: 'Grandstander' !important;
   font-size: 24px !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #343434;
-  background-color: #343434;
+  background-color: #0f1533;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-tire.png");
   color: beige;
 }
 
@@ -60,7 +59,6 @@ article {
   display: flex;
   width: 100vw;
   height: 7vh;
-  background: linear-gradient(135deg, #8e9b96, #12aca4);
 }
 
 .Row {

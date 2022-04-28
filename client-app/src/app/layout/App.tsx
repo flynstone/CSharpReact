@@ -18,6 +18,7 @@ import ProfilePage from '../../features/profiles/ProfilePage';
 import RegisterSuccess from '../../features/users/RegisterSuccess';
 import ConfirmEmail from '../../features/users/ConfirmEmail';
 import PrivateRoute from './PrivateRoute';
+import CSharp from '../../features/coding/csharp/CSharp';
 
 const darkTheme = createTheme({
   palette: {
@@ -44,22 +45,23 @@ function App() {
       <ThemeProvider theme={darkTheme}>
         <ToastContainer position='bottom-right' hideProgressBar />   
         <ModalContainer />
+        <Header />
         <Route exact path='/' component={Home} />  
+        <Route path='/csharp' component={CSharp} />
         <Route
           path={'/(.+)'}
           render={() => (
             <>
-              <Header />
               <Container style={{ width: '100vw' }}>
                 <Switch>
                   <PrivateRoute exact path='/articles' component={ArticleDashboard} />
                   <PrivateRoute path='/articles/:id' component={ArticleDetails} />
                   <PrivateRoute key={location.key} path={['/createArticle', '/manage/:id']} component={ArticleForm} />
                   <PrivateRoute path='/profiles/:username' component={ProfilePage} />
-                  <Route path='/server-error' component={ServerError} />
+                  {/* <Route path='/server-error' component={ServerError} /> */}
                   <Route path='/account/registerSuccess' component={RegisterSuccess} />
                   <Route path='/account/verifyEmail' component={ConfirmEmail} />
-                  <Route component={NotFound} />
+                  {/* <Route component={NotFound} /> */}
                 </Switch>
               </Container> 
           </>

@@ -73,17 +73,21 @@ export default class ArticleStore {
   }
 
   get articlesByDate() {
-    return Array.from(this.articleRegistry.values()).sort((a, b) => a.dateCreated!.getTime() - b.dateCreated!.getTime());
+    return Array.from(this.articleRegistry.values()).sort(
+      (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt)
+    );
   }
 
-  get groupedArticle() {
+  get groupedArticles() {
     return Object.entries(
       this.articlesByDate.reduce((articles, article) => {
-        const date = article.dateCreated!.toISOString().split('T')[0];
-        articles[date] = articles[date] ? [...articles[date], article] : [article];
+        const date = article.createdAt;
+        articles[date] = articles[date]
+          ? [...articles[date], article]
+          : [article];
         return articles;
-      }, {} as {[key: string]: Article[]})
-    )
+      }, {} as { [key: string]: Article[] })
+    );
   }
 
   // Async function to load articles
@@ -139,7 +143,7 @@ export default class ArticleStore {
       article.isCreator = article.creatorUsername === user.username;
       article.creator = article.contributors?.find(x => x.username === article.creatorUsername);
     }
-    article.dateCreated = new Date(article.dateCreated!);
+    article.createdAt = article.createdAt.split("T")[0];
     this.articleRegistry.set(article.id, article);
   }
 

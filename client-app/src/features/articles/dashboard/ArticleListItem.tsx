@@ -17,11 +17,11 @@ export default function ArticleListItem({ article }: Props) {
       <Card key={article.id} style={{ paddingBottom: "2rem" }}>
         <div className="card-header">
           <h2 className='pt-3 px-3'>{article.title}</h2>
-          <small className='px-3'>{format(article.dateCreated!, 'dd MMM yyyy h:mm aa')}</small>
+          <small className='px-3'>{article.createdAt}</small>
         </div>
 
         <CardContent>
-          <div className="Container">{article.body}</div>
+          <div className="Container">{article.content}</div>
         </CardContent>
         <div className="Row px-5">
           <ArticleListItemContributor contributors={article.contributors!} />

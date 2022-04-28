@@ -6,18 +6,18 @@ import ArticleListItem from './ArticleListItem';
 
 export default observer(function ArticleList() {
   const { articleStore } = useStore();
-  const { groupedArticle } = articleStore;
+  const { groupedArticles } = articleStore;
 
   return (
     <>
       <br />
-      {groupedArticle.map(([group, article]) => (
+      {groupedArticles.map(([group, articles]) => (
         <Fragment key={group}>
           <Header sub color='teal'>
             {group}
           </Header>
           <Item.Group>
-            {article.map(article => (
+            {articles.map(article => (
               <ArticleListItem key={article.id} article={article} />
             ))}
           </Item.Group>

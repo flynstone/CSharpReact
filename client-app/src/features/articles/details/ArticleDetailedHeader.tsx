@@ -1,5 +1,4 @@
 import { CardHeader } from '@mui/material';
-import { format } from 'date-fns';
 import { observer } from "mobx-react-lite";
 import React from "react";
 import { Article } from "../../../app/models/article";
@@ -12,7 +11,7 @@ export default observer(function ActivityDetailedHeader({ article }: Props) {
   return (
     <div className="Row p-3">
       <CardHeader />{article.title}
-      <small className="text-muted">{format(article.dateCreated!, 'dd MMM yyyy h:mm aa')}</small>
+      <small className="text-muted">{article.createdAt}</small>
     </div>
     // <Card style={{ paddingLeft: '2rem' }}>
       

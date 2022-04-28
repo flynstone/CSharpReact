@@ -7,19 +7,27 @@ import { Menu, Image, Dropdown } from 'semantic-ui-react';
 import { useStore } from '../stores/store';
 import { observer } from 'mobx-react-lite';
 
+const HeaderStyle = {
+  width: '100vw',
+  backgroundColor: '#2f8999',
+  backgroundImage: 'url("https://www.transparenttextures.com/patterns/black-linen.png")'
+}
+
 export default observer(function Header() {
   const { userStore: {user, logout, isLoggedIn} } = useStore();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar className="Header">
+        <Toolbar className="Header"  style={HeaderStyle}>
           <Link to="/">
             <img src={logo} height={65} width={65} alt="Logo" />
+          </Link>
+          <Link to='/csharp'>
+            <h2>C#</h2>
           </Link>
           {isLoggedIn &&
             <>
               <div style={{ flexGrow: 1 }}></div>
-
               <Menu.Item position="right" style={{ paddingRight: "2rem" }}>
                 <Image src={user?.image || "/img/user.png"} avatar spaced="right" />
                 <Dropdown pointing="top" text={user?.displayName}>
