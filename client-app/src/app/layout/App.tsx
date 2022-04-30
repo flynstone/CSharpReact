@@ -18,7 +18,8 @@ import ProfilePage from '../../features/profiles/ProfilePage';
 import RegisterSuccess from '../../features/users/RegisterSuccess';
 import ConfirmEmail from '../../features/users/ConfirmEmail';
 import PrivateRoute from './PrivateRoute';
-import CSharp from '../../features/coding/csharp/CSharp';
+import CSharp from '../../features/coding/csharp/model/CSharp';
+import Controller from '../../features/coding/csharp/controller/Controller';
 
 const darkTheme = createTheme({
   palette: {
@@ -48,6 +49,7 @@ function App() {
         <Header />
         <Route exact path='/' component={Home} />  
         <Route path='/csharp' component={CSharp} />
+        <Route path='/controller' component={Controller} />
         <Route
           path={'/(.+)'}
           render={() => (

@@ -12,6 +12,8 @@ import Course from './code/Course';
 import Enrollment from './code/Enrollment';
 import CourseEnrollment from './code/CourseEnrollment';
 import UpdateDbContext from './code/UpdateDbContext';
+import Swagger from './code/Swagger';
+import UpdateProgram from './code/UpdateProgram';
 
 const Bold = {
   color: 'teal'
@@ -26,7 +28,7 @@ export default function CSharp() {
     <Grid style={{ padding: '2rem', justifyContent: 'center' }}>
       <Grid.Column width="10">
         <Card>
-          <CardHeader /><h2>C# (Asp.Net Core Web Api / Entity Framework) </h2>
+          <CardHeader /><h2>C# (Asp.Net Core Web Api / Entity Framework) - <b style={Bold}>Models</b></h2>
           <CardContent>
             <div className='Container'>
               <p>Is an object oriented programming language (class-based).</p>
@@ -111,6 +113,23 @@ export default function CSharp() {
               </div>
 
               <UpdateDbContext />
+
+              <div className="Content">
+                <p>Now we have a database, but how do we get the data? What I am used to is the MVC (model-view-controller) pattern. Now that we've covered the basics of models, 
+                  it would be a good idea to add an extension to help us visualize our controllers.</p> 
+              </div>
+
+              <Swagger />
+              
+              <div className="Content">
+                <p>We then modify our Program.cs file. This is what it should look like at this point.</p> 
+              </div>
+
+              <UpdateProgram />
+
+              <div className="Content">
+                <p>Next step would be to build the controller.</p> 
+              </div>
             </div>
           </CardContent>
         </Card>

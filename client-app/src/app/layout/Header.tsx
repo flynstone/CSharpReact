@@ -25,6 +25,9 @@ export default observer(function Header() {
           <Link to='/csharp'>
             <h2>C#</h2>
           </Link>
+          <Link to='/controller'>
+            <h2>Controllers</h2>
+          </Link>
           {isLoggedIn &&
             <>
               <div style={{ flexGrow: 1 }}></div>

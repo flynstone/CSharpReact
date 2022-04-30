@@ -10,7 +10,7 @@ public class ApplicationDbContext : DbContext
     {
     }
   
-    public DbSet<Student> Students { get; set; }
+    public DbSet<Article> Articles { get; set; }
 
     // We need to add this section.
     protected override void OnModelCreating(ModelBuilder builder) 
@@ -18,7 +18,7 @@ public class ApplicationDbContext : DbContext
         base.OnModelCreating(builder);
 
         // Seed the data.
-        builder.ApplyConfiguration(new StudentsConfiguration());
+        builder.ApplyConfiguration(new ArticleSeeds());
     }
 }`
   );
