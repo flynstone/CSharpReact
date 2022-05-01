@@ -42,16 +42,6 @@ export default function Basic() {
 
             return Ok(studentDto);
         }
-    
-        // POST: api/Students
-        [HttpPost]
-        public async Task<ActionResult<Student>> AddStudent(Student student)
-        {
-            var student = new Student
-            {
-                Is
-            }
-        }
     }`
   );
 
