@@ -4,36 +4,55 @@ import CodeEditor from '@uiw/react-textarea-code-editor';
 export default function Basic() {
   const [code, setCode] = React.useState(
     `[ApiController]
-[Route("api/[controller]")]
-public class StudentsController : ControllerBase
-{
-    // Import our DataContext and initialize it in the class constructor
-    private readonly ApplicationDbContext _context;
-    public StudentsController(ApplicationDbContext context)
+    [Route("api/[controller]")]
+    public class StudentsController : ControllerBase
     {
-        _context = context;
-    }
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
+        public StudentsController(IUnitOfWork unitOfWork, IMapper mapper)
+        {
+          _unitOfWork = unitOfWork;
+          _mapper = mapper;
+        }
+    
+        // GET: api/Students
+        [HttpGet]
+        public async Task<IActionResult> GetStudents()
+        {
+            // Get students 
+            var students = await _unitOfWork.Student.GetStudentsAsync(trackChanges: false);
 
-    // GET: api/students
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
-    {
-        return await _context.Articles.ToListAsync();
-    }
+            // Map data transfer object to model
+            var studentsDto = _mapper.Map<IEnumerable<StudentDto>>(students);
 
-    // GET: api/students/5
-    [HttpGet("{id}")]
-    public async Task<ActionResult<<Student>> GetStudent(int id)
-    {
-        // Find student by id
-        var student = await _context.Students.FindAsync(id);
+            return Ok(studentDto);
+        }
+    
+        // GET: api/Students/5
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetStudent(int id)
+        {
+            // Find student by id
+            var student = await _unitOfWork.Student.GetAsync(id);
+    
+            // Handle null result.
+            if (student == null) return NotFound();
+    
+            var studentDto = _mapper.Map<StudentDto>(student);
 
-        // Handle null result.
-        if (student == null) return NotFound();
-
-        return Student(student);
-    }
-}`
+            return Ok(studentDto);
+        }
+    
+        // POST: api/Students
+        [HttpPost]
+        public async Task<ActionResult<Student>> AddStudent(Student student)
+        {
+            var student = new Student
+            {
+                Is
+            }
+        }
+    }`
   );
 
   return(
