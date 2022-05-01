@@ -22,12 +22,20 @@ export default observer(function Header() {
           <Link to="/">
             <img src={logo} height={65} width={65} alt="Logo" />
           </Link>
-          <Link to='/csharp'>
-            <h2>C#</h2>
-          </Link>
-          <Link to='/controller'>
-            <h2>Controllers</h2>
-          </Link>
+          
+          <Menu.Item position="right" style={{ paddingLeft: "2rem" }}>
+            <Dropdown pointing="top" text="C Sharp (C#)">
+              <Dropdown.Menu style={{ backgroundColor: "teal" }}>
+                <Dropdown.Header>Repository Pattern</Dropdown.Header>
+                <Dropdown.Item as={Link} to='/csharp' content="Models" style={{fontSize: '24px', padding: '1rem'}} />
+                <Dropdown.Item as={Link} to='/controller' text="Controllers"  style={{fontSize: '24px', padding: '1rem'}} />
+
+                <Dropdown.Divider></Dropdown.Divider>
+                <Dropdown.Header>Clean Architecture (CQRS) Pattern</Dropdown.Header>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Menu.Item>
+
           {isLoggedIn &&
             <>
               <div style={{ flexGrow: 1 }}></div>

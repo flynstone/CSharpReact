@@ -1,8 +1,10 @@
 import { Card, CardContent, CardHeader } from '@mui/material';
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
+import AddService from './code/AddService';
 import Base from './code/Base';
 import Basic from './code/Basic';
+import ILogger from './code/ILogger';
 import IRepository from './code/IRepository';
 import IUnitOfWork from './code/IUnitOfWork';
 import MappingProfiles from './code/MappingProfiles';
@@ -11,6 +13,7 @@ import StudentDto from './code/StudentDto';
 import StudentInterface from './code/StudentInterface';
 import StudentRepository from './code/StudentRepository';
 import UnitOfWork from './code/UnitOfWork';
+import ProgramUpdate from './code/ProgramUpdate';
 
 const Bold = {
   color: 'teal',
@@ -95,6 +98,29 @@ export default function Controller() {
             </div>
 
             <Basic />
+
+            <div className='Container'>
+              <p>Before we do more actions with our controller we should probably add an extension. For this we will need to install a package called<b style={Bold}>NLog</b>.</p>
+            </div>
+
+            <ILogger />
+
+            <div className='Container'>
+              <p>We can then add this line to our scopes (in the service extension).</p>
+            </div>
+
+            <AddService />
+
+
+
+            <div className='Container'>
+              <p>We then need a new file that we will call<b style={Bold}>nlog.config</b>.</p>
+            </div>
+
+            <div className='Container'>
+              <p>Then add these 2 lines to the<b style={Bold}>Program.cs</b> file.</p>
+            </div>
+            <ProgramUpdate />
           </CardContent>
         </Card>
       </Grid.Column>

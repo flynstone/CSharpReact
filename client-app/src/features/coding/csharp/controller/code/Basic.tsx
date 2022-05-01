@@ -4,45 +4,42 @@ import CodeEditor from '@uiw/react-textarea-code-editor';
 export default function Basic() {
   const [code, setCode] = React.useState(
     `[ApiController]
-    [Route("api/[controller]")]
-    public class StudentsController : ControllerBase
+[Route("api/[controller]")]
+public class StudentsController : ControllerBase
+{
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+    public StudentsController(IUnitOfWork unitOfWork, IMapper mapper)
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-        public StudentsController(IUnitOfWork unitOfWork, IMapper mapper)
-        {
-          _unitOfWork = unitOfWork;
-          _mapper = mapper;
-        }
-    
-        // GET: api/Students
-        [HttpGet]
-        public async Task<IActionResult> GetStudents()
-        {
-            // Get students 
-            var students = await _unitOfWork.Student.GetStudentsAsync(trackChanges: false);
+      _unitOfWork = unitOfWork;
+      _mapper = mapper;
+    }
 
-            // Map data transfer object to model
-            var studentsDto = _mapper.Map<IEnumerable<StudentDto>>(students);
+    // GET: api/Students
+    [HttpGet]
+    public async Task<IActionResult> GetStudents()
+    {
+        // Get students 
+        var students = await _unitOfWork.Student.GetStudentsAsync(trackChanges: false);
+        // Map data transfer object to model
+        var studentsDto = _mapper.Map<IEnumerable<StudentDto>>(students);
+        return Ok(studentDto);
+    }
 
-            return Ok(studentDto);
-        }
-    
-        // GET: api/Students/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetStudent(int id)
-        {
-            // Find student by id
-            var student = await _unitOfWork.Student.GetAsync(id);
-    
-            // Handle null result.
-            if (student == null) return NotFound();
-    
-            var studentDto = _mapper.Map<StudentDto>(student);
+    // GET: api/Students/5
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetStudent(int id)
+    {
+        // Find student by id
+        var student = await _unitOfWork.Student.GetAsync(id);
 
-            return Ok(studentDto);
-        }
-    }`
+        // Handle null result.
+        if (student == null) return NotFound();
+
+        var studentDto = _mapper.Map<StudentDto>(student);
+        return Ok(studentDto);
+    }
+}`
   );
 
   return(
