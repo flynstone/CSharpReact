@@ -14,14 +14,11 @@ import StudentInterface from './code/StudentInterface';
 import StudentRepository from './code/StudentRepository';
 import UnitOfWork from './code/UnitOfWork';
 import ProgramUpdate from './code/ProgramUpdate';
+import Final from './code/Final';
 
 const Bold = {
   color: 'teal',
   paddingLeft: '10px' 
-}
-
-const Violet  = {
-  color: 'violet'
 }
 
 export default function Controller() {
@@ -100,7 +97,7 @@ export default function Controller() {
             <Basic />
 
             <div className='Container'>
-              <p>Before we do more actions with our controller we should probably add an extension. For this we will need to install a package called<b style={Bold}>NLog</b>.</p>
+              <p>Before we do more actions with our controller we should probably add an extension that will record log messages in a file. For this we will need to install a package called<b style={Bold}>NLog</b>.</p>
             </div>
 
             <ILogger />
@@ -111,8 +108,6 @@ export default function Controller() {
 
             <AddService />
 
-
-
             <div className='Container'>
               <p>We then need a new file that we will call<b style={Bold}>nlog.config</b>.</p>
             </div>
@@ -120,7 +115,18 @@ export default function Controller() {
             <div className='Container'>
               <p>Then add these 2 lines to the<b style={Bold}>Program.cs</b> file.</p>
             </div>
+
             <ProgramUpdate />
+
+            <div className='Container'>
+              <p>Now back to the<b style={Bold}>Controller</b>.</p>
+            </div>
+
+            <Final />
+
+            <div className='Container'>
+              <p>Next step will be the<b style={Bold}>View</b> for this back-end I will use <b style={Bold}>Angular</b>.</p>
+            </div>
           </CardContent>
         </Card>
       </Grid.Column>

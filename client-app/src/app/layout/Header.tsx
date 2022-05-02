@@ -36,6 +36,22 @@ export default observer(function Header() {
             </Dropdown>
           </Menu.Item>
 
+          <div className='Container'>
+          <Menu.Item position="right" style={{ paddingLeft: "2rem" }}>
+            <Dropdown pointing="top" text="Javascript">
+              <Dropdown.Menu style={{ backgroundColor: "teal" }}>
+                <Dropdown.Header>Angular</Dropdown.Header>
+                <Dropdown.Item as={Link} to='/angular' content="Angular" style={{fontSize: '24px', padding: '1rem'}} />
+
+
+                <Dropdown.Divider></Dropdown.Divider>
+                <Dropdown.Header>React</Dropdown.Header>
+                <Dropdown.Item as={Link} to='/react' text="React"  style={{fontSize: '24px', padding: '1rem'}} />
+              </Dropdown.Menu>
+            </Dropdown>
+          </Menu.Item>
+          </div>
+
           {isLoggedIn &&
             <>
               <div style={{ flexGrow: 1 }}></div>

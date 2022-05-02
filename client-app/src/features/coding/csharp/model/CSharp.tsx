@@ -16,7 +16,8 @@ import Swagger from './code/Swagger';
 import UpdateProgram from './code/UpdateProgram';
 
 const Bold = {
-  color: 'teal'
+  color: 'teal',
+  paddingLeft: '10px'
 }
 
 const Violet  = {
@@ -26,7 +27,7 @@ const Violet  = {
 export default function CSharp() {
   return(
     <Grid style={{ padding: '2rem', justifyContent: 'center' }}>
-      <Grid.Column width="10">
+      <Grid.Column width="12">
         <Card>
           <CardHeader /><h2>C# (Asp.Net Core Web Api / Entity Framework) - <b style={Bold}>Models</b></h2>
           <CardContent>
@@ -36,20 +37,20 @@ export default function CSharp() {
               <p>Naming conventions are as follows.. </p>
                 <br />
                 <p>
-                  <b style={Violet}>Pascal Case</b> = <b style={Bold}>class</b>, <b style={Bold}>record</b> or <b style={Bold}>struct</b>
+                  <b style={Violet}>Pascal Case</b> =<b style={Bold}>class</b>,<b style={Bold}>record</b> or<b style={Bold}>struct</b>
                 </p>
                 <p>
-                  <b style={Violet}>camel Case</b> = <b style={Bold}>private</b> or <b style={Bold}>internal</b> fields with the prefix <b style={Violet}>_</b>
+                  <b style={Violet}>camel Case</b> =<b style={Bold}>private</b> or<b style={Bold}>internal</b> fields with the prefix <b style={Violet}>_</b>
                 </p>
                 
               <br />
-              <p>In C# classes are declared using the keyword <b style={Bold}>class</b></p>
+              <p>In C# classes are declared using the keyword<b style={Bold}>class</b></p>
               <br />
 
               <Class />
 
               <div className='Content'>
-                <p>Next step after building a <b style={Bold}>class</b> is to build a <b style={Bold}>DataContext</b></p>
+                <p>Next step after building a<b style={Bold}>class</b> is to build a<b style={Bold}>DataContext</b></p>
               </div>
                
 
@@ -91,25 +92,25 @@ export default function CSharp() {
                 <p>We could create our database with its seeds by running the command in the terminal. But we could also add some tables in the database.</p>
 
                 <br /> 
-                <p>Let's start by adding a many-to-many relationship. To do so we will need to create 2 new tables in our database, with one of them being a <b style={Bold}>Junction Table</b> (that will link both tables)</p>
+                <p>Let's start by adding a many-to-many relationship. To do so we will need to create 2 new tables in our database, with one of them being a<b style={Bold}>Junction Table</b> (that will link both tables)</p>
               </div>
 
               <Course />
 
               <div className="Content">
-                <p>Now the <b style={Bold}>Junction Table</b></p>
+                <p>Now the<b style={Bold}>Junction Table</b></p>
               </div>
 
               <Enrollment />
 
               <div className="Content">
-                <p>And add this line to the <b style={Bold}>Student</b> class</p>
+                <p>And add this line to the<b style={Bold}>Student</b> class</p>
               </div>
 
               <CourseEnrollment />
 
               <div className="Content">
-                <p>Add these lines to the <b style={Bold}>ApplicationDbContext</b> to create our 2 new tables</p> 
+                <p>Add these lines to the<b style={Bold}>ApplicationDbContext</b> to create our 2 new tables</p> 
               </div>
 
               <UpdateDbContext />

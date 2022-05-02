@@ -20,6 +20,8 @@ import ConfirmEmail from '../../features/users/ConfirmEmail';
 import PrivateRoute from './PrivateRoute';
 import CSharp from '../../features/coding/csharp/model/CSharp';
 import Controller from '../../features/coding/csharp/controller/Controller';
+import Angular from '../../features/coding/angular/Angular';
+import Footer from './Footer';
 
 const darkTheme = createTheme({
   palette: {
@@ -50,6 +52,7 @@ function App() {
         <Route exact path='/' component={Home} />  
         <Route path='/csharp' component={CSharp} />
         <Route path='/controller' component={Controller} />
+        <Route path='/angular' component={Angular} />
         <Route
           path={'/(.+)'}
           render={() => (
@@ -69,6 +72,7 @@ function App() {
           </>
         )}
       />   
+      <Footer />
       </ThemeProvider>    
     </div>
   );

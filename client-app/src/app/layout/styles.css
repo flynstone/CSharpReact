@@ -7,12 +7,19 @@ body {
   font-size: 24px !important;
   background-color: #0f1533;
   background-image: url("https://www.transparenttextures.com/patterns/dark-tire.png");
-  color: beige;
+  color: white;
 }
 
 a {
   text-decoration: none !important;
-  color: beige !important;
+  color: white !important;
+}
+
+footer {
+  position: relative;
+  bottom:0;
+  width:100%;
+  background:#4f4f4f;
 }
 
 h2 {
