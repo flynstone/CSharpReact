@@ -6,22 +6,26 @@ export default function Base() {
     `public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
 {
     // Initialize constructor
-    protected ApplicationDbContext ApplicationDbContext { get; set; }
-    public RepositoryBase(ApplicationDbContext applicationDbContext) 
+    protected AppDbContext _context { get; set; }
+    public RepositoryBase(AppDbContext context) 
     {
-        ApplicationDbContext = applicationDbContext
+        _context = context;
     }
 
-    public IQueryable<T> GetAll() => ApplicationDbContext.Set<T>().AsNoTracking();
+    public IQueryable<T> GetAll() => 
+        _context.Set<T>().AsNoTracking();
     
     public IQueryable<T> GetByCondition(Expression<Func<T, bool>> expression) => 
-      ApplicationDbContext.Set<T>().Where(expression).AsNoTracking();
+        _context.Set<T>().Where(expression).AsNoTracking();
 
-    public void Create(T entity) => ApplicationDbContext.Set<T>().Add(entity);
+    public void Create(T entity) => 
+        _context.Set<T>().Add(entity);
 
-    public void Update(T entity) => ApplicationDbContext.Set<T>().Update(entity);
+    public void Update(T entity) => 
+        _context.Set<T>().Update(entity);
 
-    public void Delete(T entity) => ApplicationDbContext.Set<T>().Remove(entity);
+    public void Delete(T entity) => 
+        _context.Set<T>().Remove(entity);
 }`
   );
 
@@ -31,7 +35,7 @@ export default function Base() {
                 language="csharp"
                 padding={15}
                 style={{
-                  fontSize: 24,
+                  fontSize: 18,
                   backgroundColor: "#343434",
                   fontFamily: 'Fira Code',
                 }}          

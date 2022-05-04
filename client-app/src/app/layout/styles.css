@@ -4,7 +4,7 @@
 body {
   margin: 0;
   font-family: 'Grandstander' !important;
-  font-size: 24px !important;
+  font-size: 18px !important;
   background-color: #0f1533;
   background-image: url("https://www.transparenttextures.com/patterns/dark-tire.png");
   color: white;
@@ -29,9 +29,7 @@ h2 {
 }
 
 h3 {
-  padding-top: 7px;
   font-family: 'Grandstander' !important;
-  font-size: 16px !important;
 }
 
 article {
@@ -61,6 +59,14 @@ article {
   display: flex;
   flex-direction: column;
   padding: 4rem;
+}
+
+.Text {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .Header {

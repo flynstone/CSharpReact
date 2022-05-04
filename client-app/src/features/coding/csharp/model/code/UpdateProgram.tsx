@@ -31,7 +31,7 @@ app.Run();`
                 language="csharp"
                 padding={15}
                 style={{
-                  fontSize: 24,
+                  fontSize: 18,
                   backgroundColor: "#343434",
                   fontFamily: 'Fira Code',
                 }}          

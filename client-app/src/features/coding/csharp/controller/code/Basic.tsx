@@ -31,7 +31,7 @@ public class StudentsController : ControllerBase
     public async Task<IActionResult> GetStudent(int id)
     {
         // Find student by id
-        var student = await _unitOfWork.Student.GetAsync(id);
+        var student = await _unitOfWork.Student.GetStudentAsync(id, trackChanges: false);
 
         // Handle null result.
         if (student == null) return NotFound();
@@ -48,7 +48,7 @@ public class StudentsController : ControllerBase
                 language="csharp"
                 padding={15}
                 style={{
-                  fontSize: 24,
+                  fontSize: 18,
                   backgroundColor: "#343434",
                   fontFamily: 'Fira Code',
                 }}          

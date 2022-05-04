@@ -8,9 +8,9 @@ export default function ServiceExtensions() {
     // Configure database connection.
     public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<ApplicationDbContext>(opts =>
-            // Configure Postgres Sql, I could have used another database provider ex. Sql Server, Sqlite, MySql...
-            opts.UseNpgsql(configuration.GetConnectionString("sqlConnection")));
+        services.AddDbContext<AppDbContext>(opts =>
+            // Configure Sqlite, I could have used another database provider ex. Sql Server, Postgres Sql, MySql...
+            opts.UseSqlite(configuration.GetConnectionString("sqlConnection")));
     }
 }`
   );
@@ -21,7 +21,7 @@ export default function ServiceExtensions() {
                 language="csharp"
                 padding={15}
                 style={{
-                  fontSize: 24,
+                  fontSize: 18,
                   backgroundColor: "#343434",
                   fontFamily: 'Fira Code',
                 }}          

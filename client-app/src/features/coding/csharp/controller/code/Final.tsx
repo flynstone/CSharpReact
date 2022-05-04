@@ -64,6 +64,25 @@ public class StudentsController : ControllerBase
 
         return CreatedAtRoute("Id", new { id = studentToReturn.Id }, studentToReturn);
     }
+
+    // PUT: api/students/5
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult> UpdateStudent(int id, [FromBody] StudentForUpdateDto studentDto)
+    {
+        // Make sure id is not null, handle exception
+        if (id != studentDto.Id)
+        {
+            _logger.LogInfo($"Student with id: {id} doesn't exist in the database.");
+            return NotFound();
+        }
+
+        var student = HttpContext.Items["studentDto"] as Student;
+
+        _mapper.Map(studentDto, student);
+        await _unitOfWork.SaveAsync();
+
+        return NoContent();
+    }
 }`
   );
 
@@ -73,7 +92,7 @@ public class StudentsController : ControllerBase
                 language="csharp"
                 padding={15}
                 style={{
-                  fontSize: 24,
+                  fontSize: 18,
                   backgroundColor: "#343434",
                   fontFamily: 'Fira Code',
                 }}          

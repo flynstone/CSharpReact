@@ -21,7 +21,7 @@ export default function DatabaseSeed() {
                 FirstName = "Jane",
                 LastName = "Doe",
                 IsEnrolled = true
-            },
+            });
     }
 }`
   );
@@ -32,7 +32,7 @@ export default function DatabaseSeed() {
                 language="csharp"
                 padding={15}
                 style={{
-                  fontSize: 24,
+                  fontSize: 18,
                   backgroundColor: "#343434",
                   fontFamily: 'Fira Code',
                 }}          

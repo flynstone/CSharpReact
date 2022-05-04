@@ -1,21 +1,18 @@
 import React from 'react';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
-export default function DataContext() {
+export default function Cors() {
   const [code, setCode] = React.useState(
-    `
-public class AppDbContext : DbContext
-{
-    // Class constructor.
-    public AppDbContext(DbContextOptions options): base(options)
+    `public static void ConfigureCors(this IServiceCollection services)
     {
-        // We could add the database connection string here, but it is better practice to keep
-        // in a more private file => appsettings.json.
-    }
-  
-    // Create table in the database.
-    public DbSet<Student> Students { get; set; }
-}`
+        services.AddCors(opt => 
+        {
+            opt.AddPolicy("CorsPolicy", builder => 
+            builder.AllowAnyMethod()
+                   .AllowAnyHeader()
+                   .WithOrigins("https://localhost:4200"));
+        });
+    }`
   );
 
   return(

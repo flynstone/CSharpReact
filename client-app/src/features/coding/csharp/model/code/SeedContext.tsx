@@ -4,13 +4,13 @@ import CodeEditor from '@uiw/react-textarea-code-editor';
 export default function SeedContext() {
   const [code, setCode] = React.useState(
     `
-public class ApplicationDbContext : DbContext
+public class AppDbContext : DbContext
 {
-    public ApplicationDbContext(DbContextOptions options): base(options)
+    public AppDbContext(DbContextOptions options): base(options)
     {
     }
   
-    public DbSet<Article> Articles { get; set; }
+    public DbSet<Student> Students { get; set; }
 
     // We need to add this section.
     protected override void OnModelCreating(ModelBuilder builder) 
@@ -18,7 +18,7 @@ public class ApplicationDbContext : DbContext
         base.OnModelCreating(builder);
 
         // Seed the data.
-        builder.ApplyConfiguration(new ArticleSeeds());
+        builder.ApplyConfiguration(new StudentsConfiguration());
     }
 }`
   );
@@ -29,7 +29,7 @@ public class ApplicationDbContext : DbContext
                 language="csharp"
                 padding={15}
                 style={{
-                  fontSize: 24,
+                  fontSize: 18,
                   backgroundColor: "#343434",
                   fontFamily: 'Fira Code',
                 }}          

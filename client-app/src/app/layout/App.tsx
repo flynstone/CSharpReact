@@ -22,6 +22,7 @@ import CSharp from '../../features/coding/csharp/model/CSharp';
 import Controller from '../../features/coding/csharp/controller/Controller';
 import Angular from '../../features/coding/angular/Angular';
 import Footer from './Footer';
+import ReactFramework from '../../features/coding/react/React';
 
 const darkTheme = createTheme({
   palette: {
@@ -53,13 +54,14 @@ function App() {
         <Route path='/csharp' component={CSharp} />
         <Route path='/controller' component={Controller} />
         <Route path='/angular' component={Angular} />
+        <Route path='/react' component={ReactFramework} />
+        <Route exact path='/articles' component={ArticleDashboard} />
         <Route
           path={'/(.+)'}
           render={() => (
             <>
               <Container style={{ width: '100vw' }}>
                 <Switch>
-                  <PrivateRoute exact path='/articles' component={ArticleDashboard} />
                   <PrivateRoute path='/articles/:id' component={ArticleDetails} />
                   <PrivateRoute key={location.key} path={['/createArticle', '/manage/:id']} component={ArticleForm} />
                   <PrivateRoute path='/profiles/:username' component={ProfilePage} />
