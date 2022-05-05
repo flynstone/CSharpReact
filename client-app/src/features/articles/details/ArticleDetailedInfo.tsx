@@ -10,15 +10,10 @@ interface Props {
 
 export default function ArticleDetailedInfo({article}: Props) {
   return (
-    <CardContent>        
-      {article.content}
-           
-      <br /><br />
-           
-      <div className="container">
-        <Button as={Link} to={`/manage/${article.id}`} basic color="blue">Edit</Button>{' '}
-        <Button as={Link} to={`/articles`} basic color="grey">Cancel</Button>
-      </div>   
+    <CardContent>     
+      <div className='Container'>
+        {article.content}
+      </div>  
     </CardContent>
   )
 }

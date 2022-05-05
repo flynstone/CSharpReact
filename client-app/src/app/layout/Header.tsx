@@ -60,9 +60,9 @@ export default observer(function Header() {
           <Button as={Link} to='/articles' size='small' color='grey' floated='right' inverted>Go to Articles</Button>
           {userStore.isLoggedIn ? (
           <>
-            <Menu.Item position="right" style={{ paddingRight: "2rem" }}>
+            <Menu.Item position="right" style={{ paddingLeft: "2rem", paddingRight: "2rem" }}>
                 <Image src={user?.image || "/img/user.png"} avatar spaced="right" />
-                <Dropdown pointing="top" text={user?.displayName}>
+                <Dropdown pointing="top" direction='left' text={user?.displayName}>
                   <Dropdown.Menu style={{ backgroundColor: "teal" }}>
                     <Dropdown.Item as={NavLink} to="/createArticle" positive content="New Article" icon="plus" />
                     <Dropdown.Item as={Link} to={`/profiles/${user?.username}`} text="My Profile" icon="user" />

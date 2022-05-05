@@ -11,7 +11,7 @@ export default observer(function ProfileAbout() {
 
   return (
     <Tab.Pane>
-      <Grid style={{backgroundColor: 'teal', color: 'white'}}>
+      <Grid style={{minHeight: '100%', backgroundColor: 'teal', color: 'white'}}>
         <Grid.Column width="16">
           <Header
             floated="left"

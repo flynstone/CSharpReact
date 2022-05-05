@@ -17,9 +17,14 @@ a {
 
 footer {
   position: relative;
+  margin-top: 3rem;
   bottom:0;
   width:100%;
   background:#4f4f4f;
+}
+
+.tab {
+  background: teal !important;
 }
 
 h2 {
@@ -30,6 +35,7 @@ h2 {
 
 h3 {
   font-family: 'Grandstander' !important;
+  color: white;
 }
 
 article {
@@ -37,7 +43,29 @@ article {
   padding: 2rem;
 }
 
+.button {
+  align-items: center;
+  font-family: 'Grandstander' !important;
+}
+
+.value {
+  font-family: 'Grandstander' !important;
+}
+
+.header {
+  font-family: 'Grandstander' !important;
+}
+
+.content {
+  font-family: 'Grandstander' !important;
+}
+
+.item {
+  font-family: 'Grandstander' !important;
+}
+
 .label {
+  font-family: 'Grandstander' !important;
   color: beige !important;
 }
 
@@ -45,6 +73,12 @@ article {
   display: flex;
   flex-direction: column;
   padding: 2rem;
+}
+
+.Comment {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2rem;
 }
 
 .Fill {
@@ -83,53 +117,8 @@ article {
   color: beige;
 }
 
-.Btn {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  color: beige;
-}
-
-.Buttons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-right: 1rem;
-}
-
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.article__header {
-  padding: 8px;
-  transition: all 0.25s ease-in-out;
-}
-
-.article__body {
-  padding: 10px 20px;
-} 
-
-.article__footer {
-  padding: 8px 20px;
-  font-size: 0.8rem;
-}
-
-.article__action {
-  transition: opacity 0.2s ease-in-out;
-  opacity: 0;
-  float: right;
-}
-
-.article__form {
-  display: flex;
-  flex-direction: column;
-  max-width: 540px;
-}
-
-.article__title {
-  display: flex;
 }

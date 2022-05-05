@@ -74,7 +74,6 @@ function App() {
           </>
         )}
       />   
-      <Footer />
       </ThemeProvider>    
     </div>
   );

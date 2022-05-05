@@ -10,8 +10,8 @@ interface Props {
 export default observer(function ActivityDetailedHeader({ article }: Props) {
   return (
     <div className="Row p-3">
-      <CardHeader />{article.title}
-      <small className="text-muted">{article.createdAt}</small>
+      <CardHeader /><h3>{article.title}</h3>
+      <h3 style={{color: 'teal'}}>{article.createdAt}</h3>
     </div>
     // <Card style={{ paddingLeft: '2rem' }}>
       

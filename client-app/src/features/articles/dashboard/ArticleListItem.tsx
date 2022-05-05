@@ -16,7 +16,7 @@ export default function ArticleListItem({ article }: Props) {
     <>
       <Card key={article.id} style={{ paddingBottom: "2rem" }}>
         <div className="card-header">
-          <h2 className='pt-3 px-3'>{article.title}</h2>
+          <h3 className='pt-3 px-3'>{article.title}</h3>
           <small className='px-3'>{article.createdAt}</small>
         </div>
 

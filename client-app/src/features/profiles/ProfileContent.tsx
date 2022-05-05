@@ -12,6 +12,7 @@ interface Props {
 }
 
 export default observer(function ProfileContent({ profile }: Props) {
+
   const { profileStore } = useStore();
 
   const panes = [
@@ -24,7 +25,7 @@ export default observer(function ProfileContent({ profile }: Props) {
 
   return (
     <Tab
-      menu={{ fluid: true, vertical: true }}
+      menu={{ fluid: true, vertical: true, inverted: true }}
       menuPosition='right'
       panes={panes}
       onTabChange={(e, data) => profileStore.setActiveTab(data.activeIndex)}
