@@ -10,7 +10,6 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ArticleDetails from '../../features/articles/details/ArticleDetails';
 import { ToastContainer } from 'react-toastify';
 import NotFound from '../../features/errors/NotFound';
-import ServerError from '../../features/errors/ServerError';
 import { useStore } from '../stores/store';
 import LoadingComponent from './LoadingComponent';
 import ModalContainer from '../common/modals/ModalContainer';
@@ -23,6 +22,7 @@ import Controller from '../../features/coding/csharp/controller/Controller';
 import Angular from '../../features/coding/angular/Angular';
 import Footer from './Footer';
 import ReactFramework from '../../features/coding/react/React';
+import Info from '../../features/coding/javascript/Info';
 
 const darkTheme = createTheme({
   palette: {
@@ -53,6 +53,7 @@ function App() {
         <Route exact path='/' component={Home} />  
         <Route path='/csharp' component={CSharp} />
         <Route path='/controller' component={Controller} />
+        <Route path='/javascript' component={Info} />
         <Route path='/angular' component={Angular} />
         <Route path='/react' component={ReactFramework} />
         <Route exact path='/articles' component={ArticleDashboard} />
@@ -65,7 +66,6 @@ function App() {
                   <PrivateRoute path='/articles/:id' component={ArticleDetails} />
                   <PrivateRoute key={location.key} path={['/createArticle', '/manage/:id']} component={ArticleForm} />
                   <PrivateRoute path='/profiles/:username' component={ProfilePage} />
-                  {/* <Route path='/server-error' component={ServerError} /> */}
                   <Route path='/account/registerSuccess' component={RegisterSuccess} />
                   <Route path='/account/verifyEmail' component={ConfirmEmail} />
                   {/* <Route component={NotFound} /> */}

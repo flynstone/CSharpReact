@@ -25,7 +25,7 @@ export default observer(function Header() {
           <Link to="/">
             <img src={logo} height={65} width={65} alt="Logo" />
           </Link>
-          
+
           <Menu.Item position="right" style={{ paddingLeft: "2rem" }}>
             <Dropdown pointing="top" text="C Sharp (C#)" style={{fontSize: '18px'}}>
               <Dropdown.Menu style={{ backgroundColor: "teal" }}>
@@ -43,6 +43,8 @@ export default observer(function Header() {
           <Menu.Item position="right" style={{ paddingLeft: "2rem" }}>
             <Dropdown pointing="top" text="Javascript" style={{fontSize: '18px'}}>
               <Dropdown.Menu style={{ backgroundColor: "teal" }}>
+              <Dropdown.Header>Front-End</Dropdown.Header>
+              <Dropdown.Item as={Link} to='/javascript' content="Basics" style={{fontSize: '18px', padding: '1rem'}} />
                 <Dropdown.Header>Angular</Dropdown.Header>
                 <Dropdown.Item as={Link} to='/angular' content="Angular" style={{fontSize: '18px', padding: '1rem'}} />
 
